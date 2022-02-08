@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "HashTable.h"
-#pragma execution_character_set("utf-8")
 
 using namespace std;
 
