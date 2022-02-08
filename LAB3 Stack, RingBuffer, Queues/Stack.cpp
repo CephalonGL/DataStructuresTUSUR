@@ -1,6 +1,5 @@
 #include "Stack.h"
 
-
 int Stack::GetStackLength()
 {
     return _stackLength;

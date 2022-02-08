@@ -1,7 +1,6 @@
 #pragma once
 #include "StackNode.h"
 
-
 /// <summary>
 /// Stack data structure
 /// </summary>

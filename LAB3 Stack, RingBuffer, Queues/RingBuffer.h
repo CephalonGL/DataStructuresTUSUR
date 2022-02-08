@@ -1,6 +1,5 @@
 #pragma once
 
-
 /// <summary>
 /// Ring buffer data structure based on dynamic array
 /// </summary>
