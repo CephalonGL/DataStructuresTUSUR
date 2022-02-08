@@ -234,17 +234,6 @@ void RingBufferMenu()
 	{
 		cout << "Введите код операции: ";
 		cin >> operationCode;
-		while (operationCode != -1 && operationCode != 1 
-			&& operationCode != 2 && operationCode != 3 
-			&& operationCode != 4 && operationCode != 5
-			&& operationCode != 0 && operationCode != 6
-			&& operationCode != 100)
-		{
-			cout << "Введён некорректный код операции. Для вызова справки,"
-				<< " введите 100." << endl;
-			cout << "Введите код операции: ";
-			cin >> operationCode;
-		}
 		switch (operationCode)
 		{
 			case 1:
@@ -340,17 +329,12 @@ void RingBufferMenu()
 			}
 			case 0:
 			{
-				if (ringBufferUnit == nullptr)
-				{
-					cout << "Кольцевой буфер не существует." << endl;
-					return;
-				}
-				else
+				if (IsNullptr(ringBufferUnit, "Кольцевой буфер не существует."))
 				{
 					delete ringBufferUnit;
 					cout << "Кольцевой буфер успешно удалён." << endl;
-					return;
 				}
+				return;
 			}
 			case 100:
 			{
@@ -363,6 +347,12 @@ void RingBufferMenu()
 				cout << "5 - вывести на экран занятое место;" << endl;
 				cout << "0 - удаление кольцевого буфера и очистка памяти;" 
 					<< endl;
+			}
+			default:
+			{
+				cout << "Введён некорректный код операции. Для вызова справки,"
+					<< " введите 100." << endl;
+				break;
 			}
 		}
 	}
@@ -415,9 +405,8 @@ void QueueOnTwoStacksMenu()
 			}
 			else
 			{
-				cout << "Введите число, помещаемое в очередь: ";
-				int valueToPush;
-				cin >> valueToPush;
+				int valueToPush = ReadIntValueFromConsole("Введите число,"
+					" помещаемое в очередь: ");
 				queueOnTwoStacksUnit->Enqueue(valueToPush);
 				cout << "Число " << valueToPush << " помещено в очередь."
 					<< endl;
