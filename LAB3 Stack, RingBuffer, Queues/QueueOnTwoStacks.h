@@ -1,8 +1,11 @@
 #pragma once
 #include "Stack.h"
 
+//TODO: XML
 class QueueOnTwoStacks
 {
+	//TODO: XML
+	//TODO: RSDN
 	Stack* _iStack;
 	Stack* _oStack;
 	int _countOfNodes;

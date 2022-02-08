@@ -28,11 +28,13 @@ void HashTable::HashTableInsert(string key, string value)
 			{
 				if (currentNode->Value == value)
 				{
+					//TODO: encoding
 					string error = "Ошибка! Дубликат key-value";
 					throw error;
 				}
 				else
 				{
+					//TODO: encoding
 					string error = "Ошибка! Обнаружено свопадение key-key. "
 						"По данному ключу записано значение: ";
 					error.append(currentNode->Value);
@@ -56,6 +58,7 @@ void HashTable::Remove(string key)
 	HashTableNode* currentNode = &HashTableNodeArray[Hash(key)];
 	if (currentNode == nullptr)
 	{
+		//TODO: encoding
 		string error = "Ошибка! По данному ключу нет значений";
 		throw error;
 	}
@@ -69,6 +72,7 @@ void HashTable::Remove(string key)
 		}
 		else
 		{
+			//TODO: encoding
 			string error = "Ошибка! По данному ключу нет значений";
 			throw error;
 		}
@@ -104,6 +108,7 @@ string HashTable::Find(string key)
 	{
 		if (currentNode == nullptr || currentNode->NextCollision == nullptr)
 		{
+			//TODO: encoding
 			string error = "Ошибка! Такого элемента нет.";
 			throw error;
 		}
@@ -131,6 +136,7 @@ int HashTable::Hash(string key)
 
 void HashTable::Rehash()
 {
+	//TODO: to const
 	if (_isRehashingNow || _length / _capacity < 0.9)
 	{
 		return;

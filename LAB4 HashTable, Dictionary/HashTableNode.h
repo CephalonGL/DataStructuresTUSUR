@@ -7,6 +7,7 @@ using namespace std;
 ///</summary>
 struct HashTableNode
 {
+	//TODO: XML
 	string Key = "";
 	string Value = "";
 	HashTableNode* NextCollision = nullptr;

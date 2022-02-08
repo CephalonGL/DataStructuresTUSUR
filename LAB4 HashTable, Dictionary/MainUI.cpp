@@ -5,13 +5,23 @@
 
 using namespace std;
 
-enum OperationCode { STOP, INSERT, REMOVE, FIND, HELP = 100 };
+//TODO: RSDN
+//TODO: XML
+enum OperationCode
+{
+	STOP,
+	INSERT,
+	REMOVE,
+	FIND,
+	HELP = 100
+};
 
 /// <summary>
 /// Printing hash table with its empty nodes.
 /// </summary>
 /// <param name="hashTable">Hash table to print</param>
 void PrintHashTable(HashTable& hashTable);
+
 /// <summary>
 /// Printing hash table without its empty nodes.
 /// </summary>
@@ -35,6 +45,7 @@ int main()
 		cin >> operationCode;
 		switch (operationCode)
 		{
+			//TODO: RSDN
 		case STOP:
 		{
 			cout << "Программа успешно завершила выполнение." << endl << endl;

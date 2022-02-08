@@ -1,6 +1,7 @@
 #pragma once
 #include "RingBuffer.h"
 
+//TODO: XML
 class QueueOnRingBuffer
 {
 	RingBuffer* _ringBuffer;
@@ -8,18 +9,23 @@ class QueueOnRingBuffer
 	int _queueLength;
 
 public:
+	//TODO: XML
 	QueueOnRingBuffer(int bufferCapacity);
+
 	~QueueOnRingBuffer();
+	//TODO: RSDN
 	/// <summary>
 	/// Get count of empty cells
 	/// </summary>
 	/// <returns>Count of empty cells</returns>
 	int GetEmptyCells();
+
 	/// <summary>
 	/// Push value into queue
 	/// </summary>
 	/// <param name="valueToPush">Value to push</param>
 	void Enqueue(int valueToPush);
+
 	/// <summary>
 	/// Pop value from queue
 	/// </summary>
