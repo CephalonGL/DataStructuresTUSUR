@@ -203,15 +203,3 @@ int List::GetValueByIndex(int indexOfNode)
 	}
 	return pCurrentNode->Value;
 }
-
-
-Node::Node()
-{
-	Value = 0;
-	Next = nullptr;
-	Previous = nullptr;
-}
-
-Node::~Node()
-{
-}
