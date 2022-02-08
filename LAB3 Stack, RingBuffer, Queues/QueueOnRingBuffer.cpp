@@ -4,8 +4,6 @@
 QueueOnRingBuffer::QueueOnRingBuffer(int bufferCapacity)
 {
 	_ringBuffer = new RingBuffer(bufferCapacity);
-	//_queueCapacity = queueCapacity;
-	//_queueLength = 0;
 }
 
 QueueOnRingBuffer::~QueueOnRingBuffer()

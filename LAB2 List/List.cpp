@@ -130,16 +130,6 @@ void List::PushAfterNode(int indexNodeToPushAfter, int valueToPush)
 		pCurrentNode->Next->Value = valueToPush;
 		_length++;
 	}
-	else
-	{
-		Node* pCurrentNode = pTail;
-		for (int i = 0; i < Length - indexNodeToPushAfter; i++)
-		{
-			pCurrentNode = pCurrentNode->Previous;
-		}
-		pCurrentNode->Next->Previous = new Node;
-		pCurrentNode->Next = pCurrentNode->Next->Previous;
-	}
 }
 
 void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
@@ -161,18 +151,6 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 		pCurrentNode->Previous = pCurrentNode->Previous->Next;
 		pCurrentNode->Previous->Value = valueToPush;
 		_length++;
-	}
-	else
-	{
-		Node* pCurrentNode = pTail;
-		for (int i = 0; i < Length - indexNodeToPushBefore; i++)
-		{
-			pCurrentNode = pCurrentNode->Previous;
-		}
-		pCurrentNode->Next->Previous = new Node;
-		pCurrentNode->Next = pCurrentNode->Next->Previous;
-		pCurrentNode->Value = valueToPush;
-		Length++;
 	}
 }
 
