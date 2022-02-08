@@ -130,7 +130,7 @@ void List::PushAfterNode(int indexNodeToPushAfter, int valueToPush)
 		pCurrentNode->Next->Value = valueToPush;
 		_length++;
 	}
-	/*else
+	else
 	{
 		Node* pCurrentNode = pTail;
 		for (int i = 0; i < Length - indexNodeToPushAfter; i++)
@@ -139,7 +139,7 @@ void List::PushAfterNode(int indexNodeToPushAfter, int valueToPush)
 		}
 		pCurrentNode->Next->Previous = new Node;
 		pCurrentNode->Next = pCurrentNode->Next->Previous;
-	}*/
+	}
 }
 
 void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
@@ -162,7 +162,7 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 		pCurrentNode->Previous->Value = valueToPush;
 		_length++;
 	}
-	/*else
+	else
 	{
 		Node* pCurrentNode = pTail;
 		for (int i = 0; i < Length - indexNodeToPushBefore; i++)
@@ -173,7 +173,7 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 		pCurrentNode->Next = pCurrentNode->Next->Previous;
 		pCurrentNode->Value = valueToPush;
 		Length++;
-	}*/
+	}
 }
 
 void List::Sort()
