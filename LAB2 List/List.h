@@ -21,9 +21,19 @@ public:
 
 class List
 {
+    /// <summary>
+    /// Length of the list
+    /// </summary>
     int _length = 0;
+    /// <summary>
+    /// Head node of the list
+    /// </summary>
     Node* _head = nullptr;
+    /// <summary>
+    /// Tail node of the list
+    /// </summary>
     Node* _tail = nullptr;
+
 public:
     /// <summary>
     /// Getter function for current list lenght
