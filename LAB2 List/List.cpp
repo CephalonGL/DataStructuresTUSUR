@@ -1,16 +1,5 @@
 #include "List.h"
 
-List::List()
-{
-	_length = 0;
-	_head = nullptr;
-	_tail = nullptr;
-}
-
-List::~List()
-{
-}
-
 int List::GetLength()
 {
 	return _length;

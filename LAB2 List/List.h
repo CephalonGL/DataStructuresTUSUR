@@ -21,15 +21,10 @@ public:
 
 class List
 {
-    int _length;
-    Node* _head;
-    Node* _tail;
+    int _length = 0;
+    Node* _head = nullptr;
+    Node* _tail = nullptr;
 public:
-
-    List();
-
-    ~List();
-
     /// <summary>
     /// Getter function for current list lenght
     /// </summary>
