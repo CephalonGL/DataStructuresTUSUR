@@ -1,19 +1,33 @@
 #pragma once
 #include "RingBuffer.h"
 
-//TODO: XML
+//TODO: XML +
 class QueueOnRingBuffer
 {
+	/// <summary>
+	/// Pointer on RingBuffet unit
+	/// </summary>
 	RingBuffer* _ringBuffer;
+	/// <summary>
+	/// Capacity of array of queue
+	/// </summary>
 	int _queueCapacity;
+	/// <summary>
+	/// Current length of queue
+	/// </summary>
 	int _queueLength;
 
 public:
-	//TODO: XML
+	//TODO: XML +
+
+	/// <summary>
+	/// Creates RingBuffer with bufferCapacity from heap
+	/// </summary>
+	/// <param name="bufferCapacity">Capacity to set</param>
 	QueueOnRingBuffer(int bufferCapacity);
 
 	~QueueOnRingBuffer();
-	//TODO: RSDN
+	//TODO: RSDN ???
 	/// <summary>
 	/// Get count of empty cells
 	/// </summary>

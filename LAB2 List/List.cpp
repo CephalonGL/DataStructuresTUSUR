@@ -176,7 +176,6 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 	}*/
 }
 
-//TODO: ¬озможно, есть более удачна€ сортировка
 void List::Sort()
 {
 	Node* pCurrentNode = _head;

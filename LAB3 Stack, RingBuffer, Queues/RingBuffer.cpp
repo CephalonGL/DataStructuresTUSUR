@@ -1,6 +1,6 @@
 #include "RingBuffer.h"
 
-//bool RingBuffer::IsInitialized()
+//bool RingBuffer::IsNullptr()
 //{
 //	return _isInitialized;
 //}

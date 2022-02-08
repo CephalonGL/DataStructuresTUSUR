@@ -2,21 +2,21 @@
 
 void QueueOnTwoStacks::Enqueue(int valueToPush)
 {
-	_iStack->Push(valueToPush);
+	_inputStack->Push(valueToPush);
 	_countOfNodes++;
 }
 
 int QueueOnTwoStacks::Unqueue()
 {
 
-	while (_iStack->GetStackLength() != 0)
+	while (_inputStack->GetStackLength() != 0)
 	{
-		_oStack->Push(_iStack->Pop());
+		_outputStack->Push(_inputStack->Pop());
 	}
-	int valueToPop = _oStack->Pop();
-	while (_oStack->GetStackLength() != 0)
+	int valueToPop = _outputStack->Pop();
+	while (_outputStack->GetStackLength() != 0)
 	{
-		_iStack->Push(_oStack->Pop());
+		_inputStack->Push(_outputStack->Pop());
 	}
 	_countOfNodes--;
 	return valueToPop;
@@ -29,13 +29,13 @@ int QueueOnTwoStacks::GetCountOfNodes()
 
 QueueOnTwoStacks::QueueOnTwoStacks()
 {
-	_iStack = new Stack;
-	_oStack = new Stack;
+	_inputStack = new Stack;
+	_outputStack = new Stack;
 	_countOfNodes = 0;
 }
 
 QueueOnTwoStacks::~QueueOnTwoStacks()
 {
-	delete _iStack;
-	delete _oStack;
+	delete _inputStack;
+	delete _outputStack;
 }

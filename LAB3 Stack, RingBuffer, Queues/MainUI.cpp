@@ -7,25 +7,47 @@
 using namespace std;
 
 /// <summary>
-/// Print message in console with user instructions
+/// Print messageToPrint in console with user instructions
 /// </summary>
 void Hello();
+
 /// <summary>
 /// UI for stack
 /// </summary>
 void StackMenu();
+
 /// <summary>
 /// UI for ring buffer
 /// </summary>
 void RingBufferMenu();
+
 /// <summary>
 /// UI for queue on two stacks
 /// </summary>
 void QueueOnTwoStacksMenu();
+
 /// <summary>
 /// UI for queue on ring buffer
 /// </summary>
 void QueueOnRingBufferMenu();
+
+/// <summary>
+/// Get data from console and check if 
+/// </summary>
+/// <param name="messageToPrint">Printing messageToPrint</param>
+/// <returns>User's data</returns>
+int ReadIntValueFromConsole(string message);
+
+template<typename T>
+
+/// <summary>
+/// Check if unit == nullptr and print message if it is
+/// </summary>
+/// <typeparam name="T">any type</typeparam>
+/// <param name="unit">pointer on checking</param>
+/// <param name="message">message that would be printed if unit == nullptr</param>
+/// <returns>false if unit == nullptr and true otherwise</returns>
+bool IsNullptr(T* unit, string message = "");
 
 int main()
 {
@@ -53,32 +75,32 @@ int main()
 		}
 		switch (structureCode)
 		{
-			//TODO: RSDN
-		case 1:
-		{
-			StackMenu();
-			break;
-		}
-		case 2:
-		{
-			RingBufferMenu();
-			break;
-		}
-		case 3:
-		{
-			QueueOnRingBufferMenu();
-			break;
-		}
-		case 4:
-		{
-			QueueOnTwoStacksMenu();
-			break;
-		}
-		case 0:
-		{
-			cout << "Программа завершила работу." << endl;
-			return 0;
-		}
+			//TODO: RSDN +
+			case 1:
+			{
+				StackMenu();
+				break;
+			}
+			case 2:
+			{
+				RingBufferMenu();
+				break;
+			}
+			case 3:
+			{
+				QueueOnRingBufferMenu();
+				break;
+			}
+			case 4:
+			{
+				QueueOnTwoStacksMenu();
+				break;
+			}
+			case 0:
+			{
+				cout << "Программа завершила работу." << endl;
+				return 0;
+			}
 		}
 	}
 	return 0;
@@ -121,77 +143,75 @@ void StackMenu()
 		}
 		switch (operationCode)
 		{
-			//TODO: RSDN
-		case 1:
-		{
-			if (stackUnit != nullptr)
+			//TODO: RSDN +
+			case 1:
 			{
-				cout << "Ошибка. Стек уже создан." << endl;
-				break;
-			}
-			else
-			{
-				stackUnit = new Stack;
-				cout << "Стек успешно создан." << endl;
-				break;
-			}
-		}
-		case 2:
-		{
-			if (stackUnit == nullptr)
-			{
-				cout << "Ошибка. Стек не создан." << endl;
-				break;
-			}
-			else
-			{
-				//TODO: дубль
-				cout << "Введите число, помещаемое в стек: ";
-				int valueToPush;
-				cin >> valueToPush;
-				stackUnit->Push(valueToPush);
-				cout << "Число " << valueToPush << " помещено в стек."
-					<< endl;
-				break;
-			}
-		}
-		case 3:
-		{
-			if (stackUnit == nullptr)
-			{
-				cout << "Ошибка. Стек не создан." << endl;
-				break;
-			}
-			else
-			{
-				if (stackUnit->GetStackLength() > 0)
+				if (stackUnit != nullptr)
 				{
-					cout << "Из стека извлечено число " << stackUnit->Pop()
-						<< '.' << endl;
+					cout << "Ошибка. Стек уже создан." << endl;
 					break;
 				}
 				else
 				{
-					cout << "Ошибка. Стек пуст!" << endl;
+					stackUnit = new Stack;
+					cout << "Стек успешно создан." << endl;
 					break;
 				}
 			}
-		}
-		case 0:
-		{
-			delete stackUnit;
-			cout << "Стек успешно удалён." << endl;
-			return;
-		}
-		case 100:
-		{
-			cout << "Для работы со стеком, используйте следующий список"
-				<< " операций:" << endl;
-			cout << "\t1 - создание стека;" << endl;
-			cout << "\t2 - помещение элемент в стек;" << endl;
-			cout << "\t3 - извлечение элемента из стека;" << endl;
-			cout << "\t0 - удаление стека и очистка памяти." << endl;
-		}
+			case 2:
+			{
+				if (stackUnit == nullptr)
+				{
+					cout << "Ошибка. Стек не создан." << endl;
+					break;
+				}
+				else
+				{
+					//TODO: дубль +
+					int valueToPush = ReadIntValueFromConsole("Введите число, помещаемое в стек: ");
+					stackUnit->Push(valueToPush);
+					cout << "Число " << valueToPush << " помещено в стек."
+						<< endl;
+					break;
+				}
+			}
+			case 3:
+			{
+				if (stackUnit == nullptr)
+				{
+					cout << "Ошибка. Стек не создан." << endl;
+					break;
+				}
+				else
+				{
+					if (stackUnit->GetStackLength() > 0)
+					{
+						cout << "Из стека извлечено число " << stackUnit->Pop()
+							<< '.' << endl;
+						break;
+					}
+					else
+					{
+						cout << "Ошибка. Стек пуст!" << endl;
+						break;
+					}
+				}
+			}
+			case 0:
+			{
+				delete stackUnit;
+				cout << "Стек успешно удалён." << endl;
+				return;
+			}
+			case 100:
+			{
+				cout << "Для работы со стеком, используйте следующий список"
+					<< " операций:" << endl;
+				cout << "\t1 - создание стека;" << endl;
+				cout << "\t2 - помещение элемент в стек;" << endl;
+				cout << "\t3 - извлечение элемента из стека;" << endl;
+				cout << "\t0 - удаление стека и очистка памяти." << endl;
+			}
 		}
 	}
 }
@@ -226,129 +246,121 @@ void RingBufferMenu()
 		}
 		switch (operationCode)
 		{
-		case 1:
-		{
-				//TODO: дубль
-			if (ringBufferUnit != nullptr)
+			case 1:
 			{
-				cout << "Ошибка. Кольцевой буфер уже создан." << endl;
-				break;
-			}
-			else
-			{
-				//TODO: дубль
-				cout << "Введите целое количество элементов буфера: ";
-				int bufferSize;
-				cin >> bufferSize;
-				while (bufferSize <= 0)
+					//TODO: дубль +
+				if (!IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер уже создан."))
 				{
-					cout << "Ошибка. Введите положительное число элементов.";
-					cin >> bufferSize;
-				}
-				ringBufferUnit = new RingBuffer(bufferSize);
-				cout << "Кольцевой буфер успешно создан." << endl;
-				break;
-			}
-		}
-		case 2:
-		{
-				//TODO: дубль
-			if (ringBufferUnit == nullptr)
-			{
-				cout << "Ошибка. Кольцевой буфер не создан." << endl;
-				break;
-			}
-			else
-			{
-				cout << "Введите число, помещаемое в Кольцевой буфер: ";
-				//TODO: дубль
-				int valueToPush;
-				cin >> valueToPush;
-				ringBufferUnit->Push(valueToPush);
-				cout << "Число " << valueToPush << " помещено в кольцевой"
-					<< " буфер." << endl;
-				break;
-			}
-		}
-		case 3:
-		{
-				//TODO: дубль
-			if (ringBufferUnit == nullptr)
-			{
-				cout << "Ошибка. Кольцевой буфер не создан." << endl;
-				break;
-			}
-			else
-			{
-				if (ringBufferUnit->GetReservedCells() > 0)
-				{
-					cout << "Из кольцевого буфера извлечено число "
-						<< ringBufferUnit->Pop() << '.' << endl;
 					break;
 				}
 				else
 				{
-					cout << "Ошибка. Кольцевой буфер пуст!" << endl;
+					//TODO: дубль +
+					int bufferSize = ReadIntValueFromConsole("Введите целое количество элементов буфера: ");
+					while (bufferSize <= 0)
+					{
+						cout << "Ошибка. Введите положительное число элементов.";
+						cin >> bufferSize;
+					}
+					ringBufferUnit = new RingBuffer(bufferSize);
+					cout << "Кольцевой буфер успешно создан." << endl;
 					break;
 				}
 			}
-		}
-		case 4:
-		{
-			cout << "В буфере " << ringBufferUnit->GetEmptyCells()
-				<< " свободных ячеек." << endl;
-			break;
-		}
-		case 5:
-		{
-			cout << "В буфере " << ringBufferUnit->GetReservedCells()
-				<< " зарезервированых ячеек." << endl;
-			break;
-		}
-		case 6:
-		{				 //TODO: дубль
-			if (ringBufferUnit == nullptr)
+			case 2:
 			{
-				cout << "Ошибка. Буфер не создан." << endl;
-				break;
-			}
-			else
-			{
-				cout << "Буфер содержит сдледующие элементы:" << endl;
-				for (int i = 0; i < ringBufferUnit->GetCapacity(); i++)
+					//TODO: дубль +
+				if (IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер не создан."))
 				{
-					cout << ringBufferUnit->GetValue(i);
+					break;
 				}
+				else
+				{
+					//TODO: дубль +
+					int valueToPush = ReadIntValueFromConsole("Введите число, помещаемое в Кольцевой буфер: ");
+					ringBufferUnit->Push(valueToPush);
+					cout << "Число " << valueToPush << " помещено в кольцевой"
+						<< " буфер." << endl;
+					break;
+				}
+			}
+			case 3:
+			{
+					//TODO: дубль +
+				if (IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер не создан."))
+				{
+					break;
+				}
+				else
+				{
+					if (ringBufferUnit->GetReservedCells() > 0)
+					{
+						cout << "Из кольцевого буфера извлечено число "
+							<< ringBufferUnit->Pop() << '.' << endl;
+						break;
+					}
+					else
+					{
+						cout << "Ошибка. Кольцевой буфер пуст!" << endl;
+						break;
+					}
+				}
+			}
+			case 4:
+			{
+				cout << "В буфере " << ringBufferUnit->GetEmptyCells()
+					<< " свободных ячеек." << endl;
 				break;
 			}
-		}
-		case 0:
-		{
-			if (ringBufferUnit == nullptr)
+			case 5:
 			{
-				delete ringBufferUnit;
-				cout << "Кольцевой буфер успешно удалён." << endl;
-				return;
+				cout << "В буфере " << ringBufferUnit->GetReservedCells()
+					<< " зарезервированых ячеек." << endl;
+				break;
 			}
-			else
+			case 6:
+			{	
+				//TODO: дубль +
+				if (IsNullptr(ringBufferUnit, "Ошибка. Буфер не создан."))
+				{
+					break;
+				}
+				else
+				{
+					cout << "Буфер содержит сдледующие элементы:" << endl;
+					for (int i = 0; i < ringBufferUnit->GetCapacity(); i++)
+					{
+						cout << ringBufferUnit->GetValue(i);
+					}
+					break;
+				}
+			}
+			case 0:
 			{
-				delete ringBufferUnit;
-				cout << "Кольцевой буфер успешно удалён." << endl;
-				return;
+				if (ringBufferUnit == nullptr)
+				{
+					cout << "Кольцевой буфер не существует." << endl;
+					return;
+				}
+				else
+				{
+					delete ringBufferUnit;
+					cout << "Кольцевой буфер успешно удалён." << endl;
+					return;
+				}
 			}
-		}
-		case 100:
-		{
-			cout << "Для работы с кольцевым буфером, используйте следующий"
-				<< " список операций" << endl;
-			cout << "1 - создать буфер;" << endl;
-			cout << "2 - добавить элемент в кольцевой буфер;" << endl;
-			cout << "3 - взять элемент из кольцевого буфера;" << endl;
-			cout << "4 - вывести на экран свободное место;" << endl;
-			cout << "5 - вывести на экран занятое место;" << endl;
-			cout << "0 - удаление кольцевого буфера и очистка памяти;" 
-				<< endl;
-		}
+			case 100:
+			{
+				cout << "Для работы с кольцевым буфером, используйте следующий"
+					<< " список операций" << endl;
+				cout << "1 - создать буфер;" << endl;
+				cout << "2 - добавить элемент в кольцевой буфер;" << endl;
+				cout << "3 - взять элемент из кольцевого буфера;" << endl;
+				cout << "4 - вывести на экран свободное место;" << endl;
+				cout << "5 - вывести на экран занятое место;" << endl;
+				cout << "0 - удаление кольцевого буфера и очистка памяти;" 
+					<< endl;
+			}
 		}
 	}
 }
@@ -576,5 +588,27 @@ void QueueOnRingBufferMenu()
 			cout << "\t0 - удаление очереди и очистка памяти." << endl;
 		}
 		}
+	}
+}
+
+int ReadIntValueFromConsole(string messageToPrint)
+{
+	cout << messageToPrint;
+	int userValue;
+	cin >> userValue;
+	return userValue;
+}
+
+template<typename T>
+bool IsNullptr(T* unit, string message = "")
+{
+	if (unit == nullptr)
+	{
+		cout << message;
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
