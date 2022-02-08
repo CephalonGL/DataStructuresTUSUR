@@ -1,10 +1,14 @@
 #pragma once
 #include "Stack.h"
 
-//TODO: XML
+//TODO: XML +
+
+/// <summary>
+/// Queue on two stacks data structure
+/// </summary>
 class QueueOnTwoStacks
 {
-	//TODO: XML
+	//TODO: XML +
 	//TODO: RSDN +
 
 	/// <summary>
