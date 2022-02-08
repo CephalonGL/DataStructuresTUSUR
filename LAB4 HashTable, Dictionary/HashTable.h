@@ -11,12 +11,45 @@ using namespace std;
 class HashTable
 {
 protected:
+	/// <summary>
+	/// Constant parameter for hash function
+	/// </summary>
 	const short int _HASH_MULTIPLIER = 3;
+
+	/// <summary>
+	/// Base capacity of dynamic array for hash table
+	/// </summary>
 	const short int _BASE_CAPACITY = 10;
+
+	/// <summary>
+	/// Percentage of filling hash table 
+	/// when rehashing will start
+	/// </summary>
+	const float _PERCENTAGE_OF_FILLING = 0.9;
+
+	/// <summary>
+	/// Growth factor for dynamic array of nodes
+	/// </summary>
 	const float _GROWTH_FACTOR = 1.5;
+
+	/// <summary>
+	/// Variable needed for hash function
+	/// </summary>
 	int _hashDivider = _BASE_CAPACITY;
+
+	/// <summary>
+	/// Current capacity of dynamic array of nodes
+	/// </summary>
 	int _capacity = _BASE_CAPACITY;
+
+	/// <summary>
+	/// Counter of recerved cells in array of nodes
+	/// </summary>
 	int _length = 0;
+
+	/// <summary>
+	/// Rehashing flag needed for rehash function
+	/// </summary>
 	bool _isRehashingNow = false;
 
 public:
@@ -65,5 +98,8 @@ public:
 	/// </summary>
 	void Rehash();
 
+	/// <summary>
+	/// Delete array of hash table and clear memory
+	/// </summary>
 	~HashTable();
 };
