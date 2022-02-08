@@ -4,15 +4,17 @@ class Node
 {
 public:
     /// <summary>
-    /// 
+    /// Value of this node
     /// </summary>
     int Value = 0;
+
     /// <summary>
-    /// 
+    /// Pointer to next node
     /// </summary>
     Node* Next = nullptr;
+
     /// <summary>
-    /// 
+    /// Pointer to previous node
     /// </summary>
     Node* Previous = nullptr;
 };
