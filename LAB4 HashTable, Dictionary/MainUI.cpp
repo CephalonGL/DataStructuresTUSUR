@@ -31,6 +31,14 @@ void PrintHashTable(HashTable& hashTable);
 /// <param name="hashTable">Hash table to print</param>
 void PrintDictionary(HashTable& hashTable);
 
+string ReadStringValueFromConsole(string messageToPrint)
+{
+	cout << messageToPrint;
+	string userValue;
+	cin >> userValue;
+	return userValue;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -56,12 +64,9 @@ int main()
 			}
 			case Insert:
 			{
-				cout << "Введите строку, которую хотите добавить: ";
-				string inputString;
-				cin >> inputString;
-				cout << "Введите ключ, по которому будет располагаться строка: ";
-				string key;
-				cin >> key;
+				//TODO: +
+				string inputString = ReadStringValueFromConsole("Введите строку, которую хотите добавить: ");
+				string key = ReadStringValueFromConsole("Введите ключ, по которому будет располагаться строка: ");
 				try
 				{
 					hashTableUnit.HashTableInsert(key, inputString);
@@ -78,9 +83,8 @@ int main()
 			}
 			case Remove:
 			{
-				cout << "Введите ключ, по которому будет удалена строка: ";
-				string key;
-				cin >> key;
+				//TODO: +
+				string key = ReadStringValueFromConsole("Введите ключ, по которому будет удалена строка: ");
 				try
 				{
 					hashTableUnit.Remove(key);
@@ -97,9 +101,8 @@ int main()
 			}
 			case Find:
 			{
-				cout << "Введите ключ, по которому найдена строка: ";
-				string key;
-				cin >> key;
+				//TODO:
+				string key = ReadStringValueFromConsole("Введите ключ, по которому найдена строка: ");
 				try
 				{
 					cout << "По ключу " << key << " находится значение "
