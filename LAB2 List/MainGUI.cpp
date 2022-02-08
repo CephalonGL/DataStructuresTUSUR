@@ -1,9 +1,20 @@
 ﻿#include <iostream>
+#include <string>
 #include "List.h"
 
 using namespace std;
 
+/// <summary>
+/// Print command list to console
+/// </summary>
 void Help();
+
+/// <summary>
+/// Get data from console and check if 
+/// </summary>
+/// <param name="messageToPrint">Printing messageToPrint</param>
+/// <returns>User's data</returns>
+int ReadIntValueFromConsole(string messageToPrint);
 
 int main()
 {
@@ -18,136 +29,121 @@ int main()
 		cin >> operationCode;
 		switch (operationCode)
 		{
-		case 0:
-		{
-			cout << "\nПрограмма успешно завершила свою работу\n\n";
-			return 0;
-		}
-		case 1:
-		{
-			if (IfListInitialized)
+			case 0:
 			{
-				cout << "Ошибка, список уже создан!";
+				cout << "\nПрограмма успешно завершила свою работу\n\n";
+				return 0;
+			}
+			case 1:
+			{
+				if (IfListInitialized)
+				{
+					cout << "Ошибка, список уже создан!";
+					break;
+				}
+				int countOfNodes = ReadIntValueFromConsole("Для создания списка,"
+					" введите количество узлов: ");
+				cout << "Вводите инициализируемые значения для узлов:" << endl;
+				int* arrayTmp = new int[countOfNodes];
+				for (int i = 0; i < countOfNodes; i++)
+				{
+					cin >> arrayTmp[i];
+				}
+				list.CreateList(countOfNodes, arrayTmp);
+				cout << "Количество узлов = " << list.GetLength() << endl;
+				delete[] arrayTmp;
+				cout << "Операция выполнена успешно" << endl;
+				IfListInitialized = true;
 				break;
 			}
-			cout << "Для создания списка, введите количество узлов: ";
-			int countOfNodes;
-			cin >> countOfNodes;
-			cout << "Вводите инициализируемые значения для узлов:" << endl;
-			int* arrayTmp = new int[countOfNodes];
-			for (int i = 0; i < countOfNodes; i++)
+			case 2:
 			{
-				cin >> arrayTmp[i];
-			}
-			list.CreateList(countOfNodes, arrayTmp);
-			cout << "Количество узлов = " << list.GetLength() << endl;
-			delete[] arrayTmp;
-			cout << "Операция выполнена успешно" << endl;
-			IfListInitialized = true;
-			break;
-		}
-		case 2:
-		{
-			cout << "Введите значение нового узла: ";
-			int valueToPush;
-			cin >> valueToPush;
-			list.AddNewNode(valueToPush);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 3:
-		{
-			cout << "Введите индекс удаляемого элемента: ";
-			int indexOfRemovableNode;
-			cin >> indexOfRemovableNode;
-			list.RemoveNode(indexOfRemovableNode);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 4:
-		{
-			cout << "Введите значение нового узла: ";
-			int valueToPush;
-			cin >> valueToPush;
-			list.PushForward(valueToPush);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 5:
-		{
-			cout << "Введите значение нового узла: ";
-			int valueToPush;
-			cin >> valueToPush;
-			list.PushBack(valueToPush);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 6:
-		{
-			cout << "Введите значение нового узла: ";
-			int valueToPush;
-			cin >> valueToPush;
-			cout << "Введите индекс, после которого хотите вставить элемент: ";
-			int indexNodeToPushAfter;
-			cin >> indexNodeToPushAfter;
-			list.PushAfterNode(indexNodeToPushAfter, valueToPush);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 7:
-		{
-			cout << "Введите значение нового узла: ";
-			int valueToPush;
-			cin >> valueToPush;
-			cout << "Введите индекс, перед которым хотите вставить элемент: ";
-			int indexNodeToPushBefore;
-			cin >> indexNodeToPushBefore;
-			list.PushBeforeNode(indexNodeToPushBefore, valueToPush);
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 8:
-		{
-			list.Sort();
-			cout << "Операция выполнена успешно" << endl;
-			break;
-		}
-		case 9:
-		{
-			cout << "Введите значение для поиска: ";
-			int valueToSearch;
-			cin >> valueToSearch;
-			int indexOfSearchinValue = list.LinearSearch(valueToSearch);
-			if (indexOfSearchinValue == -1)
-			{
-				cout << "Такого элемента в списке нет." << endl;
-			}
-			else
-			{
-				cout << "Список содержит данный элемент по индексу: " <<
-					indexOfSearchinValue << endl;
+				int valueToPush = ReadIntValueFromConsole("Введите значение нового узла: ");
+				list.AddNewNode(valueToPush);
+				cout << "Операция выполнена успешно" << endl;
 				break;
 			}
-		}
-		case 10:
-		{
-			cout << "Список значений:" << endl;
-			for (int i = 0; i < list.GetLength(); i++)
+			case 3:
 			{
-				cout << "list[" << i << "] = " << list.GetValueByIndex(i) << endl;
+				int indexOfRemovableNode = ReadIntValueFromConsole("Введите индекс"
+					" удаляемого элемента: ");
+				list.RemoveNode(indexOfRemovableNode);
+				cout << "Операция выполнена успешно" << endl;
+				break;
 			}
-			break;
-		}
-		case 100:
-		{
-			Help();
-			break;
-		}
-		default:
-		{
-			cout << "\n\tНеизвестный код команды. Для получения справки, введите 100.\n";
-			break;
-		}
+			case 4:
+			{
+				int valueToPush = ReadIntValueFromConsole("Введите значение нового узла: ");
+				list.PushForward(valueToPush);
+				cout << "Операция выполнена успешно" << endl;
+				break;
+			}
+			case 5:
+			{
+				int valueToPush = ReadIntValueFromConsole("Введите значение нового узла: ");
+				list.PushBack(valueToPush);
+				cout << "Операция выполнена успешно" << endl;
+				break;
+			}
+			case 6:
+			{
+				int valueToPush = ReadIntValueFromConsole("Введите значение нового узла: ");
+				int indexNodeToPushAfter = ReadIntValueFromConsole("Введите индекс,"
+					" после которого хотите вставить элемент: ");
+				list.PushAfterNode(indexNodeToPushAfter, valueToPush);
+				cout << "Операция выполнена успешно" << endl;
+				break;
+			}
+			case 7:
+			{
+				int valueToPush = ReadIntValueFromConsole("Введите значение нового узла: ");
+				int indexNodeToPushBefore = ReadIntValueFromConsole("Введите индекс, перед которым хотите вставить элемент: ");
+				list.PushBeforeNode(indexNodeToPushBefore, valueToPush);
+				cout << "Операция выполнена успешно" << endl;
+				break;
+			}
+			case 8:
+			{
+				list.Sort();
+				cout << "Сортировка выполнена успешно" << endl;
+				break;
+			}
+			case 9:
+			{
+				int valueToSearch = ReadIntValueFromConsole("Введите значение для поиска: ");
+				int indexOfSearchinValue = list.LinearSearch(valueToSearch);
+				if (indexOfSearchinValue == -1)
+				{
+					cout << "Такого элемента в списке нет." << endl;
+				}
+				else
+				{
+					cout << "Список содержит данный элемент по индексу: " <<
+						indexOfSearchinValue << endl;
+					break;
+				}
+			}
+			case 10:
+			{
+				cout << "Список значений:" << endl;
+				for (int i = 0; i < list.GetLength(); i++)
+				{
+					cout << "list[" << i << "] = " << list.GetValueByIndex(i) << endl;
+				}
+				break;
+			}
+			case 100:
+			{
+				Help();
+				break;
+			}
+			default:
+			{
+				cout << endl;
+				cout << "\tНеизвестный код команды. Для получения справки, введите 100.";
+				cout << endl;
+				break;
+			}
 		}
 	}
 	return 0;
@@ -171,4 +167,12 @@ void Help()
 	cout << "0 - Остановка программы;" << endl;
 	cout << "100 - Вывести справку." << endl;
 	cout << endl;
+}
+
+int ReadIntValueFromConsole(string messageToPrint)
+{
+	cout << messageToPrint;
+	int userValue;
+	cin >> userValue;
+	return userValue;
 }
