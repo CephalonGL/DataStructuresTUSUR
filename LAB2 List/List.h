@@ -1,8 +1,11 @@
 #pragma once
 
-class Node
+
+/// <summary>
+/// Node of the List
+/// </summary>
+struct Node
 {
-public:
     /// <summary>
     /// Value of this node
     /// </summary>
@@ -19,6 +22,9 @@ public:
     Node* Previous = nullptr;
 };
 
+/// <summary>
+/// Double linked list data structure
+/// </summary>
 class List
 {
     /// <summary>
