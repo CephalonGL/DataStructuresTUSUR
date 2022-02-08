@@ -31,6 +31,11 @@ void PrintHashTable(HashTable& hashTable);
 /// <param name="hashTable">Hash table to print</param>
 void PrintDictionary(HashTable& hashTable);
 
+/// <summary>
+/// Print message to console and then read from console
+/// </summary>
+/// <param name="messageToPrint">message to print before reading</param>
+/// <returns>String inserted by user</returns>
 string ReadStringValueFromConsole(string messageToPrint)
 {
 	cout << messageToPrint;
@@ -101,7 +106,7 @@ int main()
 			}
 			case Find:
 			{
-				//TODO:
+				//TODO: +
 				string key = ReadStringValueFromConsole("Введите ключ, по которому найдена строка: ");
 				try
 				{
