@@ -1,10 +1,5 @@
 #include "RingBuffer.h"
 
-//bool RingBuffer::IsNullptr()
-//{
-//	return _isInitialized;
-//}
-
 int RingBuffer::GetCapacity()
 {
 	return _capacity;
@@ -54,13 +49,12 @@ int RingBuffer::GetReservedCells()
 	return _capacity - _emptyCells;
 }
 
-RingBuffer::RingBuffer(int lengthOfBuffer)
+RingBuffer::RingBuffer(int capacityOfBuffer)
 {
-	_capacity = _emptyCells = lengthOfBuffer;
+	_capacity = _emptyCells = capacityOfBuffer;
 	_indexToRead = 0;
 	_indexToWrite = 0;
 	_valueArray = new int[_capacity] {};
-	/*_isInitialized = false;*/
 }
 
 RingBuffer::~RingBuffer()

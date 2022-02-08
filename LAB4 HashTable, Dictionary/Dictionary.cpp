@@ -1,6 +1,10 @@
 //TODO:
-//#include "Dictionary.h"
-//
+#include "Dictionary.h"
+
+
+
+
+
 //void Dictionary::DictionaryInsert(string key, string value)
 //{
 //	Rehash();

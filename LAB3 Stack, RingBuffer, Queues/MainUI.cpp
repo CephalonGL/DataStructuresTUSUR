@@ -168,7 +168,8 @@ void StackMenu()
 				else
 				{
 					//TODO: дубль +
-					int valueToPush = ReadIntValueFromConsole("Введите число, помещаемое в стек: ");
+					int valueToPush = ReadIntValueFromConsole("Введите число,"
+						" помещаемое в стек: ");
 					stackUnit->Push(valueToPush);
 					cout << "Число " << valueToPush << " помещено в стек."
 						<< endl;
@@ -256,7 +257,8 @@ void RingBufferMenu()
 				else
 				{
 					//TODO: дубль +
-					int bufferSize = ReadIntValueFromConsole("Введите целое количество элементов буфера: ");
+					int bufferSize = ReadIntValueFromConsole("Введите целое"
+						" количество элементов буфера: ");
 					while (bufferSize <= 0)
 					{
 						cout << "Ошибка. Введите положительное число элементов.";
@@ -277,7 +279,8 @@ void RingBufferMenu()
 				else
 				{
 					//TODO: дубль +
-					int valueToPush = ReadIntValueFromConsole("Введите число, помещаемое в Кольцевой буфер: ");
+					int valueToPush = ReadIntValueFromConsole("Введите число,"
+						" помещаемое в Кольцевой буфер: ");
 					ringBufferUnit->Push(valueToPush);
 					cout << "Число " << valueToPush << " помещено в кольцевой"
 						<< " буфер." << endl;
@@ -475,17 +478,14 @@ void QueueOnRingBufferMenu()
 	QueueOnRingBuffer* queueOnRingBufferUnit = nullptr;
 	while (true)
 	{
-		cout << "Введите код операции: ";
-		cin >> operationCode;
-		while (operationCode != 1 && operationCode != 2 && operationCode != 3
-			&& operationCode != 4 && operationCode != 5 && operationCode != 0
-			&& operationCode != 100)
+		operationCode = ReadIntValueFromConsole("Введите код операции: ");
+		do
 		{
-			cout << "Введён некорректный код операции. Для вызова справки,"
-				<< " введите 100." << endl;
-			cout << "Введите код операции: ";
-			cin >> operationCode;
-		}
+			operationCode = ReadIntValueFromConsole("Введён некорректный код операции. "
+				"Для вызова справки, введите 100.\nВведите код операции : ");
+		} while (operationCode != 1 && operationCode != 2 && operationCode != 3
+			&& operationCode != 4 && operationCode != 5 && operationCode != 0
+			&& operationCode != 100);
 		switch (operationCode)
 		{
 		case 1:
@@ -497,13 +497,11 @@ void QueueOnRingBufferMenu()
 			}
 			else
 			{
-				cout << "Введите размер очереди: ";
-				int queueCapacity;
-				cin >> queueCapacity;
+				int queueCapacity = ReadIntValueFromConsole("Введите размер очереди: ");
 				while (queueCapacity <= 0)
 				{
-					cout << "Ошибка. Введите положительное число элементов";
-					cin >> queueCapacity;
+					queueCapacity = ReadIntValueFromConsole("Ошибка. Введите"
+						" положительное число элементов");
 				}
 				queueOnRingBufferUnit = new QueueOnRingBuffer(queueCapacity);
 				cout << "Очередь успешно создана." << endl;
@@ -526,17 +524,14 @@ void QueueOnRingBufferMenu()
 				}
 				if (queueOnRingBufferUnit->GetQueueLength() > 0)
 				{
-					cout << "Введите число, помещаемое в очередь: ";
-					int valueToPush;
-					cin >> valueToPush;
+					int valueToPush = ReadIntValueFromConsole("Введите число,"
+						" помещаемое в очередь: ");
 					queueOnRingBufferUnit->Enqueue(valueToPush);
 					cout << "Число " << valueToPush << 
 						" помещено в очередь." << endl;
 					break;
 				}
-				cout << "Введите число, помещаемое в очередь: ";
-				int valueToPush;
-				cin >> valueToPush;
+				int valueToPush = ReadIntValueFromConsole("Введите число, помещаемое в очередь: ");
 				queueOnRingBufferUnit->Enqueue(valueToPush);
 				cout << "Число " << valueToPush << " помещено в очередь."
 					<< endl;
@@ -567,16 +562,12 @@ void QueueOnRingBufferMenu()
 		}
 		case 0:
 		{
-			if (queueOnRingBufferUnit != nullptr)
+			if (!IsNullptr(queueOnRingBufferUnit))
 			{
 				delete queueOnRingBufferUnit;
 				cout << "Очередь успешно удалена." << endl;
-				return;
 			}
-			else
-			{
-				return;
-			}
+			return;
 		}
 		case 100:
 		{

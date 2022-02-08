@@ -29,5 +29,4 @@ int QueueOnRingBuffer::Unqueue()
 int QueueOnRingBuffer::GetQueueLength()
 {
 	return _ringBuffer->GetReservedCells();
-	//return _queueLength;
 }

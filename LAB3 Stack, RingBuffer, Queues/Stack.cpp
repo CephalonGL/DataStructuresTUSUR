@@ -1,26 +1,5 @@
 #include "Stack.h"
 
-Stack::Stack()
-{
-    _topElement = nullptr;
-    _bufferOfPointers = nullptr;
-    _stackLength = 0;
-}
-
-Stack::~Stack()
-{
-    for (int i = 0; i < _stackLength; i++)
-    {
-        _bufferOfPointers = _topElement;
-        _topElement = _topElement->GetPointerOfPreviousElement();
-        if (_topElement == nullptr)
-        {
-            return;
-        }
-        delete _bufferOfPointers;
-        _bufferOfPointers = nullptr;
-    }
-}
 
 int Stack::GetStackLength()
 {
@@ -51,14 +30,17 @@ int Stack::Pop()
     return valueToPop;
 }
 
-//bool Stack::IsEmpty()
-//{
-//    if (_topElement == _bufferOfPointers)
-//    {
-//        return true;
-//    }
-//    else
-//    {
-//        return false;
-//    }
-//}
+Stack::~Stack()
+{
+    for (int i = 0; i < _stackLength; i++)
+    {
+        _bufferOfPointers = _topElement;
+        _topElement = _topElement->GetPointerOfPreviousElement();
+        if (_topElement == nullptr)
+        {
+            return;
+        }
+        delete _bufferOfPointers;
+        _bufferOfPointers = nullptr;
+    }
+}
