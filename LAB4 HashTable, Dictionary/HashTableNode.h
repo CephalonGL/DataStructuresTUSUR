@@ -7,8 +7,19 @@ using namespace std;
 ///</summary>
 struct HashTableNode
 {
-	//TODO: XML
+	//TODO: XML +
+	/// <summary>
+	/// Key of current node
+	/// </summary>
 	string Key = "";
+
+	/// <summary>
+	/// Value of current node
+	/// </summary>
 	string Value = "";
+
+	/// <summary>
+	/// Pointer to node of next collision
+	/// </summary>
 	HashTableNode* NextCollision = nullptr;
 };

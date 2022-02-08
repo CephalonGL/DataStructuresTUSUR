@@ -40,7 +40,7 @@ int main()
 	{
 		BINARY_TREE = 1,
 		CARTESIAN_TREE = 2,
-		STOP = 0
+		Stop = 0
 	};
 	setlocale(LC_ALL, "ru");
 	cout << "Вас приветствует программа для работы с деревьями." << endl;
@@ -64,7 +64,7 @@ int main()
 			CartesianTreeUI();
 			return 0;
 		}
-		case STOP:
+		case Stop:
 		{
 			cout << "Программа успешно завершила своё выполнение." << endl;
 			return 0;
@@ -80,7 +80,7 @@ void BinaryTreeUI()
 {
 	enum BinaryTreeUI
 	{
-		STOP = 0,
+		Stop = 0,
 		CREATE_TREE = 1,
 		ADD_ELEMENT = 2,
 		DELETE_ELEMENT = 3,
@@ -88,7 +88,7 @@ void BinaryTreeUI()
 		FIND_MAX = 5,
 		FIND_MIN = 6,
 		PRINT = 7,
-		HELP = 100
+		Help = 100
 	};
 	cout << "Для работы с бинарным деревом, используйте "
 		<< "следующий список команд" << endl;
@@ -224,7 +224,7 @@ void BinaryTreeUI()
 			}
 			break;
 		}
-		case HELP:
+		case Help:
 		{
 			cout << "Список команд:" << endl;
 			cout << "\t1. Создать дерево;" << endl;
@@ -237,7 +237,7 @@ void BinaryTreeUI()
 			cout << "Для завершения работы программы, введите 0" << endl;
 			break;
 		}
-		case STOP:
+		case Stop:
 		{
 			cout << "Программа успешно завершила свою работу." << endl;
 			return;
@@ -255,7 +255,7 @@ void CartesianTreeUI()
 	srand(time(NULL));
 	enum CartesianTreeUI
 	{
-		STOP = 0,
+		Stop = 0,
 		FIND_ELEMENT = 1,
 		INSERT_NON_OPTIMIZED = 2,
 		INSERT_OPTIMIZED = 3,
@@ -265,7 +265,7 @@ void CartesianTreeUI()
 		DELETE_AND_CLEAR_MEMORY = 7,
 		FILL_RANDOM = 8,
 		SPLIT_AND_PRINT = 9,
-		HELP = 100
+		Help = 100
 	};
 	cout << "Для работы с Декартовым деревом, используйте "
 		<< "следующий список команд" << endl;
@@ -441,7 +441,7 @@ void CartesianTreeUI()
 			}
 			break;
 		}
-		case HELP:
+		case Help:
 		{
 			cout << "Список команд:" << endl;
 			cout << "\t1. Найти элемент;" << endl;
@@ -454,7 +454,7 @@ void CartesianTreeUI()
 			cout << "Для завершения работы программы, введите 0" << endl;
 			break;
 		}
-		case STOP:
+		case Stop:
 		{
 			cout << "Программа успешно завершила свою работу." << endl;
 			return;

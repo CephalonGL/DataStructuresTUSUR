@@ -25,7 +25,7 @@ int main()
 		EXIT = 0,
 		RED_BLACK = 1,
 		AVL = 2,
-		HELP = 100,
+		Help = 100,
 	};
 	setlocale(LC_ALL, "ru");
 	cout << SPLITTER_STRING << endl;
@@ -52,7 +52,7 @@ int main()
 		{
 			break;
 		}
-		case HELP:
+		case Help:
 		{
 			cout << "Для выбора структуры данных, ввежите её порядковый номер:"
 				<< endl;
@@ -82,7 +82,7 @@ void RbTreeUI()
 	enum RedBlack
 	{
 		EXIT = 0,
-		HELP = 100,
+		Help = 100,
 	};
 	return;
 }
@@ -92,7 +92,7 @@ void AvlTreeUI()
 	enum AVL
 	{
 		EXIT = 0,
-		HELP = 100,
+		Help = 100,
 	};
 	return;
 }
