@@ -142,7 +142,6 @@
   <ItemGroup>
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="HashTable.cpp" />
-    <ClCompile Include="HashTableNode.cpp" />
     <ClCompile Include="MainUI.cpp" />
   </ItemGroup>
   <ItemGroup>

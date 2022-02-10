@@ -18,9 +18,6 @@
     <ClCompile Include="HashTable.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="HashTableNode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MainUI.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
