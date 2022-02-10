@@ -2,16 +2,22 @@
 #include "RingBuffer.h"
 
 //TODO: XML +
+
+/// <summary>
+/// Queue data structure based on ring buffer
+/// </summary>
 class QueueOnRingBuffer
 {
 	/// <summary>
 	/// Pointer on RingBuffet unit
 	/// </summary>
 	RingBuffer* _ringBuffer;
+
 	/// <summary>
 	/// Capacity of array of queue
 	/// </summary>
 	int _queueCapacity;
+
 	/// <summary>
 	/// Current length of queue
 	/// </summary>
@@ -26,8 +32,12 @@ public:
 	/// <param name="bufferCapacity">Capacity to set</param>
 	QueueOnRingBuffer(int bufferCapacity);
 
+	/// <summary>
+	/// Delete array of ring buffer and clear memory
+	/// </summary>
 	~QueueOnRingBuffer();
-	//TODO: RSDN ???
+
+	//TODO: RSDN +
 	/// <summary>
 	/// Get count of empty cells
 	/// </summary>
@@ -45,6 +55,7 @@ public:
 	/// </summary>
 	/// <returns>Value from queue</returns>
 	int Unqueue();
+
 	/// <summary>
 	/// Get length of queue
 	/// </summary>
