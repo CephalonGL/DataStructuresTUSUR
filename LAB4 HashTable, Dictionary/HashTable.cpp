@@ -137,7 +137,7 @@ int HashTable::Hash(string key)
 void HashTable::Rehash()
 {
 	//TODO: to const +
-	if (_isRehashingNow || _length / _capacity < _PERCENTAGE_OF_FILLING)
+	if (_isRehashingNow || _length / _capacity < _MAX_PERCENTAGE_OF_FILLING)
 	{
 		return;
 	}

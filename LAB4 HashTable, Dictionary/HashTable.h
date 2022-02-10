@@ -25,7 +25,7 @@ protected:
 	/// Percentage of filling hash table 
 	/// when rehashing will start
 	/// </summary>
-	const float _PERCENTAGE_OF_FILLING = 0.9;
+	const float _MAX_PERCENTAGE_OF_FILLING = 0.9;
 
 	/// <summary>
 	/// Growth factor for dynamic array of nodes
