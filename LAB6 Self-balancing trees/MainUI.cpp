@@ -37,8 +37,8 @@ int main()
 		"самобалансирующимися деревьями" << endl;
 	cout << SPLITTER_STRING << endl;
 	cout << "Для выбора структуры данных, введите её порядковый номер:" << endl;
-	cout << "\t1. Красно-чёрное дерево." << endl;
-	cout << "\t2. АВЛ-дерево;" << endl;
+	cout << "\t1\tКрасно-чёрное дерево." << endl;
+	cout << "\t2\tАВЛ-дерево;" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	cout << SPLITTER_STRING << endl;
 	int operationCode = 1;
@@ -62,8 +62,8 @@ int main()
 			{
 				cout << "Для выбора структуры данных, ввежите её порядковый номер:"
 					<< endl;
-				cout << "\t1. Красно-чёрное дерево." << endl;
-				cout << "\t2. АВЛ-дерево;" << endl;
+				cout << "\t1\tКрасно-чёрное дерево." << endl;
+				cout << "\t2\tАВЛ-дерево;" << endl;
 				break;
 			}
 			case Exit:
@@ -90,9 +90,64 @@ void RedBlackTreeUI()
 	/// </summary>
 	enum RedBlackUI
 	{
+		Add = 1,
+		Delete = 2,
+		SearchByKey = 3,
 		Exit = 0,
 		Help = 100,
 	};
+	setlocale(LC_ALL, "ru");
+	cout << SPLITTER_STRING << endl;
+	cout << "Для выбора команды, введите её порядковый номер:" << endl;
+	cout << "\t1\tВставка элемента" << endl;
+	cout << "\t2\tУдаление элемента" << endl;
+	cout << "\t3\tПоиск элемента по ключу" << endl;
+	cout << "\t100\tСправка" << endl;
+	cout << "Для выхода из программы, введите 0." << endl;
+	cout << SPLITTER_STRING << endl;
+	int operationCode = 1;
+	while (operationCode)
+	{
+		cout << SPLITTER_STRING << endl;
+		cout << "Введите код операции: ";
+		cin >> operationCode;
+		switch (operationCode)
+		{
+			case Add:
+			{
+				break;
+			}
+			case Delete:
+			{
+				break;
+			}
+			case SearchByKey:
+			{
+				break;
+			}
+			case Help:
+			{
+				cout << SPLITTER_STRING << endl;
+				cout << "Для выбора команды, введите её порядковый номер:" << endl;
+				cout << "\t1\tВставка элемента" << endl;
+				cout << "\t2\tУдаление элемента" << endl;
+				cout << "\t3\tПоиск элемента по ключу" << endl;
+				break;
+			}
+			case Exit:
+			{
+				return;
+			}
+			default:
+			{
+				cout << endl;
+				cout << SPLITTER_STRING << endl;
+				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Повторите ввод: ";
+				break;
+			}
+		}
+	}
 	return;
 }
 
@@ -103,8 +158,63 @@ void AvlTreeUI()
 	/// </summary>
 	enum AvlUI
 	{
+		Add = 1,
+		Delete = 2,
+		SearchByKey = 3,
 		Exit = 0,
 		Help = 100,
 	};
+	setlocale(LC_ALL, "ru");
+	cout << SPLITTER_STRING << endl;
+	cout << "Для выбора команды, введите её порядковый номер:" << endl;
+	cout << "\t1\tВставка элемента" << endl;
+	cout << "\t2\tУдаление элемента" << endl;
+	cout << "\t3\tПоиск элемента по ключу" << endl;
+	cout << "\t100\tСправка" << endl;
+	cout << "Для выхода из программы, введите 0." << endl;
+	cout << SPLITTER_STRING << endl;
+	int operationCode = 1;
+	while (operationCode)
+	{
+		cout << SPLITTER_STRING << endl;
+		cout << "Введите код операции: ";
+		cin >> operationCode;
+		switch (operationCode)
+		{
+			case Add:
+			{
+				break;
+			}
+			case Delete:
+			{
+				break;
+			}
+			case SearchByKey:
+			{
+				break;
+			}
+			case Help:
+			{
+				cout << SPLITTER_STRING << endl;
+				cout << "Для выбора команды, введите её порядковый номер:" << endl;
+				cout << "\t1\tВставка элемента" << endl;
+				cout << "\t2\tУдаление элемента" << endl;
+				cout << "\t3\tПоиск элемента по ключу" << endl;
+				break;
+			}
+			case Exit:
+			{
+				return;
+			}
+			default:
+			{
+				cout << endl;
+				cout << SPLITTER_STRING << endl;
+				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Повторите ввод: ";
+				break;
+			}
+		}
+	}
 	return;
 }
