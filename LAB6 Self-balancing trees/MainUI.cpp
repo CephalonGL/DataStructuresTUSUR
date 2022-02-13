@@ -5,26 +5,30 @@
 #include "RBTree.h"
 using namespace std;
 
-//В каких случаях можно сокращать названия переменных?
-//Можно ли сократить RedBlack до RB?
-// 
-//Как реализовать меню так, чтобы для выбора пункта можно было использовать
-//тип string, а не int? switch принимает только int.
-
 string SPLITTER_STRING = "-------------------------------------------------"
 "-----------------------";
 
-void RbTreeUI();
+/// <summary>
+/// Console user interface for red-black tree 
+/// </summary>
+void RedBlackTreeUI();
 
+/// <summary>
+/// Console user interface for Avl-tree
+/// </summary>
 void AvlTreeUI();
 
 int main()
 {
+	/// <summary>
+	/// Enum for main user interface
+	/// </summary>
+	/// <returns></returns>
 	enum MainUI
 	{
-		EXIT = 0,
-		RED_BLACK = 1,
-		AVL = 2,
+		Exit = 0,
+		RedBlack = 1,
+		Avl = 2,
 		Help = 100,
 	};
 	setlocale(LC_ALL, "ru");
@@ -44,44 +48,49 @@ int main()
 		cin >> operationCode;
 		switch (operationCode)
 		{
-		case RED_BLACK:
-		{
-			break;
-		}
-		case AVL:
-		{
-			break;
-		}
-		case Help:
-		{
-			cout << "Для выбора структуры данных, ввежите её порядковый номер:"
-				<< endl;
-			cout << "\t1. Красно-чёрное дерево." << endl;
-			cout << "\t2. АВЛ-дерево;" << endl;
-			break;
-		}
-		case EXIT:
-		{
-			return 0;
-		}
-		default:
-		{
-			cout << endl;
-			cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
-			cout << "Повторите ввод: ";
-			break;
-		}
+			case RedBlack:
+			{
+				RedBlackTreeUI();
+				break;
+			}
+			case Avl:
+			{
+				AvlTreeUI();
+				break;
+			}
+			case Help:
+			{
+				cout << "Для выбора структуры данных, ввежите её порядковый номер:"
+					<< endl;
+				cout << "\t1. Красно-чёрное дерево." << endl;
+				cout << "\t2. АВЛ-дерево;" << endl;
+				break;
+			}
+			case Exit:
+			{
+				return 0;
+			}
+			default:
+			{
+				cout << endl;
+				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Повторите ввод: ";
+				break;
+			}
 		}
 		return 0;
 	}
 }
 
 
-void RbTreeUI()
+void RedBlackTreeUI()
 {
-	enum RedBlack
+	/// <summary>
+	/// Enum for red-black tree
+	/// </summary>
+	enum RedBlackUI
 	{
-		EXIT = 0,
+		Exit = 0,
 		Help = 100,
 	};
 	return;
@@ -89,9 +98,12 @@ void RbTreeUI()
 
 void AvlTreeUI()
 {
-	enum AVL
+	/// <summary>
+	/// Enum for AvlUI-tree
+	/// </summary>
+	enum AvlUI
 	{
-		EXIT = 0,
+		Exit = 0,
 		Help = 100,
 	};
 	return;
