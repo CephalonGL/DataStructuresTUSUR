@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include "HashTable.h"
 
@@ -28,15 +28,15 @@ void HashTable::HashTableInsert(string key, string value)
 			{
 				if (currentNode->Value == value)
 				{
-					//TODO: encoding
-					string error = "Îøèáêà! Äóáëèêàò key-value";
+					//TODO: encoding +
+					string error = "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð”ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ‚ key-value";
 					throw error;
 				}
 				else
 				{
-					//TODO: encoding
-					string error = "Îøèáêà! Îáíàðóæåíî ñâîïàäåíèå key-key. "
-						"Ïî äàííîìó êëþ÷ó çàïèñàíî çíà÷åíèå: ";
+					//TODO: encoding +
+					string error = "ÐžÑˆÐ¸Ð±ÐºÐ°! ÐžÐ±Ð½Ð°Ñ€ÑƒÐ¶ÐµÐ½Ð¾ ÑÐ²Ð¾Ð¿Ð°Ð´ÐµÐ½Ð¸Ðµ key-key. "
+						"ÐŸÐ¾ Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ ÐºÐ»ÑŽÑ‡Ñƒ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: ";
 					error.append(currentNode->Value);
 					throw error;
 				}
@@ -58,8 +58,8 @@ void HashTable::Remove(string key)
 	HashTableNode* currentNode = &HashTableNodeArray[Hash(key)];
 	if (currentNode == nullptr)
 	{
-		//TODO: encoding
-		string error = "Îøèáêà! Ïî äàííîìó êëþ÷ó íåò çíà÷åíèé";
+		//TODO: encoding +
+		string error = "ÐžÑˆÐ¸Ð±ÐºÐ°! ÐŸÐ¾ Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ ÐºÐ»ÑŽÑ‡Ñƒ Ð½ÐµÑ‚ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹";
 		throw error;
 	}
 	else if (currentNode->NextCollision == nullptr)
@@ -72,8 +72,8 @@ void HashTable::Remove(string key)
 		}
 		else
 		{
-			//TODO: encoding
-			string error = "Îøèáêà! Ïî äàííîìó êëþ÷ó íåò çíà÷åíèé";
+			//TODO: encoding +
+			string error = "ÐžÑˆÐ¸Ð±ÐºÐ°! ÐŸÐ¾ Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ ÐºÐ»ÑŽÑ‡Ñƒ Ð½ÐµÑ‚ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹";
 			throw error;
 		}
 	}
@@ -108,11 +108,10 @@ string HashTable::Find(string key)
 	{
 		if (currentNode == nullptr || currentNode->NextCollision == nullptr)
 		{
-			//TODO: encoding
-			string error = "Îøèáêà! Òàêîãî ýëåìåíòà íåò.";
+			//TODO: encoding +
+			string error = "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð¢Ð°ÐºÐ¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð½ÐµÑ‚.";
 			throw error;
 		}
-		//Ëó÷øå óáðàòü else èëè îñòàâèòü?
 		else
 		{
 			currentNode = currentNode->NextCollision;
