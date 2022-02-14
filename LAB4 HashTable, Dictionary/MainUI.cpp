@@ -36,6 +36,67 @@ void PrintDictionary(HashTable& hashTable);
 /// </summary>
 /// <param name="messageToPrint">message to print before reading</param>
 /// <returns>String inserted by user</returns>
+string ReadStringValueFromConsole(string messageToPrint);
+
+void HashTableUI();
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Вас приветствует программа работы со словарём и хеш-таблицей." << endl;
+	cout << "Для выбора структуры данных, введите соответствующий ей номер:" << endl;
+	cout << "\t1. Хеш-таблица;" << endl;
+	cout << "\t2. Словарь;" << endl;
+	
+	
+	return 0;
+}
+
+void PrintHashTable(HashTable& hashTable)
+{
+	cout << "Значения хеш-таблицы:" << endl;
+	cout << "Хеш\tКлюч\tЗначение\t" << endl;
+	HashTableNode* currentNode = nullptr;
+	for (int i = 0; i < hashTable.GetCapacity(); i++)
+	{
+		currentNode = &hashTable.HashTableNodeArray[i];
+		do
+		{
+			cout << i << '\t';
+			if (currentNode->Key == "")
+			{
+				cout << "empty" << endl;
+			}
+			else
+			{
+				cout << currentNode->Key << '\t';
+				cout << currentNode->Value << '\t' << endl;
+			}
+			currentNode = currentNode->NextCollision;
+		} while (currentNode != nullptr);
+	}
+}
+
+void PrintDictionary(HashTable& hashTable)
+{
+	cout << "Значения словаря:" << endl;
+	cout << "Ключ\tЗначение\t" << endl;
+	HashTableNode* currentNode = nullptr;
+	for (int i = 0; i < hashTable.GetCapacity(); i++)
+	{
+		currentNode = &hashTable.HashTableNodeArray[i];
+		do
+		{
+			if (currentNode->Key != "")
+			{
+				cout << currentNode->Key << '\t';
+				cout << currentNode->Value << '\t' << endl;
+			}
+			currentNode = currentNode->NextCollision;
+		} while (currentNode != nullptr);
+	}
+}
+
 string ReadStringValueFromConsole(string messageToPrint)
 {
 	cout << messageToPrint;
@@ -44,11 +105,9 @@ string ReadStringValueFromConsole(string messageToPrint)
 	return userValue;
 }
 
-int main()
+void HashTableUI()
 {
-	setlocale(LC_ALL, "ru");
-	cout << "Вас приветствует программа работы со словарём и хеш-таблицей." << endl;
-	cout << "Для работы используйте следующий список команд:" << endl;
+	cout << "Для работы c хеш-таблицей, используйте следующий список команд:" << endl;
 	cout << "\t1. Добавить элемент;" << endl;
 	cout << "\t2. Удалить элемент;" << endl;
 	cout << "\t3. Найти элемент и вывести на экран." << endl;
@@ -139,51 +198,5 @@ int main()
 				break;
 			}
 		}
-	}
-	return 0;
-}
-
-void PrintHashTable(HashTable& hashTable)
-{
-	cout << "Значения хеш-таблицы:" << endl;
-	cout << "Хеш\tКлюч\tЗначение\t" << endl;
-	HashTableNode* currentNode = nullptr;
-	for (int i = 0; i < hashTable.GetCapacity(); i++)
-	{
-		currentNode = &hashTable.HashTableNodeArray[i];
-		do
-		{
-			cout << i << '\t';
-			if (currentNode->Key == "")
-			{
-				cout << "empty" << endl;
-			}
-			else
-			{
-				cout << currentNode->Key << '\t';
-				cout << currentNode->Value << '\t' << endl;
-			}
-			currentNode = currentNode->NextCollision;
-		} while (currentNode != nullptr);
-	}
-}
-
-void PrintDictionary(HashTable& hashTable)
-{
-	cout << "Значения словаря:" << endl;
-	cout << "Ключ\tЗначение\t" << endl;
-	HashTableNode* currentNode = nullptr;
-	for (int i = 0; i < hashTable.GetCapacity(); i++)
-	{
-		currentNode = &hashTable.HashTableNodeArray[i];
-		do
-		{
-			if (currentNode->Key != "")
-			{
-				cout << currentNode->Key << '\t';
-				cout << currentNode->Value << '\t' << endl;
-			}
-			currentNode = currentNode->NextCollision;
-		} while (currentNode != nullptr);
 	}
 }
