@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const HashTable* Dictionary::GetHashTable()
+HashTable* Dictionary::GetHashTable()
 {
 	return _hashTable;
 }
