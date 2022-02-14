@@ -17,7 +17,7 @@ public:
 	/// Getter function for _hashTable
 	/// </summary>
 	/// <returns>Pointer to _hashTable</returns>
-	const HashTable* GetHashTable();
+	HashTable* GetHashTable();
 
 	/// <summary>
 	/// Creates new node if get a collision and pushes key and value 
