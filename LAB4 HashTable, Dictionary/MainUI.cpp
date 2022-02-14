@@ -38,7 +38,15 @@ void PrintDictionary(HashTable& hashTable);
 /// <returns>String inserted by user</returns>
 string ReadStringValueFromConsole(string messageToPrint);
 
+/// <summary>
+/// Graphic user interface for hash table the data structure
+/// </summary>
 void HashTableUI();
+
+/// <summary>
+/// Graphic user interface for dictionary the data structure
+/// </summary>
+void DictionaryUI();
 
 int main()
 {
@@ -180,6 +188,101 @@ void HashTableUI()
 				}
 				PrintHashTable(hashTableUnit);
 				PrintDictionary(hashTableUnit);
+				break;
+			}
+			case Help:
+			{
+				cout << "Для работы используйте следующий список команд:" << endl;
+				cout << "\t1. Добавить элемент;" << endl;
+				cout << "\t2. Удалить элемент;" << endl;
+				cout << "\t3. Найти элемент и вывести на экран." << endl;
+				cout << "Для выхода из программы, введите 0." << endl;
+				break;
+			}
+			default:
+			{
+				cout << "Введён неверный код операции. "
+					<< "Для вызова справки, введите 100." << endl;
+				break;
+			}
+		}
+	}
+}
+
+void DictionaryUI()
+{
+	cout << "Для работы c хеш-таблицей, используйте следующий список команд:" << endl;
+	cout << "\t1. Добавить элемент;" << endl;
+	cout << "\t2. Удалить элемент;" << endl;
+	cout << "\t3. Найти элемент и вывести на экран." << endl;
+	cout << "Для выхода из программы, введите 0." << endl;
+	int operationCode;
+	HashTable hashTableUnit;
+	while (true)
+	{
+		cout << "Введите номер команды: ";
+		cin >> operationCode;
+		switch (operationCode)
+		{
+				//TODO: RSDN +
+			case Stop:
+			{
+				cout << "Программа успешно завершила выполнение." << endl << endl;
+				return 0;
+			}
+			case Insert:
+			{
+				//TODO: +
+				string inputString = ReadStringValueFromConsole("Введите строку, которую хотите добавить: ");
+				string key = ReadStringValueFromConsole("Введите ключ, по которому будет располагаться строка: ");
+				try
+				{
+					hashTableUnit.HashTableInsert(key, inputString);
+					cout << "Элемент успешно добавлен." << endl;
+				}
+				catch (string& error)
+				{
+					cout << error << endl;
+					break;
+				}
+				PrintHashTable(hashTableUnit);
+				PrintDictionary(hashTableUnit);
+				break;
+			}
+			case Remove:
+			{
+				//TODO: +
+				string key = ReadStringValueFromConsole("Введите ключ, по которому будет удалена строка: ");
+				try
+				{
+					hashTableUnit.Remove(key);
+					cout << "Элемент успешно удалён." << endl;
+				}
+				catch (string& error)
+				{
+					cout << error << endl;
+					break;
+				}
+				PrintHashTable(hashTableUnit);
+				PrintDictionary(hashTableUnit);
+				break;
+			}
+			case Find:
+			{
+				//TODO: +
+				string key = ReadStringValueFromConsole("Введите ключ, по которому найдена строка: ");
+				try
+				{
+					cout << "По ключу " << key << " находится значение "
+						<< hashTableUnit.Find(key);
+					cout << endl;
+				}
+				catch (string& error)
+				{
+					cout << error << endl;
+					break;
+				}
+				PrintHashTable(hashTableUnit);
 				break;
 			}
 			case Help:
