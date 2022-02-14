@@ -14,7 +14,9 @@ using namespace std;
 enum OperationCode
 {
 	Stop = 0,
+	HashTableEnum = 1,
 	Insert = 1,
+	DictionaryEnum = 2,
 	Remove = 2,
 	Find = 3,
 	Help = 100
@@ -56,8 +58,38 @@ int main()
 	cout << "Для выбора структуры данных, введите соответствующий ей номер:" << endl;
 	cout << "\t1. Хеш-таблица;" << endl;
 	cout << "\t2. Словарь;" << endl;
-	
-	
+	cout << "Для выхода из программы, введите 0." << endl;
+	cout << "Введите код операции: " << endl;
+	short int operationCode = 3;
+	while (operationCode != 0)
+	{
+		cin >> operationCode;
+		switch (operationCode)
+		{
+			case Stop:
+			{
+				break;
+			}
+			case HashTableEnum:
+			{
+				HashTableUI();
+				operationCode = 0;
+				break;
+			}
+			case DictionaryEnum:
+			{
+				DictionaryUI();
+				operationCode = 0;
+				break;
+			}
+			default:
+			{
+				cout << "Введён неверный код операции. Повторите ввод: ";
+				break;
+			}
+		}
+	}
+	cout << "Программа успешно завершила своё выполнение";
 	return 0;
 }
 
