@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include "Dictionary.h"
 #include "HashTable.h"
 #include "HashTableNode.h"
 
@@ -29,7 +30,7 @@ void PrintHashTable(HashTable& hashTable);
 /// Printing hash table without its empty nodes.
 /// </summary>
 /// <param name="hashTable">Hash table to print</param>
-void PrintDictionary(HashTable& hashTable);
+void PrintDictionary(Dictionary& dictionary);
 
 /// <summary>
 /// Print message to console and then read from console
@@ -85,24 +86,9 @@ void PrintHashTable(HashTable& hashTable)
 	}
 }
 
-void PrintDictionary(HashTable& hashTable)
+void PrintDictionary(Dictionary& dictionary)
 {
-	cout << "Значения словаря:" << endl;
-	cout << "Ключ\tЗначение\t" << endl;
-	HashTableNode* currentNode = nullptr;
-	for (int i = 0; i < hashTable.GetCapacity(); i++)
-	{
-		currentNode = &hashTable.HashTableNodeArray[i];
-		do
-		{
-			if (currentNode->Key != "")
-			{
-				cout << currentNode->Key << '\t';
-				cout << currentNode->Value << '\t' << endl;
-			}
-			currentNode = currentNode->NextCollision;
-		} while (currentNode != nullptr);
-	}
+	PrintHashTable(dictionary.GetHashTable());
 }
 
 string ReadStringValueFromConsole(string messageToPrint)
