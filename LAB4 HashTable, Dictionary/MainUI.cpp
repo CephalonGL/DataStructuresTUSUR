@@ -88,7 +88,7 @@ void PrintHashTable(HashTable& hashTable)
 
 void PrintDictionary(Dictionary& dictionary)
 {
-	PrintHashTable(dictionary.GetHashTable());
+	PrintHashTable(*dictionary.GetHashTable());
 }
 
 string ReadStringValueFromConsole(string messageToPrint)
@@ -118,7 +118,7 @@ void HashTableUI()
 			case Stop:
 			{
 				cout << "Программа успешно завершила выполнение." << endl << endl;
-				return 0;
+				return;
 			}
 			case Insert:
 			{
@@ -136,7 +136,6 @@ void HashTableUI()
 					break;
 				}
 				PrintHashTable(hashTableUnit);
-				PrintDictionary(hashTableUnit);
 				break;
 			}
 			case Remove:
@@ -154,7 +153,6 @@ void HashTableUI()
 					break;
 				}
 				PrintHashTable(hashTableUnit);
-				PrintDictionary(hashTableUnit);
 				break;
 			}
 			case Find:
@@ -173,7 +171,6 @@ void HashTableUI()
 					break;
 				}
 				PrintHashTable(hashTableUnit);
-				PrintDictionary(hashTableUnit);
 				break;
 			}
 			case Help:
@@ -197,24 +194,24 @@ void HashTableUI()
 
 void DictionaryUI()
 {
-	cout << "Для работы c хеш-таблицей, используйте следующий список команд:" << endl;
+	cout << "Для работы cо словарём, используйте следующий список команд:" << endl;
 	cout << "\t1. Добавить элемент;" << endl;
 	cout << "\t2. Удалить элемент;" << endl;
 	cout << "\t3. Найти элемент и вывести на экран." << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	int operationCode;
-	HashTable hashTableUnit;
+	Dictionary dictionaryUnit;
 	while (true)
 	{
 		cout << "Введите номер команды: ";
 		cin >> operationCode;
 		switch (operationCode)
 		{
-				//TODO: RSDN +
+			//TODO: RSDN +
 			case Stop:
 			{
 				cout << "Программа успешно завершила выполнение." << endl << endl;
-				return 0;
+				return;
 			}
 			case Insert:
 			{
@@ -223,7 +220,7 @@ void DictionaryUI()
 				string key = ReadStringValueFromConsole("Введите ключ, по которому будет располагаться строка: ");
 				try
 				{
-					hashTableUnit.HashTableInsert(key, inputString);
+					dictionaryUnit.DictionaryInsert(key, inputString);
 					cout << "Элемент успешно добавлен." << endl;
 				}
 				catch (string& error)
@@ -231,8 +228,7 @@ void DictionaryUI()
 					cout << error << endl;
 					break;
 				}
-				PrintHashTable(hashTableUnit);
-				PrintDictionary(hashTableUnit);
+				PrintDictionary(dictionaryUnit);
 				break;
 			}
 			case Remove:
@@ -241,7 +237,7 @@ void DictionaryUI()
 				string key = ReadStringValueFromConsole("Введите ключ, по которому будет удалена строка: ");
 				try
 				{
-					hashTableUnit.Remove(key);
+					dictionaryUnit.Remove(key);
 					cout << "Элемент успешно удалён." << endl;
 				}
 				catch (string& error)
@@ -249,8 +245,7 @@ void DictionaryUI()
 					cout << error << endl;
 					break;
 				}
-				PrintHashTable(hashTableUnit);
-				PrintDictionary(hashTableUnit);
+				PrintDictionary(dictionaryUnit);
 				break;
 			}
 			case Find:
@@ -260,7 +255,7 @@ void DictionaryUI()
 				try
 				{
 					cout << "По ключу " << key << " находится значение "
-						<< hashTableUnit.Find(key);
+						<< dictionaryUnit.Find(key);
 					cout << endl;
 				}
 				catch (string& error)
@@ -268,7 +263,7 @@ void DictionaryUI()
 					cout << error << endl;
 					break;
 				}
-				PrintHashTable(hashTableUnit);
+				PrintDictionary(dictionaryUnit);
 				break;
 			}
 			case Help:
