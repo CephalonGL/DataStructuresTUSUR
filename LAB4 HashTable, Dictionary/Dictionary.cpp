@@ -5,6 +5,11 @@
 
 using namespace std;
 
+const HashTable* Dictionary::GetHashTable()
+{
+	return _hashTable;
+}
+
 void Dictionary::DictionaryInsert(string key, string value)
 {
 	HashTableNode* currentNode = &_hashTable->HashTableNodeArray[_hashTable->Hash(key)];
