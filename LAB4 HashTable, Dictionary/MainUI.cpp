@@ -9,7 +9,7 @@ using namespace std;
 //TODO: RSDN +
 //TODO: XML +
 /// <summary>
-/// Enumeration for 
+/// Enumeration for UI commands in main, HashTableUI and DictionarUI
 /// </summary>
 enum OperationCode
 {
