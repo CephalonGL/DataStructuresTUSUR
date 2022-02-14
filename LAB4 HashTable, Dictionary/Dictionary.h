@@ -13,14 +13,25 @@ class Dictionary
 	HashTable* _hashTable = nullptr;
 
 public:
+	/// <summary>
+	/// Creates new node if get a collision and pushes key and value 
+	/// into fields of node.
+	/// </summary>
+	/// <param name="key">Insertable key</param>
+	/// <param name="value">Insertable value</param>
+	void DictionaryInsert(string key, string value);
 
+	/// <summary>
+	/// Clears data in node by the key and delete node if it's a collision and 
+	/// then merge the list.
+	/// </summary>
+	/// <param name="key">Key to delete by</param>
+	void Remove(string key);
+
+	/// <summary>
+	/// Searching value by the key.
+	/// </summary>
+	/// <param name="key">Key to search by</param>
+	/// <returns>Value by the key</returns>
+	string Find(string key);
 };
-
-//#include "HashTable.h"
-//
-//class Dictionary : public HashTable
-//{
-//public:
-//	void DictionaryInsert(string key, string value);
-//};
-//
