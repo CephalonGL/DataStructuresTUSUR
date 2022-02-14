@@ -10,7 +10,7 @@ class Dictionary
 	/// <summary>
 	/// Hash table unit for dictionary
 	/// </summary>
-	HashTable* _hashTable = nullptr;
+	HashTable* _hashTable = new HashTable;
 
 public:
 	/// <summary>
@@ -34,4 +34,9 @@ public:
 	/// <param name="key">Key to search by</param>
 	/// <returns>Value by the key</returns>
 	string Find(string key);
+
+	/// <summary>
+	/// Delete hash table and clear up the memory
+	/// </summary>
+	~Dictionary();
 };

@@ -31,3 +31,8 @@ string Dictionary::Find(string key)
 {
 	return _hashTable->Find(key);
 }
+
+Dictionary::~Dictionary()
+{
+	delete _hashTable;
+}
