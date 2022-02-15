@@ -22,7 +22,7 @@ unsigned char AvlTreeNode::GetHeight(AvlTreeNode* node)
 
 unsigned char AvlTreeNode::BalanceFactor(AvlTreeNode* node)
 {
-	return node->_rightSubtree->_height-node->_leftSubtree->_height;
+	return GetHeight(node->_rightSubtree) - GetHeight(node->_leftSubtree);
 }
 
 void AvlTreeNode::FixHeight(AvlTreeNode* node)
