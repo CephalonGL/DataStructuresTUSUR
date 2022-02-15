@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "HashTableNode.h"
 #include <cmath>
 #include <string>

@@ -1,4 +1,4 @@
-#include "Dictionary.h"
+п»ї#include "Dictionary.h"
 #include "HashTable.h"
 #include <string>
 
@@ -11,13 +11,14 @@ HashTable* Dictionary::GetHashTable()
 
 void Dictionary::DictionaryInsert(string key, string value)
 {
-	HashTableNode* currentNode = &_hashTable->HashTableNodeArray[_hashTable->Hash(key)];
+	HashTableNode* currentNode =
+		&_hashTable->HashTableNodeArray[_hashTable->Hash(key)];
 	while (currentNode)
 	{
 		if (currentNode->Key == key)
 		{
 			//TODO:
-			throw string("Ошибка: в словаре уже есть элемент с таким ключём");
+			throw string("РћС€РёР±РєР°: РІ СЃР»РѕРІР°СЂРµ СѓР¶Рµ РµСЃС‚СЊ СЌР»РµРјРµРЅС‚ СЃ С‚Р°РєРёРј РєР»СЋС‡С‘Рј");
 		}
 		else
 		{

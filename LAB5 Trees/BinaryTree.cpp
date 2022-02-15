@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include "BinaryTree.h"
 #include "BinaryTreeNode.h"
 using namespace std;
@@ -7,7 +7,7 @@ void BinaryTree::CreateTree(int key, int value)
 {
 	if (RootNode != nullptr)
 	{
-		string error = "Äåðåâî óæå ñîçäàíî.";
+		string error = "Ð”ÐµÑ€ÐµÐ²Ð¾ ÑƒÐ¶Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾.";
 		throw error;
 	}
 	RootNode = new BinaryTreeNode;
@@ -46,8 +46,8 @@ BinaryTreeNode* BinaryTree::DeleteElement(BinaryTreeNode* currentNode, int key)
 {
 	if (currentNode == nullptr)
 	{
-		string error = "[BinaryTree::DeleteElement] Äåðåâî íå ñîçäàíî"
-			" èëè íå ñóùåñòâóåò.";
+		string error = "[BinaryTree::DeleteElement] Ð”ÐµÑ€ÐµÐ²Ð¾ Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾"
+			" Ð¸Ð»Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.";
 		throw error;
 	}
 	if (currentNode->Key > key)
@@ -63,11 +63,11 @@ BinaryTreeNode* BinaryTree::DeleteElement(BinaryTreeNode* currentNode, int key)
 		if (currentNode->LeftNode == nullptr && currentNode->RightNode == nullptr)
 		{
 			delete currentNode;
-			currentNode = nullptr;//Çà÷åì ïðèñâàèâàòü nullptr?
+			currentNode = nullptr;//Ð—Ð°Ñ‡ÐµÐ¼ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ñ‚ÑŒ nullptr?
 		}
 		else if (currentNode->LeftNode == nullptr && currentNode->RightNode != nullptr)
 		{
-			//Ìîæíî ëè ðåøèòü óòå÷êó ïàìÿòè áåç îáúÿâëåíèÿ tmp?
+			//ÐœÐ¾Ð¶Ð½Ð¾ Ð»Ð¸ Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ ÑƒÑ‚ÐµÑ‡ÐºÑƒ Ð¿Ð°Ð¼ÑÑ‚Ð¸ Ð±ÐµÐ· Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ñ tmp?
 			BinaryTreeNode* tmp = currentNode;
 			currentNode = currentNode->RightNode;
 			delete tmp;
@@ -91,7 +91,7 @@ BinaryTreeNode* BinaryTree::DeleteElement(BinaryTreeNode* currentNode, int key)
 		}
 		else
 		{
-			string error = "[BinaryTree::DeleteElement] Íåèçâåñòíàÿ îøèáêà";
+			string error = "[BinaryTree::DeleteElement] ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ°";
 			throw error;
 		}
 	}
@@ -102,8 +102,8 @@ BinaryTreeNode* BinaryTree::FindElement(BinaryTreeNode* currentNode, int key)
 {
 	if (currentNode == nullptr)
 	{
-		string error = "[BinaryTree::FindElement] Äåðåâî íå ñîçäàíî"
-			" èëè íå ñóùåñòâóåò.";
+		string error = "[BinaryTree::FindElement] Ð”ÐµÑ€ÐµÐ²Ð¾ Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾"
+			" Ð¸Ð»Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.";
 		throw error;
 	}
 	if (currentNode->Key > key)
@@ -124,8 +124,8 @@ BinaryTreeNode* BinaryTree::FindMax(BinaryTreeNode* currentNode)
 {
 	if (currentNode == nullptr)
 	{
-		string error = "[BinaryTree::FindMax] Äåðåâî íå ñîçäàíî"
-			" èëè íå ñóùåñòâóåò.";
+		string error = "[BinaryTree::FindMax] Ð”ÐµÑ€ÐµÐ²Ð¾ Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾"
+			" Ð¸Ð»Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.";
 		throw error;
 	}
 	while (currentNode->RightNode != nullptr)
@@ -139,8 +139,8 @@ BinaryTreeNode* BinaryTree::FindMin(BinaryTreeNode* currentNode)
 {
 	if (currentNode == nullptr)
 	{
-		string error = "[BinaryTree::FindMin] Äåðåâî íå ñîçäàíî"
-			" èëè íå ñóùåñòâóåò.";
+		string error = "[BinaryTree::FindMin] Ð”ÐµÑ€ÐµÐ²Ð¾ Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾"
+			" Ð¸Ð»Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚.";
 		throw error;
 	}
 	while (currentNode->LeftNode != nullptr)
