@@ -6,8 +6,6 @@
 
 using namespace std;
 
-//TODO: RSDN +
-//TODO: XML +
 /// <summary>
 /// Enumeration for UI commands in main, HashTableUI and DictionarUI
 /// </summary>
@@ -146,7 +144,6 @@ void HashTableUI()
 		cin >> operationCode;
 		switch (operationCode)
 		{
-			//TODO: RSDN +
 			case Stop:
 			{
 				cout << "Программа успешно завершила выполнение." << endl << endl;
@@ -154,9 +151,12 @@ void HashTableUI()
 			}
 			case Insert:
 			{
-				//TODO: +
-				string inputString = ReadStringValueFromConsole("Введите строку, которую хотите добавить: ");
-				string key = ReadStringValueFromConsole("Введите ключ, по которому будет располагаться строка: ");
+				string inputString = 
+					ReadStringValueFromConsole(
+						"Введите строку, которую хотите добавить: ");
+				string key = 
+					ReadStringValueFromConsole(
+						"Введите ключ, по которому будет располагаться строка: ");
 				try
 				{
 					hashTableUnit.HashTableInsert(key, inputString);
@@ -172,7 +172,6 @@ void HashTableUI()
 			}
 			case Remove:
 			{
-				//TODO: +
 				string key = ReadStringValueFromConsole("Введите ключ, по которому будет удалена строка: ");
 				try
 				{
@@ -189,7 +188,6 @@ void HashTableUI()
 			}
 			case Find:
 			{
-				//TODO: +
 				string key = ReadStringValueFromConsole("Введите ключ, по которому найдена строка: ");
 				try
 				{
@@ -239,7 +237,6 @@ void DictionaryUI()
 		cin >> operationCode;
 		switch (operationCode)
 		{
-			//TODO: RSDN +
 			case Stop:
 			{
 				cout << "Программа успешно завершила выполнение." << endl << endl;
@@ -247,7 +244,6 @@ void DictionaryUI()
 			}
 			case Insert:
 			{
-				//TODO: +
 				string inputString = ReadStringValueFromConsole("Введите строку, которую хотите добавить: ");
 				string key = ReadStringValueFromConsole("Введите ключ, по которому будет располагаться строка: ");
 				try
@@ -265,7 +261,6 @@ void DictionaryUI()
 			}
 			case Remove:
 			{
-				//TODO: +
 				string key = ReadStringValueFromConsole("Введите ключ, по которому будет удалена строка: ");
 				try
 				{
@@ -282,7 +277,6 @@ void DictionaryUI()
 			}
 			case Find:
 			{
-				//TODO: +
 				string key = ReadStringValueFromConsole("Введите ключ, по которому найдена строка: ");
 				try
 				{

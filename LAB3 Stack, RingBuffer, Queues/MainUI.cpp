@@ -75,7 +75,6 @@ int main()
 		}
 		switch (structureCode)
 		{
-			//TODO: RSDN +
 			case 1:
 			{
 				StackMenu();
@@ -143,7 +142,6 @@ void StackMenu()
 		}
 		switch (operationCode)
 		{
-			//TODO: RSDN +
 			case 1:
 			{
 				if (stackUnit != nullptr)
@@ -167,7 +165,6 @@ void StackMenu()
 				}
 				else
 				{
-					//TODO: дубль +
 					int valueToPush = ReadIntValueFromConsole("Введите число,"
 						" помещаемое в стек: ");
 					stackUnit->Push(valueToPush);
@@ -238,14 +235,12 @@ void RingBufferMenu()
 		{
 			case 1:
 			{
-					//TODO: дубль +
 				if (!IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер уже создан."))
 				{
 					break;
 				}
 				else
 				{
-					//TODO: дубль +
 					int bufferSize = ReadIntValueFromConsole("Введите целое"
 						" количество элементов буфера: ");
 					while (bufferSize <= 0)
@@ -260,14 +255,12 @@ void RingBufferMenu()
 			}
 			case 2:
 			{
-					//TODO: дубль +
 				if (IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер не создан."))
 				{
 					break;
 				}
 				else
 				{
-					//TODO: дубль +
 					int valueToPush = ReadIntValueFromConsole("Введите число,"
 						" помещаемое в Кольцевой буфер: ");
 					ringBufferUnit->Push(valueToPush);
@@ -278,7 +271,6 @@ void RingBufferMenu()
 			}
 			case 3:
 			{
-					//TODO: дубль +
 				if (IsNullptr(ringBufferUnit, "Ошибка. Кольцевой буфер не создан."))
 				{
 					break;
@@ -312,7 +304,6 @@ void RingBufferMenu()
 			}
 			case 6:
 			{	
-				//TODO: дубль +
 				if (IsNullptr(ringBufferUnit, "Ошибка. Буфер не создан."))
 				{
 					break;

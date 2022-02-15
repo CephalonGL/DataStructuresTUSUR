@@ -1,8 +1,6 @@
 #pragma once
 #include "RingBuffer.h"
 
-//TODO: XML +
-
 /// <summary>
 /// Queue data structure based on ring buffer
 /// </summary>
@@ -24,7 +22,6 @@ class QueueOnRingBuffer
 	int _queueLength;
 
 public:
-	//TODO: XML +
 
 	/// <summary>
 	/// Creates RingBuffer with bufferCapacity from heap
@@ -37,7 +34,6 @@ public:
 	/// </summary>
 	~QueueOnRingBuffer();
 
-	//TODO: RSDN +
 	/// <summary>
 	/// Get count of empty cells
 	/// </summary>

@@ -7,7 +7,6 @@ using namespace std;
 ///</summary>
 struct HashTableNode
 {
-	//TODO: XML +
 	/// <summary>
 	/// Key of current node
 	/// </summary>
