@@ -35,7 +35,7 @@ struct AvlTreeNode
 	/// <summary>
 	/// Height difference between left and right subtrees
 	/// </summary>
-	unsigned char _height = 1;
+	short int _height = 1;
 
 	/// <summary>
 	/// Create node with inserted key and value
@@ -49,14 +49,14 @@ struct AvlTreeNode
 	/// </summary>
 	/// <param name="node">Node to get height from</param>
 	/// <returns>Height of node. If node doesn't exost, return 0</returns>
-	unsigned char GetHeight(AvlTreeNode* node);
+	short int GetHeight(AvlTreeNode* node);
 
 	/// <summary>
 	/// Set height of node depend on its subtrees
 	/// </summary>
 	/// <param name="node">Node to set height</param>
 	/// <returns>Height of node</returns>
-	unsigned char BalanceFactor(AvlTreeNode* node);
+	short int BalanceFactor(AvlTreeNode* node);
 
 	/// <summary>
 	/// Fix height of node
