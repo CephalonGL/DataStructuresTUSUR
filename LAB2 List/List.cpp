@@ -43,40 +43,40 @@ void List::RemoveNode(int indexOfRemovableNode)
 	}
 	else if (indexOfRemovableNode == 0)
 	{
-		//TODO: RSDN
-		Node* pCurrentNode = _head;
-		pCurrentNode->Next->Previous = nullptr;
-		_head = pCurrentNode->Next;
-		delete pCurrentNode;
+		//TODO: RSDN +
+		Node* currentNode = _head;
+		currentNode->Next->Previous = nullptr;
+		_head = currentNode->Next;
+		delete currentNode;
 	}
 	else if (indexOfRemovableNode == _length - 1)
 	{
-		Node* pCurrentNode = _tail;
-		pCurrentNode->Previous->Next = nullptr;
-		_tail = pCurrentNode->Previous;
-		delete pCurrentNode;
+		Node* currentNode = _tail;
+		currentNode->Previous->Next = nullptr;
+		_tail = currentNode->Previous;
+		delete currentNode;
 	}
 	else if (indexOfRemovableNode < _length - 1)
 	{
-		Node* pCurrentNode = _head;
+		Node* currentNode = _head;
 		for (int i = 0; i < indexOfRemovableNode; i++)
 		{
-			pCurrentNode = pCurrentNode->Next;
+			currentNode = currentNode->Next;
 		}
-		pCurrentNode->Next->Previous = pCurrentNode->Previous;
-		pCurrentNode->Previous->Next = pCurrentNode->Next;
-		delete pCurrentNode;
+		currentNode->Next->Previous = currentNode->Previous;
+		currentNode->Previous->Next = currentNode->Next;
+		delete currentNode;
 	}
 	else
 	{
-		Node* pCurrentNode = _tail;
+		Node* currentNode = _tail;
 		for (int i = 0; i < _length - indexOfRemovableNode; i++)
 		{
-			pCurrentNode = pCurrentNode->Next;
+			currentNode = currentNode->Next;
 		}
-		pCurrentNode->Next->Previous = pCurrentNode->Previous;
-		pCurrentNode->Previous->Next = pCurrentNode->Next;
-		delete pCurrentNode;
+		currentNode->Next->Previous = currentNode->Previous;
+		currentNode->Previous->Next = currentNode->Next;
+		delete currentNode;
 	}
 	_length--;
 }
@@ -108,16 +108,16 @@ void List::PushAfterNode(int indexNodeToPushAfter, int valueToPush)
 	}
 	else
 	{
-		Node* pCurrentNode = _head;
+		Node* currentNode = _head;
 		for (int i = 0; i < indexNodeToPushAfter; i++)
 		{
-			pCurrentNode = pCurrentNode->Next;
+			currentNode = currentNode->Next;
 		}
-		pCurrentNode->Next->Previous = new Node;
-		pCurrentNode->Next->Previous->Previous = pCurrentNode;
-		pCurrentNode->Next->Previous->Next = pCurrentNode->Next;
-		pCurrentNode->Next = pCurrentNode->Next->Previous;
-		pCurrentNode->Next->Value = valueToPush;
+		currentNode->Next->Previous = new Node;
+		currentNode->Next->Previous->Previous = currentNode;
+		currentNode->Next->Previous->Next = currentNode->Next;
+		currentNode->Next = currentNode->Next->Previous;
+		currentNode->Next->Value = valueToPush;
 		_length++;
 	}
 }
@@ -130,56 +130,56 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 	}
 	else
 	{
-		Node* pCurrentNode = _head;
+		Node* currentNode = _head;
 		for (int i = 0; i < indexNodeToPushBefore; i++)
 		{
-			pCurrentNode = pCurrentNode->Next;
+			currentNode = currentNode->Next;
 		}
-		pCurrentNode->Previous->Next = new Node;
-		pCurrentNode->Previous->Next->Next = pCurrentNode;
-		pCurrentNode->Previous->Next->Previous = pCurrentNode->Previous;
-		pCurrentNode->Previous = pCurrentNode->Previous->Next;
-		pCurrentNode->Previous->Value = valueToPush;
+		currentNode->Previous->Next = new Node;
+		currentNode->Previous->Next->Next = currentNode;
+		currentNode->Previous->Next->Previous = currentNode->Previous;
+		currentNode->Previous = currentNode->Previous->Next;
+		currentNode->Previous->Value = valueToPush;
 		_length++;
 	}
 }
 
 void List::Sort()
 {
-	Node* pCurrentNode = _head;
+	Node* currentNode = _head;
 	//TODO:
 	int tmp;
 	for (int i = 0; i < _length-1; i++)
 	{
 		for (int j = 0; j < _length-1; j++)
 		{
-			if (pCurrentNode->Value > pCurrentNode->Next->Value)
+			if (currentNode->Value > currentNode->Next->Value)
 			{
-				tmp = pCurrentNode->Value;
-				pCurrentNode->Value = pCurrentNode->Next->Value;
-				pCurrentNode->Next->Value = tmp;
+				tmp = currentNode->Value;
+				currentNode->Value = currentNode->Next->Value;
+				currentNode->Next->Value = tmp;
 			}
 			else
 			{
-				pCurrentNode = pCurrentNode->Next;
+				currentNode = currentNode->Next;
 			}
 		}
-		pCurrentNode = _head;
+		currentNode = _head;
 	}
 }
 
 int List::LinearSearch(int valueToSearch)
 {
-	Node* pCurrentNode = _head;
+	Node* currentNode = _head;
 	for (int i = 0; i < _length; i++)
 	{
-		if (pCurrentNode->Value == valueToSearch)
+		if (currentNode->Value == valueToSearch)
 		{
 			return i;
 		}
 		else
 		{
-			pCurrentNode = pCurrentNode->Next;
+			currentNode = currentNode->Next;
 		}
 	}
 	return -1;
@@ -187,10 +187,10 @@ int List::LinearSearch(int valueToSearch)
 
 int List::GetValueByIndex(int indexOfNode)
 {
-	Node* pCurrentNode = _head;
+	Node* currentNode = _head;
 	for (int i = 0; i < indexOfNode; i++)
 	{
-		pCurrentNode = pCurrentNode->Next;
+		currentNode = currentNode->Next;
 	}
-	return pCurrentNode->Value;
+	return currentNode->Value;
 }
