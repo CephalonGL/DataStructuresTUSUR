@@ -1,4 +1,4 @@
-#include "QueueOnRingBuffer.h"
+﻿#include "QueueOnRingBuffer.h"
 #include "RingBuffer.h"
 
 QueueOnRingBuffer::QueueOnRingBuffer(int bufferCapacity)

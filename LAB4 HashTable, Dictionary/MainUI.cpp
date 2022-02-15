@@ -7,7 +7,7 @@
 using namespace std;
 
 /// <summary>
-/// Enumeration for UI commands in main, HashTableUI and DictionarUI
+/// Enumeration for UI commands in main, HashTableUI and DictionaryUI
 /// </summary>
 enum OperationCode
 {

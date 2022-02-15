@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <iostream>
 #include <ctime>
 #include "BinaryTree.h"
@@ -43,11 +43,11 @@ int main()
 		Stop = 0
 	};
 	setlocale(LC_ALL, "ru");
-	cout << "Âàñ ïðèâåòñòâóåò ïðîãðàììà äëÿ ðàáîòû ñ äåðåâüÿìè." << endl;
-	cout << "Âûáåðèòå âèä äåðåâà, ñ êîòîðûì õîòèòå ðàáîòàòü:" << endl;
-	cout << "\t1. Áèíàðíîå äåðåâî;" << endl;
-	cout << "\t2. Äåêàðòîâî äåðåâî." << endl;
-	cout << "Ââåäèòå êîä îïåðàöèè: ";
+	cout << "Ð’Ð°Ñ Ð¿Ñ€Ð¸Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð´ÐµÑ€ÐµÐ²ÑŒÑÐ¼Ð¸." << endl;
+	cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð²Ð¸Ð´ Ð´ÐµÑ€ÐµÐ²Ð°, Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ:" << endl;
+	cout << "\t1. Ð‘Ð¸Ð½Ð°Ñ€Ð½Ð¾Ðµ Ð´ÐµÑ€ÐµÐ²Ð¾;" << endl;
+	cout << "\t2. Ð”ÐµÐºÐ°Ñ€Ñ‚Ð¾Ð²Ð¾ Ð´ÐµÑ€ÐµÐ²Ð¾." << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸: ";
 	int operationCode;
 	while (true)
 	{
@@ -66,11 +66,11 @@ int main()
 		}
 		case Stop:
 		{
-			cout << "Ïðîãðàììà óñïåøíî çàâåðøèëà ñâî¸ âûïîëíåíèå." << endl;
+			cout << "ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð° ÑÐ²Ð¾Ñ‘ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ." << endl;
 			return 0;
 		}
 		default:
-			cout << "Êîìàíäà íå ðàñïîçíàíà. Ïîâòîðèòå ââîä: ";
+			cout << "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ðµ Ñ€Ð°ÑÐ¿Ð¾Ð·Ð½Ð°Ð½Ð°. ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´: ";
 			break;
 		}
 	}
@@ -90,21 +90,21 @@ void BinaryTreeUI()
 		PRINT = 7,
 		Help = 100
 	};
-	cout << "Äëÿ ðàáîòû ñ áèíàðíûì äåðåâîì, èñïîëüçóéòå "
-		<< "ñëåäóþùèé ñïèñîê êîìàíä" << endl;
-	cout << "\t1. Ñîçäàòü äåðåâî;" << endl;
-	cout << "\t2. Äîáàâèòü ýëåìåíò;" << endl;
-	cout << "\t3. Óäàëèòü ýëåìåíò;" << endl;
-	cout << "\t4. Íàéòè ýëåìåíò;" << endl;
-	cout << "\t5. Íàéòè ìàêñèìóì äåðåâà;" << endl;
-	cout << "\t6. Íàéòè ìèíèìóì äåðåâà;" << endl;
-	cout << "\t7. Âûâåñòè äåðåâî íà ýêðàí." << endl;
-	cout << "Äëÿ çàâåðøåíèÿ ðàáîòû ïðîãðàììû, ââåäèòå 0" << endl;
+	cout << "Ð”Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð±Ð¸Ð½Ð°Ñ€Ð½Ñ‹Ð¼ Ð´ÐµÑ€ÐµÐ²Ð¾Ð¼, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ "
+		<< "ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´" << endl;
+	cout << "\t1. Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð´ÐµÑ€ÐµÐ²Ð¾;" << endl;
+	cout << "\t2. Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+	cout << "\t3. Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+	cout << "\t4. ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+	cout << "\t5. ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ Ð´ÐµÑ€ÐµÐ²Ð°;" << endl;
+	cout << "\t6. ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð¸Ð½Ð¸Ð¼ÑƒÐ¼ Ð´ÐµÑ€ÐµÐ²Ð°;" << endl;
+	cout << "\t7. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´ÐµÑ€ÐµÐ²Ð¾ Ð½Ð° ÑÐºÑ€Ð°Ð½." << endl;
+	cout << "Ð”Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0" << endl;
 	int operationCode;
 	BinaryTree binaryTree;
 	while (true)
 	{
-		cout << "Ââåäèòå êîä îïåðàöèè:";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸:";
 		cin >> operationCode;
 		switch (operationCode)
 		{
@@ -113,17 +113,17 @@ void BinaryTreeUI()
 			try
 			{
 				int key;
-				cout << "Ââåäèòå êëþ÷ êîðíåâîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
 				int value;
-				cout << "Ââåäèòå çíà÷åíèå êîðíåâîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> value;
 				binaryTree.CreateTree(key, value);
-				cout << "Äåðåâî óñïåøíî ñîçäàíî." << endl;
+				cout << "Ð”ÐµÑ€ÐµÐ²Ð¾ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -133,21 +133,21 @@ void BinaryTreeUI()
 			{
 				if (binaryTree.RootNode == nullptr)
 				{
-					string error = "Êîðíåâîé óçåë áûë ðàâåí nullptr, ñîçäàéòå äåðåâî.";
+					string error = "ÐšÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð¹ ÑƒÐ·ÐµÐ» Ð±Ñ‹Ð» Ñ€Ð°Ð²ÐµÐ½ nullptr, ÑÐ¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ Ð´ÐµÑ€ÐµÐ²Ð¾.";
 					throw error;
 				}
 				int key;
-				cout << "Ââåäèòå êëþ÷ êîðíåâîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
 				int value;
-				cout << "Ââåäèòå çíà÷åíèå êîðíåâîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> value;
 				binaryTree.AddElement(binaryTree.RootNode, key, value);
-				cout << "Ýëåìåíò óñïåøíî äîáàâëåí." << endl;
+				cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -156,14 +156,14 @@ void BinaryTreeUI()
 			try
 			{
 				int key;
-				cout << "Ââåäèòå êëþ÷ êîðíåâîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
 				binaryTree.DeleteElement(binaryTree.RootNode, key);
-				cout << "Ýëåìåíò óñïåøíî óäàë¸í." << endl;
+				cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑƒÐ´Ð°Ð»Ñ‘Ð½." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -172,14 +172,14 @@ void BinaryTreeUI()
 			try
 			{
 				int key;
-				cout << "Ââåäèòå êëþ÷ èñêîìîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ Ð¸ÑÐºÐ¾Ð¼Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
-				cout << "Ïî êëþ÷ó " << key << " íàõîäèòñÿ çíà÷åíèå "
+				cout << "ÐŸÐ¾ ÐºÐ»ÑŽÑ‡Ñƒ " << key << " Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑÑ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ "
 					<< binaryTree.FindElement(binaryTree.RootNode, key)->Value << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -187,12 +187,12 @@ void BinaryTreeUI()
 		{
 			try
 			{
-				cout << "Ìàêñèìàëüíîå çíà÷åíèå äåðåâà: "
+				cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: "
 					<< binaryTree.FindMax(binaryTree.RootNode)->Value << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -200,12 +200,12 @@ void BinaryTreeUI()
 		{
 			try
 			{
-				cout << "Ìèíèìàëüíîå çíà÷åíèå äåðåâà: "
+				cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°: "
 					<< binaryTree.FindMin(binaryTree.RootNode)->Value << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -220,31 +220,31 @@ void BinaryTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
 		case Help:
 		{
-			cout << "Ñïèñîê êîìàíä:" << endl;
-			cout << "\t1. Ñîçäàòü äåðåâî;" << endl;
-			cout << "\t2. Äîáàâèòü ýëåìåíò;" << endl;
-			cout << "\t3. Óäàëèòü ýëåìåíò;" << endl;
-			cout << "\t4. Íàéòè ýëåìåíò;" << endl;
-			cout << "\t5. Íàéòè ìàêñèìóì äåðåâà;" << endl;
-			cout << "\t6. Íàéòè ìèíèìóì äåðåâà" << endl;
-			cout << "\t7. Âûâåñòè äåðåâî íà ýêðàí." << endl;
-			cout << "Äëÿ çàâåðøåíèÿ ðàáîòû ïðîãðàììû, ââåäèòå 0" << endl;
+			cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´:" << endl;
+			cout << "\t1. Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð´ÐµÑ€ÐµÐ²Ð¾;" << endl;
+			cout << "\t2. Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+			cout << "\t3. Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+			cout << "\t4. ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+			cout << "\t5. ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ Ð´ÐµÑ€ÐµÐ²Ð°;" << endl;
+			cout << "\t6. ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð¸Ð½Ð¸Ð¼ÑƒÐ¼ Ð´ÐµÑ€ÐµÐ²Ð°" << endl;
+			cout << "\t7. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´ÐµÑ€ÐµÐ²Ð¾ Ð½Ð° ÑÐºÑ€Ð°Ð½." << endl;
+			cout << "Ð”Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0" << endl;
 			break;
 		}
 		case Stop:
 		{
-			cout << "Ïðîãðàììà óñïåøíî çàâåðøèëà ñâîþ ðàáîòó." << endl;
+			cout << "ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð° ÑÐ²Ð¾ÑŽ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ." << endl;
 			return;
 		}
 		default:
-			cout << "Êîìàíäà íå ðàñïîçíàíà. "
-				<< "Äëÿ âûçîâà ñïðàâêè, ââåäèòå 100." << endl;
+			cout << "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ðµ Ñ€Ð°ÑÐ¿Ð¾Ð·Ð½Ð°Ð½Ð°. "
+				<< "Ð”Ð»Ñ Ð²Ñ‹Ð·Ð¾Ð²Ð° ÑÐ¿Ñ€Ð°Ð²ÐºÐ¸, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 100." << endl;
 			break;
 		}
 	}
@@ -267,23 +267,23 @@ void CartesianTreeUI()
 		SPLIT_AND_PRINT = 9,
 		Help = 100
 	};
-	cout << "Äëÿ ðàáîòû ñ Äåêàðòîâûì äåðåâîì, èñïîëüçóéòå "
-		<< "ñëåäóþùèé ñïèñîê êîìàíä" << endl;
-	cout << "\t1. Íàéòè ýëåìåíò;" << endl;
-	cout << "\t2. Äîáàâëåíèå(íåîïòèìèçèðîâàííûé, 1 Split, 2 Merge);" << endl;
-	cout << "\t3. Äîáàâëåíèå(îïòèìèçèðîâàííûé, 1 Split);" << endl;
-	cout << "\t4. Âûâåñòè äåðåâî íà ýêðàí;" << endl;
-	cout << "\t5. Óäàëåíèå(íåîïòèìèçèðîâàííûé, 2 Split, 1 Merge);" << endl;
-	cout << "\t6. Óäàëåíèå(îïòèìèçèðîâàííûé, 1 Merge);" << endl;
-	cout << "\t7. Óäàëåíèå ýëåìåíòà äåðåâà ñ î÷èñòêîé ïàìÿòè;" << endl;
-	cout << "\t8. Ñëó÷àéíîå çàïîëíåíèå äåðåâà(10 ýëåìåíòîâ);" << endl;
-	cout << "\t9. Ðàçðåçàòü ïî êëþ÷ó è âûâåñòè ïîääåðåâüÿ;" << endl;
-	cout << "Äëÿ çàâåðøåíèÿ ðàáîòû ïðîãðàììû, ââåäèòå 0" << endl;
+	cout << "Ð”Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð”ÐµÐºÐ°Ñ€Ñ‚Ð¾Ð²Ñ‹Ð¼ Ð´ÐµÑ€ÐµÐ²Ð¾Ð¼, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ "
+		<< "ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´" << endl;
+	cout << "\t1. ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+	cout << "\t2. Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ(Ð½ÐµÐ¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Split, 2 Merge);" << endl;
+	cout << "\t3. Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ(Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Split);" << endl;
+	cout << "\t4. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´ÐµÑ€ÐµÐ²Ð¾ Ð½Ð° ÑÐºÑ€Ð°Ð½;" << endl;
+	cout << "\t5. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ(Ð½ÐµÐ¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 2 Split, 1 Merge);" << endl;
+	cout << "\t6. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ(Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Merge);" << endl;
+	cout << "\t7. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð´ÐµÑ€ÐµÐ²Ð° Ñ Ð¾Ñ‡Ð¸ÑÑ‚ÐºÐ¾Ð¹ Ð¿Ð°Ð¼ÑÑ‚Ð¸;" << endl;
+	cout << "\t8. Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°(10 ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²);" << endl;
+	cout << "\t9. Ð Ð°Ð·Ñ€ÐµÐ·Ð°Ñ‚ÑŒ Ð¿Ð¾ ÐºÐ»ÑŽÑ‡Ñƒ Ð¸ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²ÑŒÑ;" << endl;
+	cout << "Ð”Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0" << endl;
 	int operationCode;
 	CartesianTree* cartesianTree = new CartesianTree;
 	while (true)
 	{
-		cout << "Ââåäèòå êîä îïåðàöèè:";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸:";
 		cin >> operationCode;
 		switch (operationCode)
 		{
@@ -291,10 +291,10 @@ void CartesianTreeUI()
 		{
 			try
 			{
-				cout << "Ââåäèòå êëþ÷ äëÿ ïîèñêà: " << endl;
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ°: " << endl;
 				int key;
 				cin >> key;
-				cout << "Ýëåìåíò ïî äàííîìó êëþ÷ó: " << endl;
+				cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ ÐºÐ»ÑŽÑ‡Ñƒ: " << endl;
 				cout << '('
 					<< cartesianTree->FindElement(cartesianTree->RootNode, key)->Key
 					<< '; '
@@ -303,7 +303,7 @@ void CartesianTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -311,7 +311,7 @@ void CartesianTreeUI()
 		{
 			try
 			{
-				cout << "Ââåäèòå êëþ÷ äëÿ âñòàâêè: " << endl;
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Ð²ÑÑ‚Ð°Ð²ÐºÐ¸: " << endl;
 				int key;
 				cin >> key;
 				cartesianTree = cartesianTree->UnoptimizedInsert(cartesianTree->RootNode,
@@ -319,7 +319,7 @@ void CartesianTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -327,7 +327,7 @@ void CartesianTreeUI()
 		{
 			try
 			{
-				cout << "Ââåäèòå êëþ÷ äëÿ âñòàâêè: " << endl;
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Ð²ÑÑ‚Ð°Ð²ÐºÐ¸: " << endl;
 				int key;
 				cin >> key;
 				int priority = rand() % 100 + 1;
@@ -336,7 +336,7 @@ void CartesianTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -350,7 +350,7 @@ void CartesianTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -359,14 +359,14 @@ void CartesianTreeUI()
 			try
 			{
 				int key;
-				cout << "Ââåäèòå êëþ÷ óäàëÿåìîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
 				cartesianTree->UnoptimizedDelete(cartesianTree->RootNode, key);
-				cout << "Íåîïòèìèçèðîâàííîå óäàëåíèå çàâåðøåíî." << endl;
+				cout << "ÐÐµÐ¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¾." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -375,15 +375,15 @@ void CartesianTreeUI()
 			try
 			{
 				int key;
-				cout << "Ââåäèòå êëþ÷ óäàëÿåìîãî óçëà: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ ÑƒÐ·Ð»Ð°: ";
 				cin >> key;
 				cartesianTree->RootNode =
 					cartesianTree->OptimizedDelete(cartesianTree->RootNode, key);
-				cout << "Îïòèìèçèðîâàííîå óäàëåíèå çàâåðøåíî." << endl;
+				cout << "ÐžÐ¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¾." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -392,11 +392,11 @@ void CartesianTreeUI()
 			try
 			{
 				cartesianTree->ClearDelete(cartesianTree->RootNode);
-				cout << "Î÷èñòêà ïàìÿòè óñïåøíî çàâåðøåíà." << endl;
+				cout << "ÐžÑ‡Ð¸ÑÑ‚ÐºÐ° Ð¿Ð°Ð¼ÑÑ‚Ð¸ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð°." << endl;
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -412,7 +412,7 @@ void CartesianTreeUI()
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
@@ -420,48 +420,48 @@ void CartesianTreeUI()
 		{
 			try
 			{
-				cout << "Ââåäèòå êëþ÷, ïî êîòîðîìó õîòèòå ðàçðåçàòü: ";
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡, Ð¿Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÐ·Ð°Ñ‚ÑŒ: ";
 				int key;
 				cin >> key;
 				CartesianTreeNode* leftTree;
 				CartesianTreeNode* rightTree;
 				cartesianTree->Split(cartesianTree->RootNode, key, leftTree, rightTree);
 				cout << "__________________________________________________" << endl;
-				cout << "Ëåâîå ïîääåðåâî èìååò âèä:" << endl << endl;
+				cout << "Ð›ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð¸Ð¼ÐµÐµÑ‚ Ð²Ð¸Ð´:" << endl << endl;
 				PrintCartesianTree(leftTree);
 				cout << "__________________________________________________" << endl;
-				cout << "Ïðàâîå ïîääåðåâî èìååò âèä:" << endl << endl;
+				cout << "ÐŸÑ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð¸Ð¼ÐµÐµÑ‚ Ð²Ð¸Ð´:" << endl << endl;
 				PrintCartesianTree(rightTree);
 				cout << "__________________________________________________" << endl;
 				cartesianTree->Merge(leftTree, rightTree);
 			}
 			catch (string& message)
 			{
-				cout << "Îøèáêà! " << message << endl;
+				cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! " << message << endl;
 			}
 			break;
 		}
 		case Help:
 		{
-			cout << "Ñïèñîê êîìàíä:" << endl;
-			cout << "\t1. Íàéòè ýëåìåíò;" << endl;
-			cout << "\t2. Äîáàâëåíèå(íåîïòèìèçèðîâàííûé, 1 Split, 2 Merge);" << endl;
-			cout << "\t3. Äîáàâëåíèå(îïòèìèçèðîâàííûé, 1 Split);" << endl;
-			cout << "\t4. Âûâåñòè äåðåâî íà ýêðàí;" << endl;
-			cout << "\t5. Óäàëåíèå(íåîïòèìèçèðîâàííûé, 2 Split, 1 Merge);" << endl;
-			cout << "\t6. Óäàëåíèå(îïòèìèçèðîâàííûé, 1 Merge);" << endl;
-			cout << "\t7. Óäàëåíèå ýëåìåíòà äåðåâà ñ î÷èñòêîé ïàìÿòè;" << endl;
-			cout << "Äëÿ çàâåðøåíèÿ ðàáîòû ïðîãðàììû, ââåäèòå 0" << endl;
+			cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´:" << endl;
+			cout << "\t1. ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚;" << endl;
+			cout << "\t2. Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ(Ð½ÐµÐ¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Split, 2 Merge);" << endl;
+			cout << "\t3. Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ(Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Split);" << endl;
+			cout << "\t4. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´ÐµÑ€ÐµÐ²Ð¾ Ð½Ð° ÑÐºÑ€Ð°Ð½;" << endl;
+			cout << "\t5. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ(Ð½ÐµÐ¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 2 Split, 1 Merge);" << endl;
+			cout << "\t6. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ(Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹, 1 Merge);" << endl;
+			cout << "\t7. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð´ÐµÑ€ÐµÐ²Ð° Ñ Ð¾Ñ‡Ð¸ÑÑ‚ÐºÐ¾Ð¹ Ð¿Ð°Ð¼ÑÑ‚Ð¸;" << endl;
+			cout << "Ð”Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0" << endl;
 			break;
 		}
 		case Stop:
 		{
-			cout << "Ïðîãðàììà óñïåøíî çàâåðøèëà ñâîþ ðàáîòó." << endl;
+			cout << "ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð° ÑÐ²Ð¾ÑŽ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ." << endl;
 			return;
 		}
 		default:
-			cout << "Êîìàíäà íå ðàñïîçíàíà. "
-				<< "Äëÿ âûçîâà ñïðàâêè, ââåäèòå 100." << endl;
+			cout << "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ðµ Ñ€Ð°ÑÐ¿Ð¾Ð·Ð½Ð°Ð½Ð°. "
+				<< "Ð”Ð»Ñ Ð²Ñ‹Ð·Ð¾Ð²Ð° ÑÐ¿Ñ€Ð°Ð²ÐºÐ¸, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 100." << endl;
 			break;
 		}
 	}

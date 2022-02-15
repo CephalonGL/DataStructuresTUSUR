@@ -1,4 +1,4 @@
-#include "CartesianTree.h"
+п»ї#include "CartesianTree.h"
 #include "CartesianTreeNode.h"
 #include <string>
 using namespace std;
@@ -28,7 +28,7 @@ void CartesianTree::Split(CartesianTreeNode * currentNode, int key,
 	}
 	else
 	{
-		string error = "Split: неизвестная ошибка.";
+		string error = "Split: РЅРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°.";
 		throw error;
 	}
 }
@@ -53,7 +53,7 @@ CartesianTreeNode* CartesianTree::FindElement(CartesianTreeNode* currentNode, in
 {
 	if (currentNode == nullptr)
 	{
-		string error = "FindElement: дерево не инициализировано,"
+		string error = "FindElement: РґРµСЂРµРІРѕ РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРѕ,"
 			" currentNode == nullptr.";
 		throw error;
 	}
@@ -115,7 +115,7 @@ void CartesianTree::UnoptimizedDelete(CartesianTreeNode*& currentNode, int key)
 {
 	if (currentNode == nullptr)
 	{
-		string error = "UnoptimizedDelete: дерево не инициализировано,"
+		string error = "UnoptimizedDelete: РґРµСЂРµРІРѕ РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРѕ,"
 			" currentNode == nullptr.";
 		throw error;
 	}
@@ -134,7 +134,7 @@ CartesianTreeNode* CartesianTree::OptimizedDelete(CartesianTreeNode* currentNode
 {
 	if (currentNode == nullptr)
 	{
-		string error = "OptimizedDelete: дерево не инициализировано,"
+		string error = "OptimizedDelete: РґРµСЂРµРІРѕ РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРѕ,"
 			" currentNode == nullptr.";
 		throw error;
 	}
