@@ -35,5 +35,12 @@ struct AvlTreeNode
 	/// <summary>
 	/// Height difference between left and right subtrees
 	/// </summary>
-	short int _height = 0;
+	unsigned char _height = '1';
+
+	/// <summary>
+	/// Create node with inserted key and value
+	/// </summary>
+	/// <param name="key">Key of new node</param>
+	/// <param name="value">Value of new Node</param>
+	AvlTreeNode(int key, string value);
 };
