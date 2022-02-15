@@ -57,20 +57,24 @@ private:
 	/// <summary>
 	/// Do small left rotation
 	/// </summary>
-	void _SmallLeftRotation();
+	/// <returns>New root node</returns>
+	AvlTreeNode* _SmallLeftRotation();
 
 	/// <summary>
 	/// Do small right rotation
 	/// </summary>
-	void _SmallRightRotation();
+	/// <returns>New root node</returns>
+	AvlTreeNode* _SmallRightRotation();
 
 	/// <summary>
 	/// Do big left rotation
 	/// </summary>
-	void _BigLeftRotation();
+	/// <returns>New root node</returns>
+	AvlTreeNode* _BigLeftRotation();
 
 	/// <summary>
 	/// Do big right rotation
 	/// </summary>
-	void _BigRightRotation();
+	/// <returns>New root node</returns>
+	AvlTreeNode* _BigRightRotation();
 };
