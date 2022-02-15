@@ -17,7 +17,7 @@ void Dictionary::DictionaryInsert(string key, string value)
 	{
 		if (currentNode->Key == key)
 		{
-			//TODO:
+			//TODO: +
 			throw string("Ошибка: в словаре уже есть элемент с таким ключём");
 		}
 		else
