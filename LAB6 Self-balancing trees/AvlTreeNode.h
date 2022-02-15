@@ -42,7 +42,7 @@ struct AvlTreeNode
 	/// </summary>
 	/// <param name="key">Key of new node</param>
 	/// <param name="value">Value of new Node</param>
-	AvlTreeNode(int key, string value);
+	AvlTreeNode(int key = 0, string value = "empty");
 
 	/// <summary>
 	/// Getter function for _height
