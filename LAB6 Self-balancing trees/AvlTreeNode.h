@@ -35,5 +35,32 @@ struct AvlTreeNode
 	/// <summary>
 	/// Height difference between left and right subtrees
 	/// </summary>
-	short int _height = 0;
+	short int _height = 1;
+
+	/// <summary>
+	/// Create node with inserted key and value
+	/// </summary>
+	/// <param name="key">Key of new node</param>
+	/// <param name="value">Value of new Node</param>
+	AvlTreeNode(int key = 0, string value = "empty");
+
+	/// <summary>
+	/// Getter function for _height
+	/// </summary>
+	/// <param name="node">Node to get height from</param>
+	/// <returns>Height of node. If node doesn't exost, return 0</returns>
+	short int GetHeight(AvlTreeNode* node);
+
+	/// <summary>
+	/// Set height of node depend on its subtrees
+	/// </summary>
+	/// <param name="node">Node to set height</param>
+	/// <returns>Height of node</returns>
+	short int BalanceFactor(AvlTreeNode* node);
+
+	/// <summary>
+	/// Fix height of node
+	/// </summary>
+	/// <param name="node">Node to fix height</param>
+	void FixHeight(AvlTreeNode* node);
 };

@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AvlTree.cpp" />
+    <ClCompile Include="AvlTreeNode.cpp" />
     <ClCompile Include="MainUI.cpp" />
     <ClCompile Include="RbTree.cpp" />
     <ClCompile Include="RbTreeNode.cpp" />
