@@ -43,4 +43,12 @@ struct AvlTreeNode
 	/// <param name="key">Key of new node</param>
 	/// <param name="value">Value of new Node</param>
 	AvlTreeNode(int key, string value);
+
+
+	/// <summary>
+	/// Set height of node depend on its subtrees
+	/// </summary>
+	/// <param name="node">Node to set height</param>
+	/// <returns>Height of node</returns>
+	unsigned char BalanceFactor(AvlTreeNode* node);
 };
