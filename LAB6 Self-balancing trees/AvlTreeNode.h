@@ -58,5 +58,9 @@ struct AvlTreeNode
 	/// <returns>Height of node</returns>
 	unsigned char BalanceFactor(AvlTreeNode* node);
 
+	/// <summary>
+	/// Fix height of node
+	/// </summary>
+	/// <param name="node">Node to fix height</param>
 	void FixHeight(AvlTreeNode* node);
 };
