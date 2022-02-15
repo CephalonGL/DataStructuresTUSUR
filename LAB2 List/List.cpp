@@ -147,12 +147,12 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 void List::Sort()
 {
 	Node* currentNode = _head;
-	//TODO:
-	int tmp;
+	//TODO: +
 	for (int i = 0; i < _length-1; i++)
 	{
 		for (int j = 0; j < _length-1; j++)
 		{
+			int tmp;
 			if (currentNode->Value > currentNode->Next->Value)
 			{
 				tmp = currentNode->Value;
