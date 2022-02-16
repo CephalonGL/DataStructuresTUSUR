@@ -151,6 +151,11 @@
     <ClInclude Include="RbTree.h" />
     <ClInclude Include="RbTreeNode.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Console\Console.vcxproj">
+      <Project>{b266020d-2c3b-45b5-be54-959e681761a5}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
