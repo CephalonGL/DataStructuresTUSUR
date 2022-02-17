@@ -29,9 +29,9 @@ string AvlTree::SearchByKey(int keyToSearch)
 
 void AvlTree::DeleteByKey(int keyToDelete)
 {
-	AvlTreeNode* currentNode = _FindNodeByKey(keyToDelete);
-	AvlTreeNode* parentNode = currentNode->_parent;
-	delete currentNode;
+	AvlTreeNode* nodeToDelete = _FindNodeByKey(keyToDelete);
+	AvlTreeNode* parentNode = nodeToDelete->_parent;
+	delete nodeToDelete;
 	_GoBalance(parentNode);
 }
 
