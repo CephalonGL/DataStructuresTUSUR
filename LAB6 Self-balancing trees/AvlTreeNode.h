@@ -47,15 +47,16 @@ struct AvlTreeNode
 	/// <summary>
 	/// Getter function for _height
 	/// </summary>
-	/// <param name="node">Node to get height from</param>
-	/// <returns>Height of node. If node doesn't exost, return 0</returns>
+	/// <returns>
+	/// Height of node. If node doesn't exost, return 0
+	/// </returns>
 	short int GetHeight();
 
 	/// <summary>
-	/// Set height of node depend on its subtrees
+	/// Calculate difference of heights between subtrees
 	/// </summary>
-	/// <param name="node">Node to set height</param>
-	/// <returns>Height of node</returns>
+	/// <returns>Different of heights 
+	/// between right and left subtrees</returns>
 	short int BalanceFactor();
 
 	/// <summary>
