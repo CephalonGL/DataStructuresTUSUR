@@ -23,7 +23,7 @@ public:
 	/// </summary>
 	/// <param name="keyToSearch">Key to search</param>
 	/// <returns>Value</returns>
-	string keySearch(int keyToSearch);
+	string SearchByKey(int keyToSearch);
 
 	/// <summary>
 	/// Delete node by inserted key

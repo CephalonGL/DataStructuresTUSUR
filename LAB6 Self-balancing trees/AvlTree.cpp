@@ -22,7 +22,7 @@ AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 	return _GoBalance(currentNode);
 }
 
-string AvlTree::keySearch(int keyToSearch)
+string AvlTree::SearchByKey(int keyToSearch)
 {
 	AvlTreeNode* currentNode = _FindNodeByKey(keyToSearch);
 	return currentNode->_value;
