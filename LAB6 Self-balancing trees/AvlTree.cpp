@@ -13,7 +13,7 @@ void AvlTree::Insert(int keyToInsert, string valueToInsert)
 				currentNode->_height--;
 				currentNode = currentNode->_parent;
 			}
-			throw string("InsertError: there is already a sourceRoot with such key.");
+			throw exception("InsertError: there is already a sourceRoot with such key.");
 		}
 		currentNode->_height++;
 		if (currentNode->_key < keyToInsert)
@@ -30,32 +30,16 @@ void AvlTree::Insert(int keyToInsert, string valueToInsert)
 
 string AvlTree::GetValueByKey(int keyToSearch)
 {
-	try
-	{
-		AvlTreeNode* currentNode = _FindNodeByKey(keyToSearch);
-		return currentNode->_value;
-	}
-	catch (const string msg)
-	{
-		throw msg;
-		return "";
-	}
+	AvlTreeNode* currentNode = _FindNodeByKey(keyToSearch);
+	return currentNode->_value;
 }
 
 void AvlTree::DeleteByKey(int keyToDelete)
 {
-	try
-	{
-		AvlTreeNode* currentNode = _FindNodeByKey(keyToDelete);
-		AvlTreeNode* parentNode = currentNode->_parent;
-		delete currentNode;
-		_GoBalance(parentNode);
-	}
-	catch (const string msg)
-	{
-		throw msg;
-		return;
-	}
+	AvlTreeNode* currentNode = _FindNodeByKey(keyToDelete);
+	AvlTreeNode* parentNode = currentNode->_parent;
+	delete currentNode;
+	_GoBalance(parentNode);
 }
 
 AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
@@ -76,8 +60,7 @@ AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
 			return currentNode;
 		}
 	}
-	throw string("Error: there is no sourceRoot with such key.");
-	return nullptr;
+	throw exception("Error: there is no node with such key.");
 }
 
 AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
