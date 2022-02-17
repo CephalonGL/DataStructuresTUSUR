@@ -55,7 +55,7 @@ struct AvlTreeNode
 	/// <summary>
 	/// Calculate difference of heights between subtrees
 	/// </summary>
-	/// <returns>Different of heights 
+	/// <returns>Difference of heights 
 	/// between right and left subtrees</returns>
 	short int BalanceFactor();
 
