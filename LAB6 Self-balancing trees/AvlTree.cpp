@@ -9,14 +9,14 @@ AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 	{
 		currentNode = new AvlTreeNode(keyToInsert, valueToInsert);
 	}
-	if (keyToInsert > currentNode->_key)
+	if (keyToInsert < currentNode->_key)
 	{
-		Insert(currentNode->_rightSubtree, 
+		Insert(currentNode->_leftSubtree,
 			keyToInsert, valueToInsert);
 	}
 	else
 	{
-		Insert(currentNode->_leftSubtree,
+		Insert(currentNode->_rightSubtree,
 			keyToInsert, valueToInsert);
 	}
 	return _GoBalance(currentNode);
@@ -32,7 +32,11 @@ void AvlTree::DeleteByKey(int keyToDelete)
 	AvlTreeNode* nodeToDelete = _FindNodeByKey(keyToDelete);
 	AvlTreeNode* parentNode = nodeToDelete->_parent;
 	delete nodeToDelete;
-	_GoBalance(parentNode);
+	while (!parentNode)
+	{
+		_GoBalance(parentNode);
+		parentNode = parentNode->_parent;
+	}
 }
 
 AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
