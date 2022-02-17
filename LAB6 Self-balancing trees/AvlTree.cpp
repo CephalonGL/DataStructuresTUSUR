@@ -24,8 +24,7 @@ AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 
 string AvlTree::SearchByKey(int keyToSearch)
 {
-	AvlTreeNode* currentNode = _FindNodeByKey(keyToSearch);
-	return currentNode->_value;
+	return _FindNodeByKey(keyToSearch)->_value;
 }
 
 void AvlTree::DeleteByKey(int keyToDelete)
