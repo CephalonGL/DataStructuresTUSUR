@@ -85,9 +85,14 @@ void AvlTree::_GoBalance(AvlTreeNode* node)
 
 }
 
-AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* node)
+AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
 {
-
+	AvlTreeNode* newRoot = sourceRoot->_rightSubtree;
+	sourceRoot->_rightSubtree = newRoot->_leftSubtree;
+	newRoot->_leftSubtree = sourceRoot;
+	sourceRoot->FixHeight();
+	newRoot->FixHeight();
+	return newRoot;
 }
 
 AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
@@ -102,6 +107,7 @@ AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
 
 AvlTreeNode* AvlTree::_BigLeftRotation(AvlTreeNode* node)
 {
+
 }
 
 AvlTreeNode* AvlTree::_BigRightRotation(AvlTreeNode* node)
