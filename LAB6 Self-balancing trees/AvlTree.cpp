@@ -76,10 +76,11 @@ AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 	}
 	if (sourceRoot->BalanceFactor() == -2)
 	{
-		if (true)
+		if (sourceRoot->_leftSubtree->BalanceFactor() > 0)
 		{
-
+			sourceRoot = _SmallLeftRotation(sourceRoot);
 		}
+		sourceRoot = _SmallLeftRotation(sourceRoot);
 	}
 	return sourceRoot;
 }
