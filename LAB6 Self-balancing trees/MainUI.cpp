@@ -3,6 +3,7 @@
 #include <ctime>
 #include "AVLTree.h"
 #include "RBTree.h"
+#include "..\Console\Console.h"
 using namespace std;
 
 string SPLITTER_STRING = "-------------------------------------------------"

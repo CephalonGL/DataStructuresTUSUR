@@ -61,6 +61,5 @@ struct AvlTreeNode
 	/// <summary>
 	/// Fix height of node
 	/// </summary>
-	/// <param name="node">Node to fix height</param>
-	void FixHeight(AvlTreeNode* node);
+	void FixHeight();
 };
