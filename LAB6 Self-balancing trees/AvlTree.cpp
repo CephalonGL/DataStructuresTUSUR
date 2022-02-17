@@ -1,31 +1,25 @@
 ﻿#include "AvlTree.h"
 using namespace std;
 
-void AvlTree::Insert(int keyToInsert, string valueToInsert)
+AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
+							int keyToInsert,
+							string valueToInsert)
 {
-	AvlTreeNode* currentNode = &_root;
-	while (currentNode != nullptr)
+	if (!currentNode)
 	{
-		if (currentNode->_key == keyToInsert)
-		{
-			while (currentNode != &_root)
-			{
-				currentNode->_height--;
-				currentNode = currentNode->_parent;
-			}
-			throw exception("InsertError: there is already a sourceRoot with such key.");
-		}
-		currentNode->_height++;
-		if (currentNode->_key < keyToInsert)
-		{
-			currentNode = currentNode->_leftSubtree;
-		}
-		else
-		{
-			currentNode = currentNode->_rightSubtree;
-		}
+		currentNode = new AvlTreeNode(keyToInsert, valueToInsert);
 	}
-	_GoBalance(currentNode);
+	if (keyToInsert > currentNode->_key)
+	{
+		Insert(currentNode->_rightSubtree, 
+			keyToInsert, valueToInsert);
+	}
+	else
+	{
+		Insert(currentNode->_leftSubtree,
+			keyToInsert, valueToInsert);
+	}
+	return _GoBalance(currentNode);
 }
 
 string AvlTree::GetValueByKey(int keyToSearch)

@@ -14,7 +14,9 @@ public:
 	/// </summary>
 	/// <param name="keyToInsert">Key of new node</param>
 	/// <param name="valueToInsert">Value of new node</param>
-	void Insert(int keyToInsert, string valueToInsert);
+	AvlTreeNode* Insert(AvlTreeNode* currentNode,
+						int keyToInsert,
+						string valueToInsert);
 
 	/// <summary>
 	/// Get value by inserted key
