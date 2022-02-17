@@ -68,11 +68,18 @@ AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 	sourceRoot->FixHeight();
 	if (sourceRoot->BalanceFactor() == 2)
 	{
-
+		if (sourceRoot->_leftSubtree->BalanceFactor() < 0)
+		{
+			sourceRoot = _SmallRightRotation(sourceRoot);
+		}
+		sourceRoot = _SmallLeftRotation(sourceRoot);
 	}
 	if (sourceRoot->BalanceFactor() == -2)
 	{
+		if (true)
+		{
 
+		}
 	}
 	return sourceRoot;
 }
