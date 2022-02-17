@@ -80,9 +80,18 @@ AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
 	return nullptr;
 }
 
-void AvlTree::_GoBalance(AvlTreeNode* node)
+AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 {
+	sourceRoot->FixHeight();
+	if (sourceRoot->BalanceFactor() == 2)
+	{
 
+	}
+	if (sourceRoot->BalanceFactor() == -2)
+	{
+
+	}
+	return sourceRoot;
 }
 
 AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)

@@ -49,14 +49,14 @@ struct AvlTreeNode
 	/// </summary>
 	/// <param name="node">Node to get height from</param>
 	/// <returns>Height of node. If node doesn't exost, return 0</returns>
-	short int GetHeight(AvlTreeNode* node);
+	short int GetHeight();
 
 	/// <summary>
 	/// Set height of node depend on its subtrees
 	/// </summary>
 	/// <param name="node">Node to set height</param>
 	/// <returns>Height of node</returns>
-	short int BalanceFactor(AvlTreeNode* node);
+	short int BalanceFactor();
 
 	/// <summary>
 	/// Fix height of node

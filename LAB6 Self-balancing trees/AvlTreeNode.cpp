@@ -8,11 +8,11 @@ AvlTreeNode::AvlTreeNode(int key = 0, string value = "empty")
 	_value = value;
 }
 
-short int AvlTreeNode::GetHeight(AvlTreeNode* node)
+short int AvlTreeNode::GetHeight()
 {
-	if (node)
+	if (this)
 	{
-		return node->_height;
+		return _height;
 	}
 	else
 	{
@@ -20,9 +20,9 @@ short int AvlTreeNode::GetHeight(AvlTreeNode* node)
 	}
 }
 
-short int AvlTreeNode::BalanceFactor(AvlTreeNode* node)
+short int AvlTreeNode::BalanceFactor()
 {
-	return GetHeight(node->_rightSubtree) - GetHeight(node->_leftSubtree);
+	return GetHeight(_rightSubtree) - GetHeight(_leftSubtree);
 }
 
 void AvlTreeNode::FixHeight()

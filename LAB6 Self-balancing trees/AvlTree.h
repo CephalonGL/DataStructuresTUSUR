@@ -52,7 +52,7 @@ private:
 	/// Balances subtrees of node
 	/// </summary>
 	/// <param name="node">Node to balance which subtrees</param>
-	void _GoBalance(AvlTreeNode* node);
+	AvlTreeNode* _GoBalance(AvlTreeNode* node);
 
 	/// <summary>
 	/// Do small left rotation
