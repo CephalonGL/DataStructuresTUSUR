@@ -10,7 +10,7 @@ class AvlTree
 {
 public:
 	/// <summary>
-	/// Inserts new node
+	/// Inserts new node using recursive algorithm
 	/// </summary>
 	/// <param name="keyToInsert">Key of new node</param>
 	/// <param name="valueToInsert">Value of new node</param>
