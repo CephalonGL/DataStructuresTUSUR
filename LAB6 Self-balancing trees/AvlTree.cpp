@@ -1,61 +1,41 @@
 ﻿#include "AvlTree.h"
 using namespace std;
 
-void AvlTree::Insert(int keyToInsert, string valueToInsert)
+AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
+							int keyToInsert,
+							string valueToInsert)
 {
-	AvlTreeNode* currentNode = &_root;
-	while (currentNode != nullptr)
+	if (!currentNode)
 	{
-		if (currentNode->_key == keyToInsert)
-		{
-			while (currentNode != &_root)
-			{
-				currentNode->_height--;
-				currentNode = currentNode->_parent;
-			}
-			throw string("InsertError: there is already a node with such key.");
-		}
-		currentNode->_height++;
-		if (currentNode->_key < keyToInsert)
-		{
-			currentNode = currentNode->_leftSubtree;
-		}
-		else
-		{
-			currentNode = currentNode->_rightSubtree;
-		}
+		currentNode = new AvlTreeNode(keyToInsert, valueToInsert);
 	}
-	_GoBalance(currentNode);
+	if (keyToInsert < currentNode->_key)
+	{
+		Insert(currentNode->_leftSubtree,
+			keyToInsert, valueToInsert);
+	}
+	else
+	{
+		Insert(currentNode->_rightSubtree,
+			keyToInsert, valueToInsert);
+	}
+	return _GoBalance(currentNode);
 }
 
-string AvlTree::GetValueByKey(int keyToSearch)
+string AvlTree::SearchByKey(int keyToSearch)
 {
-	try
-	{
-		AvlTreeNode* currentNode = _FindNodeByKey(keyToSearch);
-		return currentNode->_value;
-	}
-	catch (const string msg)
-	{
-		throw msg;
-		return "";
-	}
+	return _FindNodeByKey(keyToSearch)->_value;
 }
 
 void AvlTree::DeleteByKey(int keyToDelete)
 {
-	try
+	AvlTreeNode* nodeToDelete = _FindNodeByKey(keyToDelete);
+	AvlTreeNode* parentNode = nodeToDelete->_parent;
+	delete nodeToDelete;
+	while (!parentNode)
 	{
-		AvlTreeNode* currentNode = _FindNodeByKey(keyToDelete);
-		AvlTreeNode* parentNode = currentNode->_parent;
-		delete currentNode;
-		currentNode = nullptr;
 		_GoBalance(parentNode);
-	}
-	catch (const string msg)
-	{
-		throw msg;
-		return;
+		parentNode = parentNode->_parent;
 	}
 }
 
@@ -77,27 +57,54 @@ AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
 			return currentNode;
 		}
 	}
-	throw string("Error: there is no node with such key.");
-	return nullptr;
+	throw exception("Error: there is no node with such key.");
 }
 
-void AvlTree::_GoBalance(AvlTreeNode* node)
+AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 {
-
+	sourceRoot->FixHeight();
+	if (sourceRoot->BalanceFactor() == 2)
+	{
+		if (sourceRoot->_leftSubtree->BalanceFactor() < 0)
+		{
+			sourceRoot = _SmallRightRotation(sourceRoot);
+		}
+		sourceRoot = _SmallLeftRotation(sourceRoot);
+	}
+	if (sourceRoot->BalanceFactor() == -2)
+	{
+		if (sourceRoot->_leftSubtree->BalanceFactor() > 0)
+		{
+			sourceRoot = _SmallLeftRotation(sourceRoot);
+		}
+		sourceRoot = _SmallLeftRotation(sourceRoot);
+	}
+	return sourceRoot;
 }
 
-AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* node)
+AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
 {
-
+	AvlTreeNode* newRoot = sourceRoot->_rightSubtree;
+	sourceRoot->_rightSubtree = newRoot->_leftSubtree;
+	newRoot->_leftSubtree = sourceRoot;
+	sourceRoot->FixHeight();
+	newRoot->FixHeight();
+	return newRoot;
 }
 
-AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* node)
+AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
 {
-
+	AvlTreeNode* newRoot = sourceRoot->_leftSubtree;
+	sourceRoot->_leftSubtree = newRoot->_rightSubtree;
+	newRoot->_rightSubtree = sourceRoot;
+	sourceRoot->FixHeight();
+	newRoot->FixHeight();
+	return newRoot;
 }
 
 AvlTreeNode* AvlTree::_BigLeftRotation(AvlTreeNode* node)
 {
+
 }
 
 AvlTreeNode* AvlTree::_BigRightRotation(AvlTreeNode* node)

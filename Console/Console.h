@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <exception>
 #include <iostream>
 using namespace std;
 
@@ -15,8 +16,8 @@ public:
 	/// Read value from console and check if it's int.
 	/// </summary>
 	/// <returns></returns>
-	int ReadInt();
+	static int ReadInt();
 
-	void Print(string message);
+	static void Print(string message);
 };
 
