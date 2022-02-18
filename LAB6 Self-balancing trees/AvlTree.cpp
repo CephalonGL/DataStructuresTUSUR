@@ -102,15 +102,6 @@ AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
 	return newRoot;
 }
 
-AvlTreeNode* AvlTree::_BigLeftRotation(AvlTreeNode* node)
-{
-
-}
-
-AvlTreeNode* AvlTree::_BigRightRotation(AvlTreeNode* node)
-{
-}
-
 AvlTree::AvlTree(int rootKey, string rootValue)
 {
 	_root._key = rootKey;

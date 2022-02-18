@@ -67,16 +67,4 @@ private:
 	/// </summary>
 	/// <returns>New root node</returns>
 	AvlTreeNode* _SmallRightRotation(AvlTreeNode* node);
-
-	/// <summary>
-	/// Do big left rotation
-	/// </summary>
-	/// <returns>New root node</returns>
-	AvlTreeNode* _BigLeftRotation(AvlTreeNode* node);
-
-	/// <summary>
-	/// Do big right rotation
-	/// </summary>
-	/// <returns>New root node</returns>
-	AvlTreeNode* _BigRightRotation(AvlTreeNode* node);
 };
