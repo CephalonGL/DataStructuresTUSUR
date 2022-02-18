@@ -48,7 +48,7 @@ struct AvlTreeNode
 	/// Getter function for _height
 	/// </summary>
 	/// <returns>
-	/// Height of node. If node doesn't exost, return 0
+	/// Height of node. If node don't exist, return 0
 	/// </returns>
 	short int GetHeight();
 
