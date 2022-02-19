@@ -184,6 +184,7 @@ void AvlTreeUI()
 		{
 			case Add:
 			{
+				Console::ReadInt("Введите ключ:");
 				break;
 			}
 			case Delete:

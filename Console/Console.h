@@ -15,9 +15,14 @@ public:
 	/// <summary>
 	/// Read value from console and check if it's int.
 	/// </summary>
-	/// <returns></returns>
-	static int ReadInt();
+	/// <param name="message">Message to print before reading</param>
+	/// <returns>Int input value from console</returns>
+	static int ReadInt(string message = "");
 
+	/// <summary>
+	/// Print message to console
+	/// </summary>
+	/// <param name="message">Message to print</param>
 	static void Print(string message);
 };
 

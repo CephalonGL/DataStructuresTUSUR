@@ -8,6 +8,15 @@ using namespace std;
 /// </summary>
 class RbTreeNode
 {
+public:
+	RbTreeNode(int key, string value)
+	{
+		_key = key;
+		_value = value;
+	}
+
+
+
 private:
 	/// <summary>
 	/// Key of node
@@ -22,10 +31,11 @@ private:
 	/// <summary>
 	/// Flag for color of node
 	/// </summary>
-	bool IsBlack;
+	bool _isBlack;
 
-
-public:
-
+	/// <summary>
+	/// Height of node. Counter of black nodes up to NILL
+	/// </summary>
+	unsigned int _heightBlack;
 };
 
