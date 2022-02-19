@@ -104,6 +104,11 @@ AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
 
 AvlTree::AvlTree(int rootKey, string rootValue)
 {
-	_root._key = rootKey;
-	_root._value = rootValue;
+	_root->_key = rootKey;
+	_root->_value = rootValue;
+}
+
+const AvlTreeNode* AvlTree::GetRoot()
+{
+	return _root;
 }

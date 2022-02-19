@@ -37,11 +37,17 @@ public:
 	/// <param name="rootKey">Key of root node</param>
 	/// <param name="rootValue">Value of root node</param>
 	AvlTree(int rootKey, string rootValue);
+
+	/// <summary>
+	/// Getter for root node
+	/// </summary>
+	/// <returns>Root node of tree</returns>
+	const AvlTreeNode* GetRoot();
 private:
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
-	AvlTreeNode _root;
+	AvlTreeNode* _root = nullptr;
 
 	/// <summary>
 	/// Find node by the key
