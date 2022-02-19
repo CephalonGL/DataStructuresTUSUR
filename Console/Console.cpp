@@ -1,7 +1,9 @@
 #include "Console.h"
 
-int Console::ReadInt()
+int Console::ReadInt(string message = "")
 {
+
+    Print(message);
     int inputValue;
     cin >> inputValue;
     if (cin.fail())
@@ -16,5 +18,9 @@ int Console::ReadInt()
 
 void Console::Print(string message)
 {
-    cout << message;
+	if (message == "")
+	{
+		return;
+	}
+    cout << message << endl;
 }
