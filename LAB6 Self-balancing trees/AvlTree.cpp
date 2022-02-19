@@ -108,7 +108,7 @@ AvlTree::AvlTree(int rootKey, string rootValue)
 	_root->_value = rootValue;
 }
 
-const AvlTreeNode* AvlTree::GetRoot()
+AvlTreeNode* AvlTree::GetRoot()
 {
 	return _root;
 }

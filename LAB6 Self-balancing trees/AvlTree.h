@@ -42,7 +42,7 @@ public:
 	/// Getter for root node
 	/// </summary>
 	/// <returns>Root node of tree</returns>
-	const AvlTreeNode* GetRoot();
+	AvlTreeNode* GetRoot();
 private:
 	/// <summary>
 	/// Pointer to root node
