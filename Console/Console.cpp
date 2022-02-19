@@ -1,6 +1,6 @@
 #include "Console.h"
 
-int Console::ReadInt(string message = "")
+int Console::ReadInt(string message)
 {
 
     Print(message);
