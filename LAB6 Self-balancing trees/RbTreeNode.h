@@ -4,18 +4,21 @@
 using namespace std;
 
 /// <summary>
-/// 
+/// Node for red black tree the data structure
 /// </summary>
 class RbTreeNode
 {
 public:
+	/// <summary>
+	/// Initialize key and value of node
+	/// </summary>
+	/// <param name="key">Key of node</param>
+	/// <param name="value">Value of node</param>
 	RbTreeNode(int key, string value)
 	{
 		_key = key;
 		_value = value;
 	}
-
-
 
 private:
 	/// <summary>
