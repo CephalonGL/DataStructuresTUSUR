@@ -16,6 +16,14 @@ int Console::ReadInt(string message)
     return inputValue;
 }
 
+string Console::ReadString(string message)
+{
+    Print(message);
+    string inputValue;
+    cin >> inputValue;
+    return inputValue;
+}
+
 void Console::Print(string message)
 {
 	if (message == "")
