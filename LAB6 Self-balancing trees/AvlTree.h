@@ -37,11 +37,17 @@ public:
 	/// <param name="rootKey">Key of root node</param>
 	/// <param name="rootValue">Value of root node</param>
 	AvlTree(int rootKey, string rootValue);
+
+	/// <summary>
+	/// Getter for root node
+	/// </summary>
+	/// <returns>Root node of tree</returns>
+	AvlTreeNode* GetRoot();
 private:
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
-	AvlTreeNode _root;
+	AvlTreeNode* _root = nullptr;
 
 	/// <summary>
 	/// Find node by the key
@@ -67,16 +73,4 @@ private:
 	/// </summary>
 	/// <returns>New root node</returns>
 	AvlTreeNode* _SmallRightRotation(AvlTreeNode* node);
-
-	/// <summary>
-	/// Do big left rotation
-	/// </summary>
-	/// <returns>New root node</returns>
-	AvlTreeNode* _BigLeftRotation(AvlTreeNode* node);
-
-	/// <summary>
-	/// Do big right rotation
-	/// </summary>
-	/// <returns>New root node</returns>
-	AvlTreeNode* _BigRightRotation(AvlTreeNode* node);
 };

@@ -6,7 +6,8 @@
 #include "..\Console\Console.h"
 using namespace std;
 
-string SPLITTER_STRING = "-------------------------------------------------"
+string SPLITTER_STRING = "--------------------------"
+"-----------------------"
 "-----------------------";
 
 /// <summary>
@@ -37,7 +38,8 @@ int main()
 	cout << "Вас приветствует программа для работы с " <<
 		"самобалансирующимися деревьями" << endl;
 	cout << SPLITTER_STRING << endl;
-	cout << "Для выбора структуры данных, введите её порядковый номер:" << endl;
+	cout << "Для выбора структуры данных, введите её"
+		" порядковый номер:" << endl;
 	cout << "\t1\tКрасно-чёрное дерево." << endl;
 	cout << "\t2\tАВЛ-дерево;" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
@@ -61,7 +63,8 @@ int main()
 			}
 			case Help:
 			{
-				cout << "Для выбора структуры данных, ввежите её порядковый номер:"
+				cout << "Для выбора структуры данных, ввежите её"
+					" порядковый номер:"
 					<< endl;
 				cout << "\t1\tКрасно-чёрное дерево." << endl;
 				cout << "\t2\tАВЛ-дерево;" << endl;
@@ -74,7 +77,8 @@ int main()
 			default:
 			{
 				cout << endl;
-				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Неверный код операции. Для вызова справки,"
+					" введите 100." << endl;
 				cout << "Повторите ввод: ";
 				break;
 			}
@@ -106,6 +110,7 @@ void RedBlackTreeUI()
 	cout << "\t100\tСправка" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	cout << SPLITTER_STRING << endl;
+	RbTree* tree = nullptr;
 	int operationCode = 1;
 	while (operationCode)
 	{
@@ -116,20 +121,58 @@ void RedBlackTreeUI()
 		{
 			case Add:
 			{
-				break;
+				try
+				{
+					int key;
+					Console::ReadInt("Введите ключ:");
+					string value;
+					value = Console::ReadString(
+						"Введите значение:");
+					tree->Insert(tree->GetRoot(),
+						key, value);
+					break;
+				}
+				catch (const exception& error)
+				{
+					error.what();
+				}
 			}
 			case Delete:
 			{
-				break;
+				while (true)
+				{
+					try
+					{
+						tree->DeleteByKey(Console::ReadInt());
+						Console::Print("Узел успешно удалён.");
+						break;
+					}
+					catch (const exception& error)
+					{
+						error.what();
+					}
+				}
 			}
 			case SearchByKey:
 			{
-				break;
+				try
+				{
+					string foundValue;
+					foundValue =
+						tree->SearchByKey(Console::ReadInt());
+					Console::Print(foundValue);
+					break;
+				}
+				catch (const exception& error)
+				{
+					error.what();
+				}
 			}
 			case Help:
 			{
 				cout << SPLITTER_STRING << endl;
-				cout << "Для выбора команды, введите её порядковый номер:" << endl;
+				cout << "Для выбора команды, введите её порядковый"
+					" номер:" << endl;
 				cout << "\t1\tВставка элемента" << endl;
 				cout << "\t2\tУдаление элемента" << endl;
 				cout << "\t3\tПоиск элемента по ключу" << endl;
@@ -143,7 +186,8 @@ void RedBlackTreeUI()
 			{
 				cout << endl;
 				cout << SPLITTER_STRING << endl;
-				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Неверный код операции. Для вызова справки,"
+					" введите 100." << endl;
 				cout << "Повторите ввод: ";
 				break;
 			}
@@ -174,6 +218,7 @@ void AvlTreeUI()
 	cout << "\t100\tСправка" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	cout << SPLITTER_STRING << endl;
+	AvlTree* tree = nullptr;
 	int operationCode = 1;
 	while (operationCode)
 	{
@@ -184,20 +229,64 @@ void AvlTreeUI()
 		{
 			case Add:
 			{
-				break;
+				while (true)
+				{
+					try
+					{
+						int key;
+						Console::ReadInt("Введите ключ:");
+						string value;
+						value = Console::ReadString(
+							"Введите значение:");
+						tree->Insert(tree->GetRoot(),
+							key, value);
+						break;
+					}
+					catch (const exception& error)
+					{
+						error.what();
+					}
+				}
 			}
 			case Delete:
 			{
-				break;
+				while (true)
+				{
+					try
+					{
+						tree->DeleteByKey(Console::ReadInt());
+						Console::Print("Узел успешно удалён.");
+						break;
+					}
+					catch (const exception& error)
+					{
+						error.what();
+					}
+				}
 			}
 			case SearchByKey:
 			{
-				break;
+				while (true)
+				{
+					try
+					{
+						string foundValue;
+						foundValue =
+							tree->SearchByKey(Console::ReadInt());
+						Console::Print(foundValue);
+						break;
+					}
+					catch (const exception& error)
+					{
+						error.what();
+					}
+				}
 			}
 			case Help:
 			{
 				cout << SPLITTER_STRING << endl;
-				cout << "Для выбора команды, введите её порядковый номер:" << endl;
+				cout << "Для выбора команды, введите её "
+					"порядковый номер:" << endl;
 				cout << "\t1\tВставка элемента" << endl;
 				cout << "\t2\tУдаление элемента" << endl;
 				cout << "\t3\tПоиск элемента по ключу" << endl;
@@ -211,7 +300,8 @@ void AvlTreeUI()
 			{
 				cout << endl;
 				cout << SPLITTER_STRING << endl;
-				cout << "Неверный код операции. Для вызова справки, введите 100." << endl;
+				cout << "Неверный код операции. Для вызова справки,"
+					" введите 100." << endl;
 				cout << "Повторите ввод: ";
 				break;
 			}
