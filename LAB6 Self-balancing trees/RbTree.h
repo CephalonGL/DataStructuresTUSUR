@@ -27,17 +27,43 @@ public:
 						string valueToInsert);
 
 	/// <summary>
+	/// Delete node by inserted key
+	/// </summary>
+	/// <param name="keyToDelete">Key of node to delete</param>
+	void DeleteByKey(int keyToDelete);
+
+	/// <summary>
 	/// Get value by inserted key
 	/// </summary>
 	/// <param name="keyToSearch">Key to search</param>
 	/// <returns>Value</returns>
 	string SearchByKey(int keyToSearch);
+	
+	/// <summary>
+	/// Fix balancing of tree after insertion new node
+	/// </summary>
+	/// <param name="insertedNode">Node to fix balance</param>
+	void GoBalanceAfterInsertion(RbTreeNode* insertedNode);
 
 	/// <summary>
-	/// Delete node by inserted key
+	/// Fix balancing of tree after deletion new node
 	/// </summary>
-	/// <param name="keyToDelete">Key of node to delete</param>
-	void DeleteByKey(int keyToDelete);
+	/// <param name="nodeToBalance">Node to fix balance</param>
+	void GoBalanceAfterDeletion(RbTreeNode* nodeToBalance);
+
+	/// <summary>
+	/// Do small left rotation
+	/// </summary>
+	/// <returns>New root node</returns>
+	RbTreeNode* _SmallLeftRotation(RbTreeNode* node);
+
+	/// <summary>
+	/// Do small right rotation
+	/// </summary>
+	/// <returns>New root node</returns>
+	RbTreeNode* _SmallRightRotation(RbTreeNode* node);
+
+
 
 	/// <summary>
 	/// Getter for root node
@@ -48,7 +74,12 @@ private:
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
-	RbTreeNode* _root;
+	RbTreeNode* _root = nullptr;
+
+	/// <summary>
+	/// Fictional node for leafs
+	/// </summary>
+	RbTreeNode* _nil;
 
 };
 
