@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include <string>
-#include <ctime>
 #include "AVLTree.h"
 #include "RBTree.h"
 #include "..\Console\Console.h"
+#include "..\Console\Console.cpp"
 using namespace std;
 
 string SPLITTER_STRING = "--------------------------"
