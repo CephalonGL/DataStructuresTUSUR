@@ -53,6 +53,23 @@ void RbTree::DeleteByKey(int keyToDelete)
 
 string RbTree::SearchByKey(int keyToSearch)
 {
+	RbTreeNode* currentNode = _root;
+	while (currentNode!=_nil)
+	{
+		if (keyToSearch < currentNode->Key)
+		{
+			currentNode = currentNode->LeftSubtree;
+		}
+		else if (keyToSearch > currentNode->Key)
+		{
+			currentNode = currentNode->RightSubtree;
+		}
+		else
+		{
+			return currentNode->Value;
+		}
+	}
+	throw exception("Error: there is no node with such key");
 }
 
 void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
