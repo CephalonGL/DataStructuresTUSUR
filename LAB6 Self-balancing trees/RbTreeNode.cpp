@@ -13,6 +13,7 @@ RbTreeNode::RbTreeNode(int key, string value, RbTreeNode* nil)
 
 int RbTreeNode::FixHeightBlack(RbTreeNode* nodeToFixHeight)
 {
+	return 0;
 }
 
 void RbTreeNode::SetRed()

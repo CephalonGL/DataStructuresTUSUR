@@ -123,8 +123,8 @@ void RedBlackTreeUI()
 			{
 				try
 				{
-					int key;
-					Console::ReadInt("Введите ключ:");
+					int key =
+						Console::ReadInt("Введите ключ:");
 					string value;
 					value = Console::ReadString(
 						"Введите значение:");
@@ -233,8 +233,8 @@ void AvlTreeUI()
 				{
 					try
 					{
-						int key;
-						Console::ReadInt("Введите ключ:");
+						int key =
+							Console::ReadInt("Введите ключ:");
 						string value;
 						value = Console::ReadString(
 							"Введите значение:");

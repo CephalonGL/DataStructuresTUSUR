@@ -44,6 +44,7 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 		newNode->ParentNode = parentNode;
 		GoBalanceAfterInsertion(newNode);
 	}
+	return currentNode;
 }
 
 void RbTree::DeleteByKey(int keyToDelete)
