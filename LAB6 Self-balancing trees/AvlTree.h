@@ -36,7 +36,7 @@ public:
 	/// </summary>
 	/// <param name="rootKey">Key of root node</param>
 	/// <param name="rootValue">Value of root node</param>
-	AvlTree(int rootKey, string rootValue);
+	AvlTree();
 
 	/// <summary>
 	/// Getter for root node
