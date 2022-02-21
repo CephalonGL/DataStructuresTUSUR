@@ -3,7 +3,7 @@
 RbTree::RbTree(int rootKey, string rootValue)
 {
 	_nil = new RbTreeNode(0, "nil", nullptr);
-	_nil->Set;
+	_nil->SetBlack();
 }
 
 RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
