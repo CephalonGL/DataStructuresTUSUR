@@ -48,13 +48,128 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 
 void RbTree::DeleteByKey(int keyToDelete)
 {
-
+	if (_root)
+	{
+		throw exception("Error: root node is empty");
+	}
+	RbTreeNode* currentNode = _root;
+	while (currentNode != _nil && keyToDelete != currentNode->Key)
+	{
+		if (keyToDelete < currentNode->Key)
+		{
+			currentNode = currentNode->LeftSubtree;
+		}
+		else
+		{
+			currentNode = currentNode->RightSubtree;
+		}
+	}
+	if (currentNode->LeftSubtree == _nil
+		&&
+		currentNode->RightSubtree == _nil)
+	{
+		if (currentNode == _root)
+		{
+			_root = _nil;
+		}
+		else
+		{
+			RbTreeNode* parent = currentNode->ParentNode;
+			if (currentNode == parent->LeftSubtree)
+			{
+				parent->LeftSubtree = _nil;
+				delete currentNode;
+			}
+			else
+			{
+				parent->RightSubtree = _nil;
+				delete currentNode;
+			}
+			return;
+		}
+	}
+	RbTreeNode* nodeWithNextKey = currentNode->RightSubtree;
+	if (currentNode->LeftSubtree != _nil
+		&&
+		currentNode->RightSubtree == _nil)
+	{
+		RbTreeNode* parent = currentNode->ParentNode;
+		if (currentNode == parent->LeftSubtree)
+		{
+			parent->LeftSubtree = currentNode->LeftSubtree;
+			delete currentNode->LeftSubtree;
+		}
+		else
+		{
+			parent->RightSubtree = currentNode->LeftSubtree;
+			delete currentNode->LeftSubtree;
+		}
+	}
+	else if (currentNode->RightSubtree != _nil
+		&&
+		currentNode->LeftSubtree == _nil)
+	{
+		RbTreeNode* parent = currentNode->ParentNode;
+		if (currentNode == parent->LeftSubtree)
+		{
+			parent->LeftSubtree = currentNode->RightSubtree;
+			delete currentNode->RightSubtree;
+		}
+		else
+		{
+			parent->RightSubtree = currentNode->RightSubtree;
+			delete currentNode->RightSubtree;
+		}
+	}
+	else
+	{
+		while (nodeWithNextKey->LeftSubtree != _nil)
+		{
+			nodeWithNextKey = nodeWithNextKey->LeftSubtree;
+		}
+		if (nodeWithNextKey->RightSubtree != _nil)
+		{
+			nodeWithNextKey->RightSubtree->ParentNode =
+				nodeWithNextKey->ParentNode;
+		}
+		if (nodeWithNextKey == _root)
+		{
+			_root = nodeWithNextKey->RightSubtree;
+		}
+		else
+		{
+			RbTreeNode* parent = currentNode->ParentNode;
+			if (currentNode == parent->LeftSubtree)
+			{
+				parent->LeftSubtree = nodeWithNextKey;
+			}
+			else
+			{
+				parent->RightSubtree = nodeWithNextKey;
+			}
+		}
+	}
+	if (nodeWithNextKey != currentNode)
+	{
+		if (nodeWithNextKey->IsRed())
+		{
+			currentNode->SetRed();
+		}
+		else
+		{
+			currentNode->SetBlack();
+		}
+	}
+	if (!nodeWithNextKey->IsRed())
+	{
+		GoBalanceAfterDeletion(currentNode);
+	}
 }
 
 string RbTree::SearchByKey(int keyToSearch)
 {
 	RbTreeNode* currentNode = _root;
-	while (currentNode!=_nil)
+	while (currentNode != _nil)
 	{
 		if (keyToSearch < currentNode->Key)
 		{
@@ -102,19 +217,20 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 				if (parent->RightSubtree == nodeToBalance)
 				{
 					nodeToBalance = parent;
-					_SmallLeftRotation(nodeToBalance);
+					nodeToBalance = _SmallLeftRotation(nodeToBalance);
 					//TODO: to method
 					parent = nodeToBalance->ParentNode;
 				}
 				parent->SetBlack();
 				grandfather->SetRed();
-				_SmallRightRotation(grandfather);
+				nodeToBalance->ParentNode->ParentNode =
+					_SmallRightRotation(grandfather);
 			}
 		}
 		else
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
-			if (uncle!= _nil && uncle->IsRed())
+			if (uncle != _nil && uncle->IsRed())
 			{
 				parent->SetBlack();
 				uncle->SetBlack();
@@ -129,14 +245,15 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 				if (nodeToBalance == parent->LeftSubtree)
 				{
 					nodeToBalance = parent;
-					_SmallRightRotation(nodeToBalance);
+					nodeToBalance = _SmallRightRotation(nodeToBalance);
 					//TODO: to method
 					parent = nodeToBalance->ParentNode;
 					grandfather = parent->ParentNode;
 				}
 				parent->SetBlack();
 				grandfather->SetRed();
-				_SmallLeftRotation(grandfather);
+				nodeToBalance->ParentNode->ParentNode =
+					_SmallLeftRotation(grandfather);
 			}
 		}
 	}
@@ -145,6 +262,61 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 
 void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 {
+	RbTreeNode* currentNode = nodeToBalance;
+	while (currentNode != _root
+		&&
+		!currentNode->IsRed())
+	{
+		RbTreeNode* parent = currentNode;
+		if (currentNode == parent->LeftSubtree)
+		{
+			RbTreeNode* brother = parent->RightSubtree;
+			if (brother->IsRed())
+			{
+				brother->SetBlack();
+				parent->SetRed();
+				currentNode->ParentNode =
+					_SmallLeftRotation(parent);
+			}
+			if (brother->LeftSubtree
+				&&
+				brother->LeftSubtree
+				&&
+				!brother->LeftSubtree->IsRed()
+				&&
+				!brother->RightSubtree->IsRed())
+			{
+				brother->SetRed();
+			}
+			else
+			{
+				if (brother->RightSubtree
+					&&
+					!brother->RightSubtree->IsRed())
+				{
+					brother->LeftSubtree->SetBlack();
+					brother->SetRed();
+					currentNode->ParentNode->RightSubtree =
+						_SmallRightRotation(brother);
+				}
+				if (parent->IsRed())
+				{
+					brother->SetRed();
+				}
+				else
+				{
+					brother->SetBlack();
+				}
+				parent->SetBlack();
+				brother->RightSubtree->SetBlack();
+				currentNode->ParentNode =
+					_SmallLeftRotation(parent);
+				currentNode = _root;
+			}
+		}
+	}
+	currentNode->SetBlack();
+	_root->SetBlack();
 }
 
 RbTreeNode* RbTree::_SmallLeftRotation(RbTreeNode* sourceRoot)
@@ -152,8 +324,14 @@ RbTreeNode* RbTree::_SmallLeftRotation(RbTreeNode* sourceRoot)
 	RbTreeNode* newRoot = sourceRoot->RightSubtree;
 	sourceRoot->RightSubtree = newRoot->LeftSubtree;
 	newRoot->LeftSubtree = sourceRoot;
-	sourceRoot->FixHeightBlack();
-	newRoot->FixHeightBlack();
+	if (sourceRoot->IsRed())
+	{
+		newRoot->SetRed();
+	}
+	else
+	{
+		newRoot->SetBlack();
+	}
 	return newRoot;
 }
 
@@ -162,8 +340,14 @@ RbTreeNode* RbTree::_SmallRightRotation(RbTreeNode* sourceRoot)
 	RbTreeNode* newRoot = sourceRoot->LeftSubtree;
 	sourceRoot->LeftSubtree = newRoot->RightSubtree;
 	newRoot->RightSubtree = sourceRoot;
-	sourceRoot->FixHeightBlack();
-	newRoot->FixHeightBlack();
+	if (sourceRoot->IsRed())
+	{
+		newRoot->SetRed();
+	}
+	else
+	{
+		newRoot->SetBlack();
+	}
 	return newRoot;
 }
 
