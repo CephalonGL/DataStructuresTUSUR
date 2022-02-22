@@ -43,7 +43,6 @@ void List::RemoveNode(int indexOfRemovableNode)
 	}
 	else if (indexOfRemovableNode == 0)
 	{
-		//TODO: RSDN +
 		Node* currentNode = _head;
 		currentNode->Next->Previous = nullptr;
 		_head = currentNode->Next;
@@ -147,11 +146,11 @@ void List::PushBeforeNode(int indexNodeToPushBefore, int valueToPush)
 void List::Sort()
 {
 	Node* currentNode = _head;
-	//TODO: +
 	for (int i = 0; i < _length-1; i++)
 	{
 		for (int j = 0; j < _length-1; j++)
 		{
+			//TODO:
 			int tmp;
 			if (currentNode->Value > currentNode->Next->Value)
 			{

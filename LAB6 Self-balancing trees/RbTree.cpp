@@ -280,12 +280,9 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 					_SmallLeftRotation(parent);
 			}
 			if (brother->LeftSubtree
-				&&
-				brother->LeftSubtree
-				&&
-				!brother->LeftSubtree->IsRed()
-				&&
-				!brother->RightSubtree->IsRed())
+				&& brother->LeftSubtree
+				&& !brother->LeftSubtree->IsRed()
+				&& !brother->RightSubtree->IsRed())
 			{
 				brother->SetRed();
 			}

@@ -17,7 +17,7 @@ public:
 	/// <param name="currentNode">Node to insert after</param>
 	/// <param name="keyToInsert">Key of new node</param>
 	/// <param name="valueToInsert">Value of new node</param>
-	/// <param name="previousNode">Value of node before new one</param>
+	/// <param name="parentNode">Value of node before new one</param>
 	/// <returns>Balanced tree with new node</returns>
 	AvlTreeNode* Insert(AvlTreeNode* currentNode,
 						int keyToInsert,
@@ -40,8 +40,6 @@ public:
 	/// <summary>
 	/// Initialize a tree
 	/// </summary>
-	/// <param name="rootKey">Key of root node</param>
-	/// <param name="rootValue">Value of root node</param>
 	AvlTree();
 
 	/// <summary>

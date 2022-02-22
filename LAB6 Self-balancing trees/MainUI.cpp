@@ -4,6 +4,7 @@
 #include "RBTree.h"
 #include "..\Console\Console.h"
 #include "..\Console\Console.cpp"
+
 using namespace std;
 
 string SPLITTER_STRING = "--------------------------"
@@ -52,7 +53,7 @@ int main()
 		Avl = 2,
 		Help = 100,
 	};
-	setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "ru-RU");
 	cout << SPLITTER_STRING << endl;
 	cout << "Вас приветствует программа для работы с " <<
 		"самобалансирующимися деревьями" << endl;
@@ -178,8 +179,7 @@ void RedBlackTreeUI()
 			{
 				try
 				{
-					string foundValue;
-					foundValue =
+					string foundValue =
 						tree->SearchByKey(Console::ReadInt());
 					Console::Print(foundValue);
 					break;
@@ -230,7 +230,7 @@ void AvlTreeUI()
 		Exit = 0,
 		Help = 100,
 	};
-	setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "ru-RU");
 	cout << SPLITTER_STRING << endl;
 	cout << "Для выбора команды, введите её порядковый номер:" << endl;
 	cout << "\t1\tВставка элемента" << endl;
