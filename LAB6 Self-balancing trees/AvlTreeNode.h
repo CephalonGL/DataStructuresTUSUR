@@ -10,32 +10,32 @@ struct AvlTreeNode
 	/// <summary>
 	/// Key of node
 	/// </summary>
-	int _key = 0;
+	int Key = 0;
 
 	/// <summary>
 	/// Value of node
 	/// </summary>
-	string _value = "";
+	string Value = "";
 
 	/// <summary>
 	/// Pointer to parent node
 	/// </summary>
-	AvlTreeNode* _parent = nullptr;
+	AvlTreeNode* Parent = nullptr;
 
 	/// <summary>
 	/// Pointer to left node
 	/// </summary>
-	AvlTreeNode* _leftSubtree = nullptr;
+	AvlTreeNode* LeftSubtree = nullptr;
 
 	/// <summary>
 	/// Pointer to right node
 	/// </summary>
-	AvlTreeNode* _rightSubtree = nullptr;
+	AvlTreeNode* RightSubtree = nullptr;
 
 	/// <summary>
 	/// Height difference between left and right subtrees
 	/// </summary>
-	short int _height = 1;
+	short int Height = 1;
 
 	/// <summary>
 	/// Create node with inserted key and value
@@ -45,7 +45,7 @@ struct AvlTreeNode
 	AvlTreeNode(int key = 0, string value = "empty");
 
 	/// <summary>
-	/// Getter function for _height
+	/// Getter function for Height
 	/// </summary>
 	/// <returns>
 	/// Height of node. If node don't exist, return 0

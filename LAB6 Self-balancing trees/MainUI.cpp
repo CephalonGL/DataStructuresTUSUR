@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include <string>
-#include <ctime>
 #include "AVLTree.h"
 #include "RBTree.h"
 #include "..\Console\Console.h"
+#include "..\Console\Console.cpp"
 using namespace std;
 
 string SPLITTER_STRING = "--------------------------"
@@ -19,6 +19,25 @@ void RedBlackTreeUI();
 /// Console user interface for Avl-tree
 /// </summary>
 void AvlTreeUI();
+
+/// <summary>
+/// Print tree to console
+/// </summary>
+/// <param name="currentNode">Root of tree</param>
+/// <param name="nil">Nil node of that tree</param>
+/// <param name="tabCount">Counter of tabs to 
+/// print before tree</param>
+void PrintTree(RbTreeNode* currentNode, 
+				RbTreeNode* nil,
+				int tabCount = 0);
+
+/// <summary>
+/// Print tree to console
+/// </summary>
+/// <param name="currentNode">Root of tree</param>
+/// <param name="tabCount">Counter of tabs to 
+/// print before tree</param>
+void PrintTree(AvlTreeNode* currentNode, int tabCount = 0);
 
 int main()
 {
@@ -110,7 +129,7 @@ void RedBlackTreeUI()
 	cout << "\t100\tСправка" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	cout << SPLITTER_STRING << endl;
-	RbTree* tree = nullptr;
+	RbTree* tree = new RbTree;
 	int operationCode = 1;
 	while (operationCode)
 	{
@@ -123,13 +142,14 @@ void RedBlackTreeUI()
 			{
 				try
 				{
-					int key;
-					Console::ReadInt("Введите ключ:");
+					int key =
+						Console::ReadInt("Введите ключ:");
 					string value;
 					value = Console::ReadString(
 						"Введите значение:");
 					tree->Insert(tree->GetRoot(),
 						key, value);
+					PrintTree(tree->GetRoot(), tree->GetNil());
 					break;
 				}
 				catch (const exception& error)
@@ -145,6 +165,7 @@ void RedBlackTreeUI()
 					{
 						tree->DeleteByKey(Console::ReadInt());
 						Console::Print("Узел успешно удалён.");
+						PrintTree(tree->GetRoot(), tree->GetNil());
 						break;
 					}
 					catch (const exception& error)
@@ -218,13 +239,12 @@ void AvlTreeUI()
 	cout << "\t100\tСправка" << endl;
 	cout << "Для выхода из программы, введите 0." << endl;
 	cout << SPLITTER_STRING << endl;
-	AvlTree* tree = nullptr;
+	AvlTree* tree = new AvlTree;
 	int operationCode = 1;
 	while (operationCode)
 	{
-		cout << SPLITTER_STRING << endl;
-		cout << "Введите код операции: ";
-		cin >> operationCode;
+		Console::Print(SPLITTER_STRING);
+		operationCode = Console::ReadInt("Введите код операции: ");
 		switch (operationCode)
 		{
 			case Add:
@@ -233,20 +253,22 @@ void AvlTreeUI()
 				{
 					try
 					{
-						int key;
-						Console::ReadInt("Введите ключ:");
-						string value;
-						value = Console::ReadString(
-							"Введите значение:");
+						int key = 
+							Console::ReadInt("Введите ключ:");
+						string value = 
+							Console::ReadString("Введите значение:");
 						tree->Insert(tree->GetRoot(),
 							key, value);
+						PrintTree(tree->GetRoot());
 						break;
 					}
 					catch (const exception& error)
 					{
 						error.what();
+						break;
 					}
 				}
+				break;
 			}
 			case Delete:
 			{
@@ -256,6 +278,7 @@ void AvlTreeUI()
 					{
 						tree->DeleteByKey(Console::ReadInt());
 						Console::Print("Узел успешно удалён.");
+						PrintTree(tree->GetRoot());
 						break;
 					}
 					catch (const exception& error)
@@ -263,6 +286,7 @@ void AvlTreeUI()
 						error.what();
 					}
 				}
+				break;
 			}
 			case SearchByKey:
 			{
@@ -281,6 +305,7 @@ void AvlTreeUI()
 						error.what();
 					}
 				}
+				break;
 			}
 			case Help:
 			{
@@ -308,4 +333,84 @@ void AvlTreeUI()
 		}
 	}
 	return;
+}
+
+void PrintTree(RbTreeNode* currentNode, 
+				RbTreeNode* nil, 
+				int tabCount)
+{
+	if (currentNode != nullptr)
+	{
+		PrintTree(currentNode->RightSubtree, nil,  tabCount + 1);
+		for (int i = 0; i < tabCount; i++)
+		{
+			cout << "\t";
+		}
+		cout << "(" << currentNode->Key << "; "
+			<< currentNode->Value << ")";
+		if (currentNode->LeftSubtree != nil
+			&&
+			currentNode->RightSubtree != nil)
+		{
+			cout << "|\n";
+		}
+		if (currentNode->LeftSubtree == nil
+			&&
+			currentNode->RightSubtree != nil)
+		{
+			cout << "/\n";
+		}
+		if (currentNode->LeftSubtree != nil
+			&&
+			currentNode->RightSubtree == nil)
+		{
+			cout << "\\\n";
+		}
+		if (currentNode->LeftSubtree == nil
+			&&
+			currentNode->RightSubtree == nil)
+		{
+			cout << "\n";
+		}
+		PrintTree(currentNode->LeftSubtree, nil, tabCount + 1);
+	}
+}
+
+void PrintTree(AvlTreeNode* currentNode, int tabCount)
+{
+	if (currentNode != nullptr)
+	{
+		PrintTree(currentNode->RightSubtree, tabCount + 1);
+		for (int i = 0; i < tabCount; i++)
+		{
+			cout << "\t";
+		}
+		cout << "(" << currentNode->Key << "; "
+			<< currentNode->Value << ")";
+		if (currentNode->LeftSubtree != nullptr
+			&&
+			currentNode->RightSubtree != nullptr)
+		{
+			cout << "|\n";
+		}
+		if (currentNode->LeftSubtree == nullptr
+			&&
+			currentNode->RightSubtree != nullptr)
+		{
+			cout << "/\n";
+		}
+		if (currentNode->LeftSubtree != nullptr
+			&&
+			currentNode->RightSubtree == nullptr)
+		{
+			cout << "\\\n";
+		}
+		if (currentNode->LeftSubtree == nullptr
+			&&
+			currentNode->RightSubtree == nullptr)
+		{
+			cout << "\n";
+		}
+		PrintTree(currentNode->LeftSubtree, tabCount + 1);
+	}
 }

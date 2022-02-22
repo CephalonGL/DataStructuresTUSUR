@@ -3,54 +3,70 @@ using namespace std;
 
 AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 							int keyToInsert,
-							string valueToInsert)
+							string valueToInsert,
+							AvlTreeNode* parentNode)
 {
 	if (!currentNode)
 	{
 		currentNode = new AvlTreeNode(keyToInsert, valueToInsert);
+		if (!parentNode)
+		{
+			_root = currentNode;
+			return nullptr;
+		}
+		if (currentNode->Key < parentNode->Key)
+		{
+			parentNode->LeftSubtree = currentNode;
+			currentNode->Parent = parentNode;
+		}
+		else
+		{
+			parentNode->RightSubtree = currentNode;
+			currentNode->Parent = parentNode;
+		}
 	}
-	if (keyToInsert < currentNode->_key)
+	else if (keyToInsert < currentNode->Key)
 	{
-		Insert(currentNode->_leftSubtree,
-			keyToInsert, valueToInsert);
+		Insert(currentNode->LeftSubtree,
+			keyToInsert, valueToInsert, currentNode);
 	}
 	else
 	{
-		Insert(currentNode->_rightSubtree,
-			keyToInsert, valueToInsert);
+		Insert(currentNode->RightSubtree,
+			keyToInsert, valueToInsert, currentNode);
 	}
 	return _GoBalance(currentNode);
 }
 
 string AvlTree::SearchByKey(int keyToSearch)
 {
-	return _FindNodeByKey(keyToSearch)->_value;
+	return _FindNodeByKey(keyToSearch)->Value;
 }
 
 void AvlTree::DeleteByKey(int keyToDelete)
 {
 	AvlTreeNode* nodeToDelete = _FindNodeByKey(keyToDelete);
-	AvlTreeNode* parentNode = nodeToDelete->_parent;
+	AvlTreeNode* parentNode = nodeToDelete->Parent;
 	delete nodeToDelete;
 	while (!parentNode)
 	{
 		_GoBalance(parentNode);
-		parentNode = parentNode->_parent;
+		parentNode = parentNode->Parent;
 	}
 }
 
 AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
 {
-	AvlTreeNode* currentNode = &_root;
+	AvlTreeNode* currentNode = _root;
 	while (currentNode != nullptr)
 	{
-		if (keyToFind < currentNode->_key)
+		if (keyToFind < currentNode->Key)
 		{
-			currentNode = currentNode->_leftSubtree;
+			currentNode = currentNode->LeftSubtree;
 		}
-		else if (keyToFind > currentNode->_key)
+		else if (keyToFind > currentNode->Key)
 		{
-			currentNode = currentNode->_rightSubtree;
+			currentNode = currentNode->RightSubtree;
 		}
 		else
 		{
@@ -65,7 +81,9 @@ AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 	sourceRoot->FixHeight();
 	if (sourceRoot->BalanceFactor() == 2)
 	{
-		if (sourceRoot->_leftSubtree->BalanceFactor() < 0)
+		if (sourceRoot->LeftSubtree
+			&&
+			sourceRoot->LeftSubtree->BalanceFactor() < 0)
 		{
 			sourceRoot = _SmallRightRotation(sourceRoot);
 		}
@@ -73,7 +91,9 @@ AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 	}
 	if (sourceRoot->BalanceFactor() == -2)
 	{
-		if (sourceRoot->_leftSubtree->BalanceFactor() > 0)
+		if (sourceRoot->LeftSubtree
+			&&
+			sourceRoot->LeftSubtree->BalanceFactor() > 0)
 		{
 			sourceRoot = _SmallLeftRotation(sourceRoot);
 		}
@@ -84,9 +104,9 @@ AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
 
 AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
 {
-	AvlTreeNode* newRoot = sourceRoot->_rightSubtree;
-	sourceRoot->_rightSubtree = newRoot->_leftSubtree;
-	newRoot->_leftSubtree = sourceRoot;
+	AvlTreeNode* newRoot = sourceRoot->RightSubtree;
+	sourceRoot->RightSubtree = newRoot->LeftSubtree;
+	newRoot->LeftSubtree = sourceRoot;
 	sourceRoot->FixHeight();
 	newRoot->FixHeight();
 	return newRoot;
@@ -94,18 +114,16 @@ AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
 
 AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
 {
-	AvlTreeNode* newRoot = sourceRoot->_leftSubtree;
-	sourceRoot->_leftSubtree = newRoot->_rightSubtree;
-	newRoot->_rightSubtree = sourceRoot;
+	AvlTreeNode* newRoot = sourceRoot->LeftSubtree;
+	sourceRoot->LeftSubtree = newRoot->RightSubtree;
+	newRoot->RightSubtree = sourceRoot;
 	sourceRoot->FixHeight();
 	newRoot->FixHeight();
 	return newRoot;
 }
 
-AvlTree::AvlTree(int rootKey, string rootValue)
+AvlTree::AvlTree()
 {
-	_root->_key = rootKey;
-	_root->_value = rootValue;
 }
 
 AvlTreeNode* AvlTree::GetRoot()

@@ -9,14 +9,20 @@ using namespace std;
 class AvlTree
 {
 public:
+
+
 	/// <summary>
 	/// Inserts new node using recursive algorithm
 	/// </summary>
+	/// <param name="currentNode">Node to insert after</param>
 	/// <param name="keyToInsert">Key of new node</param>
 	/// <param name="valueToInsert">Value of new node</param>
+	/// <param name="previousNode">Value of node before new one</param>
+	/// <returns>Balanced tree with new node</returns>
 	AvlTreeNode* Insert(AvlTreeNode* currentNode,
 						int keyToInsert,
-						string valueToInsert);
+						string valueToInsert,
+						AvlTreeNode* parentNode = nullptr);
 
 	/// <summary>
 	/// Get value by inserted key
@@ -36,7 +42,7 @@ public:
 	/// </summary>
 	/// <param name="rootKey">Key of root node</param>
 	/// <param name="rootValue">Value of root node</param>
-	AvlTree(int rootKey, string rootValue);
+	AvlTree();
 
 	/// <summary>
 	/// Getter for root node
@@ -47,7 +53,7 @@ private:
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
-	AvlTreeNode* _root = nullptr;
+	AvlTreeNode* _root;
 
 	/// <summary>
 	/// Find node by the key
