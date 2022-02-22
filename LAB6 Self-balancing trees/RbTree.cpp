@@ -1,6 +1,6 @@
 ﻿#include "RbTree.h"
 
-RbTree::RbTree(int rootKey, string rootValue)
+RbTree::RbTree()
 {
 	_nil = new RbTreeNode(0, "nil", nullptr);
 	_nil->SetBlack();
@@ -355,4 +355,9 @@ RbTreeNode* RbTree::_SmallRightRotation(RbTreeNode* sourceRoot)
 RbTreeNode* RbTree::GetRoot()
 {
 	return _root;
+}
+
+RbTreeNode* RbTree::GetNil()
+{
+	return _nil;
 }

@@ -11,9 +11,7 @@ public:
 	/// <summary>
 	/// Initialize a tree
 	/// </summary>
-	/// <param name="rootKey">Key of root node</param>
-	/// <param name="rootValue">Value of root node</param>
-	RbTree(int rootKey, string rootValue);
+	RbTree();
 	
 	/// <summary>
 	/// Inserts new node using recursive algorithm
@@ -63,13 +61,17 @@ public:
 	/// <returns>New root node</returns>
 	RbTreeNode* _SmallRightRotation(RbTreeNode* node);
 
-
-
 	/// <summary>
 	/// Getter for root node
 	/// </summary>
 	/// <returns>Root node of tree</returns>
 	RbTreeNode* GetRoot();
+
+	/// <summary>
+	/// Getter for nil node
+	/// </summary>
+	/// <returns>Nil of this tree</returns>
+	RbTreeNode* GetNil();
 private:
 	/// <summary>
 	/// Pointer to root node
