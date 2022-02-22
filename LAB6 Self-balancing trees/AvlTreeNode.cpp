@@ -4,15 +4,15 @@ using namespace std;
 
 AvlTreeNode::AvlTreeNode(int key, string value)
 {
-	_key = key;
-	_value = value;
+	Key = key;
+	Value = value;
 }
 
 short int AvlTreeNode::GetHeight()
 {
 	if (this)
 	{
-		return _height;
+		return Height;
 	}
 	else
 	{
@@ -22,19 +22,19 @@ short int AvlTreeNode::GetHeight()
 
 short int AvlTreeNode::BalanceFactor()
 {
-	return _rightSubtree->GetHeight() - _leftSubtree->GetHeight();
+	return RightSubtree->GetHeight() - LeftSubtree->GetHeight();
 }
 
 void AvlTreeNode::FixHeight()
 {
-	short int leftSubtreeHeight = _leftSubtree->GetHeight();
-	short int rightSubtreeHeight = _rightSubtree->GetHeight();
+	short int leftSubtreeHeight = LeftSubtree->GetHeight();
+	short int rightSubtreeHeight = RightSubtree->GetHeight();
 	if (leftSubtreeHeight > rightSubtreeHeight)
 	{
-		_height = leftSubtreeHeight + 1;
+		Height = leftSubtreeHeight + 1;
 	}
 	else
 	{
-		_height = rightSubtreeHeight + 1;
+		Height = rightSubtreeHeight + 1;
 	}
 }
