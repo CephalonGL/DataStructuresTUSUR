@@ -58,7 +58,7 @@ int main()
 		" self-balancing trees." << endl;
 	cout << SPLITTER_STRING << endl;
 	cout << "To choose the data structure, enter its number:" << endl;
-	cout << "\t1\tRed black tree." << endl;
+	cout << "\t1\tRed-black tree." << endl;
 	cout << "\t2\tAVL tree;" << endl;
 	cout << "Use 0 to exit the program." << endl;
 	cout << SPLITTER_STRING << endl;
