@@ -35,27 +35,27 @@ AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 		Insert(currentNode->RightSubtree,
 			keyToInsert, valueToInsert, currentNode);
 	}
-	return _GoBalance(currentNode);
+	return GoBalance(currentNode);
 }
 
 string AvlTree::SearchByKey(int keyToSearch)
 {
-	return _FindNodeByKey(keyToSearch)->Value;
+	return FindNodeByKey(keyToSearch)->Value;
 }
 
 void AvlTree::DeleteByKey(int keyToDelete)
 {
-	AvlTreeNode* nodeToDelete = _FindNodeByKey(keyToDelete);
+	AvlTreeNode* nodeToDelete = FindNodeByKey(keyToDelete);
 	AvlTreeNode* parentNode = nodeToDelete->Parent;
 	delete nodeToDelete;
 	while (!parentNode)
 	{
-		_GoBalance(parentNode);
+		GoBalance(parentNode);
 		parentNode = parentNode->Parent;
 	}
 }
 
-AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
+AvlTreeNode* AvlTree::FindNodeByKey(int keyToFind)
 {
 	AvlTreeNode* currentNode = _root;
 	while (currentNode != nullptr)
@@ -76,33 +76,37 @@ AvlTreeNode* AvlTree::_FindNodeByKey(int keyToFind)
 	throw exception("Error: there is no node with such key.");
 }
 
-AvlTreeNode* AvlTree::_GoBalance(AvlTreeNode* sourceRoot)
+AvlTreeNode* AvlTree::InsertWithRoot(int keyToInsert, 
+									string valueToInsert)
+{
+	return nullptr;
+}
+
+AvlTreeNode* AvlTree::GoBalance(AvlTreeNode* sourceRoot)
 {
 	sourceRoot->FixHeight();
 	if (sourceRoot->BalanceFactor() == 2)
 	{
 		if (sourceRoot->LeftSubtree
-			&&
-			sourceRoot->LeftSubtree->BalanceFactor() < 0)
+			&& sourceRoot->LeftSubtree->BalanceFactor() < 0)
 		{
-			sourceRoot = _SmallRightRotation(sourceRoot);
+			sourceRoot = RotateRight(sourceRoot);
 		}
-		sourceRoot = _SmallLeftRotation(sourceRoot);
+		sourceRoot = RotateLeft(sourceRoot);
 	}
 	if (sourceRoot->BalanceFactor() == -2)
 	{
 		if (sourceRoot->LeftSubtree
-			&&
-			sourceRoot->LeftSubtree->BalanceFactor() > 0)
+			&& sourceRoot->LeftSubtree->BalanceFactor() > 0)
 		{
-			sourceRoot = _SmallLeftRotation(sourceRoot);
+			sourceRoot = RotateLeft(sourceRoot);
 		}
-		sourceRoot = _SmallLeftRotation(sourceRoot);
+		sourceRoot = RotateLeft(sourceRoot);
 	}
 	return sourceRoot;
 }
 
-AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
+AvlTreeNode* AvlTree::RotateLeft(AvlTreeNode* sourceRoot)
 {
 	AvlTreeNode* newRoot = sourceRoot->RightSubtree;
 	sourceRoot->RightSubtree = newRoot->LeftSubtree;
@@ -112,7 +116,7 @@ AvlTreeNode* AvlTree::_SmallLeftRotation(AvlTreeNode* sourceRoot)
 	return newRoot;
 }
 
-AvlTreeNode* AvlTree::_SmallRightRotation(AvlTreeNode* sourceRoot)
+AvlTreeNode* AvlTree::RotateRight(AvlTreeNode* sourceRoot)
 {
 	AvlTreeNode* newRoot = sourceRoot->LeftSubtree;
 	sourceRoot->LeftSubtree = newRoot->RightSubtree;
