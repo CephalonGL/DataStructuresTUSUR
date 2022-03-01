@@ -54,7 +54,8 @@ void RbTree::DeleteByKey(int keyToDelete)
 		throw exception("Error: root node is empty");
 	}
 	RbTreeNode* currentNode = _root;
-	while (currentNode != _nil && keyToDelete != currentNode->Key)
+	while (currentNode != _nil 
+		&& keyToDelete != currentNode->Key)
 	{
 		if (keyToDelete < currentNode->Key)
 		{
@@ -203,7 +204,8 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 		if (grandfather && parent == grandfather->LeftSubtree)
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
-			if (uncle != _nil && uncle->IsRed())
+			if (uncle != _nil 
+				&& uncle->IsRed())
 			{
 				parent->SetBlack();
 				uncle->SetBlack();
@@ -231,7 +233,8 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 		else
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
-			if (uncle != _nil && uncle->IsRed())
+			if (uncle != _nil 
+				&& uncle->IsRed())
 			{
 				parent->SetBlack();
 				uncle->SetBlack();
@@ -280,20 +283,16 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 					_SmallLeftRotation(parent);
 			}
 			if (brother->LeftSubtree
-				&&
-				brother->LeftSubtree
-				&&
-				!brother->LeftSubtree->IsRed()
-				&&
-				!brother->RightSubtree->IsRed())
+				&& brother->LeftSubtree
+				&& !brother->LeftSubtree->IsRed()
+				&& !brother->RightSubtree->IsRed())
 			{
 				brother->SetRed();
 			}
 			else
 			{
 				if (brother->RightSubtree
-					&&
-					!brother->RightSubtree->IsRed())
+					&& !brother->RightSubtree->IsRed())
 				{
 					brother->LeftSubtree->SetBlack();
 					brother->SetRed();
