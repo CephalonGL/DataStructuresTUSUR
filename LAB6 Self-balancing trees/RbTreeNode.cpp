@@ -6,7 +6,7 @@ RbTreeNode::RbTreeNode(int key, string value, RbTreeNode* nil)
 	Value = value;
 	LeftSubtree = nil;
 	RightSubtree = nil;
-	ParentNode = nullptr;
+	Parent = nullptr;
 	HeightBlack = 0;
 	SetRed();
 }

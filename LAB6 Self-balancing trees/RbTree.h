@@ -53,25 +53,31 @@ public:
 	/// Do small left rotation
 	/// </summary>
 	/// <returns>New root node</returns>
-	RbTreeNode* _SmallLeftRotation(RbTreeNode* node);
+	RbTreeNode* RotateLeft(RbTreeNode* node);
 
 	/// <summary>
 	/// Do small right rotation
 	/// </summary>
 	/// <returns>New root node</returns>
-	RbTreeNode* _SmallRightRotation(RbTreeNode* node);
+	RbTreeNode* RotateRight(RbTreeNode* node);
 
 	/// <summary>
 	/// Getter for root node
 	/// </summary>
 	/// <returns>Root node of tree</returns>
 	RbTreeNode* GetRoot();
+	
+	/// <summary>
+	/// Set new root
+	/// </summary>
+	void SetRoot(RbTreeNode* newRoot);
 
 	/// <summary>
 	/// Getter for nil node
 	/// </summary>
 	/// <returns>Nil of this tree</returns>
 	RbTreeNode* GetNil();
+
 private:
 	/// <summary>
 	/// Pointer to root node

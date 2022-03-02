@@ -7,15 +7,15 @@ RbTree::RbTree()
 }
 
 RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
-	int keyToInsert,
-	string valueToInsert)
+							int keyToInsert,
+							string valueToInsert)
 {
 	RbTreeNode* newNode = new RbTreeNode(keyToInsert,
 		valueToInsert, _nil);
 	if (!_root)
 	{
 		_root = newNode;
-		_root->ParentNode = _nil;
+		_root->Parent = _nil;
 	}
 	else
 	{
@@ -41,7 +41,7 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 		{
 			parentNode->RightSubtree = newNode;
 		}
-		newNode->ParentNode = parentNode;
+		newNode->Parent = parentNode;
 		GoBalanceAfterInsertion(newNode);
 	}
 	return currentNode;
@@ -54,7 +54,8 @@ void RbTree::DeleteByKey(int keyToDelete)
 		throw exception("Error: root node is empty");
 	}
 	RbTreeNode* currentNode = _root;
-	while (currentNode != _nil && keyToDelete != currentNode->Key)
+	while (currentNode != _nil 
+		&& keyToDelete != currentNode->Key)
 	{
 		if (keyToDelete < currentNode->Key)
 		{
@@ -75,7 +76,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 		}
 		else
 		{
-			RbTreeNode* parent = currentNode->ParentNode;
+			RbTreeNode* parent = currentNode->Parent;
 			if (currentNode == parent->LeftSubtree)
 			{
 				parent->LeftSubtree = _nil;
@@ -94,7 +95,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 		&&
 		currentNode->RightSubtree == _nil)
 	{
-		RbTreeNode* parent = currentNode->ParentNode;
+		RbTreeNode* parent = currentNode->Parent;
 		if (currentNode == parent->LeftSubtree)
 		{
 			parent->LeftSubtree = currentNode->LeftSubtree;
@@ -110,7 +111,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 		&&
 		currentNode->LeftSubtree == _nil)
 	{
-		RbTreeNode* parent = currentNode->ParentNode;
+		RbTreeNode* parent = currentNode->Parent;
 		if (currentNode == parent->LeftSubtree)
 		{
 			parent->LeftSubtree = currentNode->RightSubtree;
@@ -130,8 +131,8 @@ void RbTree::DeleteByKey(int keyToDelete)
 		}
 		if (nodeWithNextKey->RightSubtree != _nil)
 		{
-			nodeWithNextKey->RightSubtree->ParentNode =
-				nodeWithNextKey->ParentNode;
+			nodeWithNextKey->RightSubtree->Parent =
+				nodeWithNextKey->Parent;
 		}
 		if (nodeWithNextKey == _root)
 		{
@@ -139,7 +140,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 		}
 		else
 		{
-			RbTreeNode* parent = currentNode->ParentNode;
+			RbTreeNode* parent = currentNode->Parent;
 			if (currentNode == parent->LeftSubtree)
 			{
 				parent->LeftSubtree = nodeWithNextKey;
@@ -196,65 +197,67 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 		nodeToBalance->SetBlack();
 		return;
 	}
-	RbTreeNode* parent = nodeToBalance->ParentNode;
+	RbTreeNode* parent = nodeToBalance->Parent;
 	while (parent->IsRed())
 	{
-		RbTreeNode* grandfather = parent->ParentNode;
+		RbTreeNode* grandfather = parent->Parent;
 		if (grandfather && parent == grandfather->LeftSubtree)
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
-			if (uncle != _nil && uncle->IsRed())
+			if (uncle != _nil 
+				&& uncle->IsRed())
 			{
 				parent->SetBlack();
 				uncle->SetBlack();
 				grandfather->SetRed();
 				nodeToBalance = grandfather;
 				//TODO: to method
-				parent = nodeToBalance->ParentNode;
-				grandfather = parent->ParentNode;
+				parent = nodeToBalance->Parent;
+				grandfather = parent->Parent;
 			}
 			else
 			{
 				if (parent->RightSubtree == nodeToBalance)
 				{
 					nodeToBalance = parent;
-					nodeToBalance = _SmallLeftRotation(nodeToBalance);
+					nodeToBalance = RotateLeft(nodeToBalance);
 					//TODO: to method
-					parent = nodeToBalance->ParentNode;
+					parent = nodeToBalance->Parent;
 				}
 				parent->SetBlack();
 				grandfather->SetRed();
-				nodeToBalance->ParentNode->ParentNode =
-					_SmallRightRotation(grandfather);
+				nodeToBalance->Parent->Parent =
+					RotateRight(grandfather);
 			}
 		}
 		else
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
-			if (uncle != _nil && uncle->IsRed())
+			if (uncle != _nil 
+				&& uncle->IsRed())
 			{
 				parent->SetBlack();
 				uncle->SetBlack();
 				grandfather->SetRed();
 				nodeToBalance = grandfather;
 				//TODO: to method
-				parent = nodeToBalance->ParentNode;
-				grandfather = parent->ParentNode;
+				parent = nodeToBalance->Parent;
+				grandfather = parent->Parent;
 			}
 			else
 			{
 				if (nodeToBalance == parent->LeftSubtree)
 				{
 					nodeToBalance = parent;
-					nodeToBalance = _SmallRightRotation(nodeToBalance);
+					nodeToBalance = RotateRight(nodeToBalance);
 					//TODO: to method
-					parent = nodeToBalance->ParentNode;
-					grandfather = parent->ParentNode;
+					parent = nodeToBalance->Parent;
+					grandfather = parent->Parent;
 				}
 				parent->SetBlack();
 				grandfather->SetRed();
-				nodeToBalance->ParentNode->ParentNode =
-					_SmallLeftRotation(grandfather);
+				nodeToBalance->Parent->Parent =
+					RotateLeft(grandfather);
 			}
 		}
 	}
@@ -276,29 +279,25 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 			{
 				brother->SetBlack();
 				parent->SetRed();
-				currentNode->ParentNode =
-					_SmallLeftRotation(parent);
+				currentNode->Parent =
+					RotateLeft(parent);
 			}
 			if (brother->LeftSubtree
-				&&
-				brother->LeftSubtree
-				&&
-				!brother->LeftSubtree->IsRed()
-				&&
-				!brother->RightSubtree->IsRed())
+				&& brother->LeftSubtree
+				&& !brother->LeftSubtree->IsRed()
+				&& !brother->RightSubtree->IsRed())
 			{
 				brother->SetRed();
 			}
 			else
 			{
 				if (brother->RightSubtree
-					&&
-					!brother->RightSubtree->IsRed())
+					&& !brother->RightSubtree->IsRed())
 				{
 					brother->LeftSubtree->SetBlack();
 					brother->SetRed();
-					currentNode->ParentNode->RightSubtree =
-						_SmallRightRotation(brother);
+					currentNode->Parent->RightSubtree =
+						RotateRight(brother);
 				}
 				if (parent->IsRed())
 				{
@@ -310,8 +309,8 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 				}
 				parent->SetBlack();
 				brother->RightSubtree->SetBlack();
-				currentNode->ParentNode =
-					_SmallLeftRotation(parent);
+				currentNode->Parent =
+					RotateLeft(parent);
 				currentNode = _root;
 			}
 		}
@@ -320,41 +319,111 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 	_root->SetBlack();
 }
 
-RbTreeNode* RbTree::_SmallLeftRotation(RbTreeNode* sourceRoot)
+RbTreeNode* RbTree::RotateLeft(RbTreeNode* rotateNode)
 {
-	RbTreeNode* newRoot = sourceRoot->RightSubtree;
-	sourceRoot->RightSubtree = newRoot->LeftSubtree;
-	newRoot->LeftSubtree = sourceRoot;
-	if (sourceRoot->IsRed())
+	//TODO: Fix reassignmensts of pointers for parents as is in AVL 
+	//Fix root
+	if (rotateNode == GetRoot())
 	{
-		newRoot->SetRed();
+		SetRoot(rotateNode->RightSubtree);
 	}
+	//Fix parents
 	else
 	{
-		newRoot->SetBlack();
+		if (rotateNode->Parent->LeftSubtree
+			&& rotateNode == rotateNode->Parent->LeftSubtree)
+		{
+			rotateNode->Parent->LeftSubtree = rotateNode->RightSubtree;
+		}
+		else
+		{
+			rotateNode->Parent->RightSubtree = rotateNode->RightSubtree;
+		}
+		if (rotateNode->RightSubtree->LeftSubtree)
+		{
+			rotateNode->RightSubtree->LeftSubtree->Parent =
+				rotateNode->Parent;
+		}
 	}
-	return newRoot;
+
+	//Do rotation
+	RbTreeNode* tmp = rotateNode->RightSubtree->LeftSubtree;
+	rotateNode->RightSubtree->LeftSubtree = rotateNode;
+	rotateNode->RightSubtree->Parent = rotateNode->Parent;
+	rotateNode->Parent = rotateNode->RightSubtree;
+	rotateNode->RightSubtree = tmp;
+	if (tmp)
+	{
+		tmp->Parent = rotateNode;
+	}
+	//Fix color
+	//if (rotateNode->IsRed())
+	//{
+	//	newRoot->SetRed();
+	//}
+	//else
+	//{
+	//	newRoot->SetBlack();
+	//}
+	return rotateNode;
 }
 
-RbTreeNode* RbTree::_SmallRightRotation(RbTreeNode* sourceRoot)
+RbTreeNode* RbTree::RotateRight(RbTreeNode* rotateNode)
 {
-	RbTreeNode* newRoot = sourceRoot->LeftSubtree;
-	sourceRoot->LeftSubtree = newRoot->RightSubtree;
-	newRoot->RightSubtree = sourceRoot;
-	if (sourceRoot->IsRed())
+	//TODO: Fix reassignmensts of pointers for parents as is in AVL 
+	//Fix root
+	if (rotateNode == GetRoot())
 	{
-		newRoot->SetRed();
+		SetRoot(rotateNode->LeftSubtree);
 	}
+	//Fix parents
 	else
 	{
-		newRoot->SetBlack();
+		if (rotateNode->Parent->LeftSubtree
+			&& rotateNode == rotateNode->Parent->LeftSubtree)
+		{
+			rotateNode->Parent->LeftSubtree = rotateNode->LeftSubtree;
+		}
+		else
+		{
+			rotateNode->Parent->RightSubtree = rotateNode->LeftSubtree;
+		}
+		rotateNode->LeftSubtree->RightSubtree->Parent =
+			rotateNode->Parent;
 	}
-	return newRoot;
+
+	//Do rotation
+	RbTreeNode* tmp = rotateNode->LeftSubtree->RightSubtree;
+	rotateNode->LeftSubtree->RightSubtree = rotateNode;
+	rotateNode->LeftSubtree->Parent = rotateNode->Parent;
+	rotateNode->Parent = rotateNode->LeftSubtree;
+	rotateNode->LeftSubtree = tmp;
+	if (tmp)
+	{
+		tmp->Parent = rotateNode;
+	}
+	//Fix color
+	//if (rotateNode->IsRed())
+	//{
+	//	newRoot->SetRed();
+	//}
+	//else
+	//{
+	//	newRoot->SetBlack();
+	//}
+	return rotateNode;
 }
 
 RbTreeNode* RbTree::GetRoot()
 {
 	return _root;
+}
+
+void RbTree::SetRoot(RbTreeNode* newRoot)
+{
+	_root = newRoot;
+	_root->SetBlack();
+	_root->Parent = nullptr;
 }
 
 RbTreeNode* RbTree::GetNil()

@@ -272,8 +272,9 @@ void AvlTreeUI()
 				{
 					try
 					{
-						tree->DeleteByKey(Console::ReadInt());
-						Console::Print("The node successfule deleted.");
+						tree->DeleteByKey(
+							Console::ReadInt("Enter key:"));
+						Console::Print("The node successfully deleted.");
 						PrintTree(tree->GetRoot());
 						break;
 					}
@@ -377,7 +378,7 @@ void PrintTree(RbTreeNode* currentNode,
 
 void PrintTree(AvlTreeNode* currentNode, int tabCount)
 {
-	if (currentNode != nullptr)
+	if (currentNode)
 	{
 		PrintTree(currentNode->RightSubtree, tabCount + 1);
 		for (int i = 0; i < tabCount; i++)

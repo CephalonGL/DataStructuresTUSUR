@@ -17,12 +17,11 @@ public:
 	/// <param name="currentNode">Node to insert after</param>
 	/// <param name="keyToInsert">Key of new node</param>
 	/// <param name="valueToInsert">Value of new node</param>
-	/// <param name="previousNode">Value of node before new one</param>
-	/// <returns>Balanced tree with new node</returns>
-	AvlTreeNode* Insert(AvlTreeNode* currentNode,
-						int keyToInsert,
-						string valueToInsert,
-						AvlTreeNode* parentNode = nullptr);
+	/// <param name="parentNode">Value of node before new one</param>
+	void Insert(AvlTreeNode* currentNode,
+				int keyToInsert,
+				string valueToInsert,
+				AvlTreeNode* parentNode = nullptr);
 
 	/// <summary>
 	/// Get value by inserted key
@@ -49,34 +48,48 @@ public:
 	/// </summary>
 	/// <returns>Root node of tree</returns>
 	AvlTreeNode* GetRoot();
+
+	/// <summary>
+	/// Set new root and set its parent to nullptr
+	/// </summary>
+	void SetRoot(AvlTreeNode* newRoot);
+
 private:
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
 	AvlTreeNode* _root;
 
+
+	AvlTreeNode* InsertWithRoot(int keyToInsert,
+								string valueToInsert);
+
+
+	AvlTreeNode* InsertWithoutRoot(int keyToInsert,
+									string valueToInsert);
+
 	/// <summary>
 	/// Find node by the key
 	/// </summary>
 	/// <param name="keyToFind">Key to find node by</param>
-	/// <returns>Pointer to node</returns>
-	AvlTreeNode* _FindNodeByKey(int keyToFind);
+	/// <returns>Founded node</returns>
+	AvlTreeNode* FindNodeByKey(int keyToFind);
 
 	/// <summary>
 	/// Balances subtrees of node
 	/// </summary>
 	/// <param name="node">Node to balance which subtrees</param>
-	AvlTreeNode* _GoBalance(AvlTreeNode* node);
+	void GoBalance(AvlTreeNode* node);
 
 	/// <summary>
 	/// Do small left rotation
 	/// </summary>
 	/// <returns>New root node</returns>
-	AvlTreeNode* _SmallLeftRotation(AvlTreeNode* node);
+	void RotateLeft(AvlTreeNode* node);
 
 	/// <summary>
 	/// Do small right rotation
 	/// </summary>
 	/// <returns>New root node</returns>
-	AvlTreeNode* _SmallRightRotation(AvlTreeNode* node);
+	void RotateRight(AvlTreeNode* node);
 };
