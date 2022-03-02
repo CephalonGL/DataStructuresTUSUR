@@ -31,10 +31,10 @@ void AvlTreeNode::FixHeight()
 	short int rightSubtreeHeight = RightSubtree->GetHeight();
 	if (leftSubtreeHeight > rightSubtreeHeight)
 	{
-		Height = leftSubtreeHeight + 1;
+		this->Height = leftSubtreeHeight + 1;
 	}
 	else
 	{
-		Height = rightSubtreeHeight + 1;
+		this->Height = rightSubtreeHeight + 1;
 	}
 }

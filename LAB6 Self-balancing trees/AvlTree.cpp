@@ -1,20 +1,19 @@
 ﻿#include "AvlTree.h"
 using namespace std;
 
-AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
-							int keyToInsert,
-							string valueToInsert,
-							AvlTreeNode* parentNode)
+void AvlTree::Insert(AvlTreeNode* currentNode,
+	int keyToInsert,
+	string valueToInsert,
+	AvlTreeNode* parentNode)
 {
 	if (!currentNode)
 	{
 		currentNode = new AvlTreeNode(keyToInsert, valueToInsert);
-		if (!parentNode)
+		if (!GetRoot())
 		{
-			_root = currentNode;
-			return nullptr;
+			SetRoot(currentNode);
 		}
-		if (currentNode->Key < parentNode->Key)
+		else if (currentNode->Key < parentNode->Key)
 		{
 			parentNode->LeftSubtree = currentNode;
 			currentNode->Parent = parentNode;
@@ -35,7 +34,7 @@ AvlTreeNode* AvlTree::Insert(AvlTreeNode* currentNode,
 		Insert(currentNode->RightSubtree,
 			keyToInsert, valueToInsert, currentNode);
 	}
-	return GoBalance(currentNode);
+	GoBalance(currentNode);
 }
 
 string AvlTree::SearchByKey(int keyToSearch)
@@ -76,54 +75,122 @@ AvlTreeNode* AvlTree::FindNodeByKey(int keyToFind)
 	throw exception("Error: there is no node with such key.");
 }
 
-AvlTreeNode* AvlTree::InsertWithRoot(int keyToInsert, 
-									string valueToInsert)
+void AvlTree::SetRoot(AvlTreeNode* newRoot)
+{
+	_root = newRoot;
+	_root->Parent = nullptr;
+}
+
+AvlTreeNode* AvlTree::InsertWithRoot(int keyToInsert,
+	string valueToInsert)
 {
 	return nullptr;
 }
 
-AvlTreeNode* AvlTree::GoBalance(AvlTreeNode* sourceRoot)
+void AvlTree::GoBalance(AvlTreeNode* nodeToBalance)
 {
-	sourceRoot->FixHeight();
-	if (sourceRoot->BalanceFactor() == 2)
+	//BUG: balancing do not work. Pointers are not switching as they
+	//should do.
+	nodeToBalance->FixHeight();
+	if (nodeToBalance->BalanceFactor() == 2)
 	{
-		if (sourceRoot->LeftSubtree
-			&& sourceRoot->LeftSubtree->BalanceFactor() < 0)
+		if (nodeToBalance->LeftSubtree
+			&& nodeToBalance->LeftSubtree->BalanceFactor() < 0)
 		{
-			sourceRoot = RotateRight(sourceRoot);
+			RotateRight(nodeToBalance);
 		}
-		sourceRoot = RotateLeft(sourceRoot);
+		RotateLeft(nodeToBalance);
 	}
-	if (sourceRoot->BalanceFactor() == -2)
+	if (nodeToBalance->BalanceFactor() == -2)
 	{
-		if (sourceRoot->LeftSubtree
-			&& sourceRoot->LeftSubtree->BalanceFactor() > 0)
+		if (nodeToBalance->LeftSubtree
+			&& nodeToBalance->LeftSubtree->BalanceFactor() > 0)
 		{
-			sourceRoot = RotateLeft(sourceRoot);
+			RotateLeft(nodeToBalance);
 		}
-		sourceRoot = RotateLeft(sourceRoot);
+		RotateRight(nodeToBalance);
 	}
-	return sourceRoot;
 }
 
-AvlTreeNode* AvlTree::RotateLeft(AvlTreeNode* sourceRoot)
+void AvlTree::RotateLeft(AvlTreeNode* rotateNode)
 {
-	AvlTreeNode* newRoot = sourceRoot->RightSubtree;
-	sourceRoot->RightSubtree = newRoot->LeftSubtree;
-	newRoot->LeftSubtree = sourceRoot;
-	sourceRoot->FixHeight();
-	newRoot->FixHeight();
-	return newRoot;
+	//Fix root
+	if (rotateNode == GetRoot())
+	{
+		SetRoot(rotateNode->RightSubtree);
+	}
+	//Fix parents
+	else
+	{
+		if (rotateNode->Parent->LeftSubtree
+			&& rotateNode == rotateNode->Parent->LeftSubtree)
+		{
+			rotateNode->Parent->LeftSubtree = rotateNode->RightSubtree;
+		}
+		else
+		{
+			rotateNode->Parent->RightSubtree = rotateNode->RightSubtree;
+		}
+		if (rotateNode->RightSubtree->LeftSubtree)
+		{
+			rotateNode->RightSubtree->LeftSubtree->Parent =
+				rotateNode->Parent;
+		}
+	}
+
+	//Do rotation
+	AvlTreeNode* tmp = rotateNode->RightSubtree->LeftSubtree;
+	rotateNode->RightSubtree->LeftSubtree = rotateNode;
+	rotateNode->RightSubtree->Parent = rotateNode->Parent;
+	rotateNode->Parent = rotateNode->RightSubtree;
+	rotateNode->RightSubtree = tmp;
+	if (tmp)
+	{
+		tmp->Parent = rotateNode;
+	}
+
+	//Fix heights after rotation
+	rotateNode->FixHeight();
+	rotateNode->Parent->FixHeight();
 }
 
-AvlTreeNode* AvlTree::RotateRight(AvlTreeNode* sourceRoot)
+void AvlTree::RotateRight(AvlTreeNode* rotateNode)
 {
-	AvlTreeNode* newRoot = sourceRoot->LeftSubtree;
-	sourceRoot->LeftSubtree = newRoot->RightSubtree;
-	newRoot->RightSubtree = sourceRoot;
-	sourceRoot->FixHeight();
-	newRoot->FixHeight();
-	return newRoot;
+	//Fix root
+	if (rotateNode == GetRoot())
+	{
+		SetRoot(rotateNode->LeftSubtree);
+	}
+	//Fix parents
+	else
+	{
+		if (rotateNode->Parent->LeftSubtree
+			&& rotateNode == rotateNode->Parent->LeftSubtree)
+		{
+			rotateNode->Parent->LeftSubtree = rotateNode->LeftSubtree;
+		}
+		else
+		{
+			rotateNode->Parent->RightSubtree = rotateNode->LeftSubtree;
+		}
+		rotateNode->LeftSubtree->RightSubtree->Parent =
+			rotateNode->Parent;
+	}
+
+	//Do rotation
+	AvlTreeNode* tmp = rotateNode->LeftSubtree->RightSubtree;
+	rotateNode->LeftSubtree->RightSubtree = rotateNode;
+	rotateNode->LeftSubtree->Parent = rotateNode->Parent;
+	rotateNode->Parent = rotateNode->LeftSubtree;
+	rotateNode->LeftSubtree = tmp;
+	if (tmp)
+	{
+		tmp->Parent = rotateNode;
+	}
+
+	//Fix heights after rotation
+	rotateNode->FixHeight();
+	rotateNode->Parent->FixHeight();
 }
 
 AvlTree::AvlTree()
