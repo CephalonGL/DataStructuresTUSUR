@@ -9,8 +9,6 @@ using namespace std;
 class AvlTree
 {
 public:
-
-
 	/// <summary>
 	/// Inserts new node using recursive algorithm
 	/// </summary>
@@ -36,6 +34,7 @@ public:
 	/// <param name="keyToDelete">Key of node to delete</param>
 	void DeleteByKey(int keyToDelete);
 
+	//TODO: Несоответствие XML комментариям
 	/// <summary>
 	/// Initialize a tree
 	/// </summary>
@@ -60,11 +59,11 @@ private:
 	/// </summary>
 	AvlTreeNode* _root;
 
-
+	//TODO: XML
 	AvlTreeNode* InsertWithRoot(int keyToInsert,
 								string valueToInsert);
 
-
+//TODO: XML
 	AvlTreeNode* InsertWithoutRoot(int keyToInsert,
 									string valueToInsert);
 
