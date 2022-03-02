@@ -32,7 +32,7 @@ public:
 	/// <summary>
 	/// Pointer to parent node
 	/// </summary>
-	RbTreeNode* ParentNode = nullptr;
+	RbTreeNode* Parent = nullptr;
 	
 	/// <summary>
 	/// Height of node. Counter of black nodes up to NIL

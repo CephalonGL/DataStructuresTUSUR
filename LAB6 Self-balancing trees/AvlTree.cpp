@@ -2,9 +2,9 @@
 using namespace std;
 
 void AvlTree::Insert(AvlTreeNode* currentNode,
-	int keyToInsert,
-	string valueToInsert,
-	AvlTreeNode* parentNode)
+					int keyToInsert,
+					string valueToInsert,
+					AvlTreeNode* parentNode)
 {
 	if (!currentNode)
 	{
@@ -47,7 +47,7 @@ void AvlTree::DeleteByKey(int keyToDelete)
 	AvlTreeNode* nodeToDelete = FindNodeByKey(keyToDelete);
 	AvlTreeNode* parentNode = nodeToDelete->Parent;
 	delete nodeToDelete;
-	while (!parentNode)
+	while (parentNode)
 	{
 		GoBalance(parentNode);
 		parentNode = parentNode->Parent;
@@ -56,8 +56,8 @@ void AvlTree::DeleteByKey(int keyToDelete)
 
 AvlTreeNode* AvlTree::FindNodeByKey(int keyToFind)
 {
-	AvlTreeNode* currentNode = _root;
-	while (currentNode != nullptr)
+	AvlTreeNode* currentNode = GetRoot();
+	while (currentNode)
 	{
 		if (keyToFind < currentNode->Key)
 		{
@@ -89,8 +89,6 @@ AvlTreeNode* AvlTree::InsertWithRoot(int keyToInsert,
 
 void AvlTree::GoBalance(AvlTreeNode* nodeToBalance)
 {
-	//BUG: balancing do not work. Pointers are not switching as they
-	//should do.
 	nodeToBalance->FixHeight();
 	if (nodeToBalance->BalanceFactor() == 2)
 	{
