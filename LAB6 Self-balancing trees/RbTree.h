@@ -13,16 +13,8 @@ public:
 	/// </summary>
 	RbTree();
 	
-	/// <summary>
-	/// Inserts new node using recursive algorithm
-	/// </summary>
-	/// <param name="currentNode"></param>
-	/// <param name="keyToInsert">Key of new node</param>
-	/// <param name="valueToInsert">Value of new node</param>
-	/// <returns>New root</returns>
-	RbTreeNode* Insert(RbTreeNode* currentNode,
-						int keyToInsert,
-						string valueToInsert);
+	void Insert(int keyToInsert, string valueToInsert);
+
 
 	/// <summary>
 	/// Delete node by inserted key
@@ -36,7 +28,20 @@ public:
 	/// <param name="keyToSearch">Key to search</param>
 	/// <returns>Value</returns>
 	string SearchByKey(int keyToSearch);
-	
+
+
+private:
+	/// <summary>
+	/// Inserts new node using recursive algorithm
+	/// </summary>
+	/// <param name="currentNode"></param>
+	/// <param name="keyToInsert">Key of new node</param>
+	/// <param name="valueToInsert">Value of new node</param>
+	/// <returns>New root</returns>
+	RbTreeNode* Insert(RbTreeNode* currentNode,
+					   int keyToInsert,
+					   string valueToInsert);
+
 	/// <summary>
 	/// Fix balancing of tree after insertion new node
 	/// </summary>
@@ -66,7 +71,7 @@ public:
 	/// </summary>
 	/// <returns>Root node of tree</returns>
 	RbTreeNode* GetRoot();
-	
+
 	/// <summary>
 	/// Set new root
 	/// </summary>
@@ -78,7 +83,6 @@ public:
 	/// <returns>Nil of this tree</returns>
 	RbTreeNode* GetNil();
 
-private:
 	void SetNil(RbTreeNode* newNil);
 
 	/// <summary>

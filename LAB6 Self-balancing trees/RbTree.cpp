@@ -5,6 +5,11 @@ RbTree::RbTree()
 	SetNil(new RbTreeNode(0, "nil", nullptr));
 }
 
+void RbTree::Insert(int keyToInsert, string valueToInsert)
+{
+}
+
+
 RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 						   int keyToInsert,
 						   string valueToInsert)
