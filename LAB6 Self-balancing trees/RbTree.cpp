@@ -5,10 +5,11 @@ RbTree::RbTree()
 	SetNil(new RbTreeNode(0, "nil", nullptr));
 }
 
-void RbTree::Insert(int keyToInsert, 
+void RbTree::Insert(int keyToInsert,
 					string valueToInsert)
 {
-	Insert(GetRoot(), keyToInsert, valueToInsert);
+	SetRoot(Insert(GetRoot(), keyToInsert, valueToInsert));
+	GetRoot()->SetBlack();
 }
 
 
@@ -16,7 +17,7 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 						   int keyToInsert,
 						   string valueToInsert)
 {
-	RbTreeNode* newNode = new RbTreeNode(keyToInsert, valueToInsert, 
+	RbTreeNode* newNode = new RbTreeNode(keyToInsert, valueToInsert,
 										 GetNil());
 	if (!GetRoot())
 	{
@@ -207,7 +208,7 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 	while (parent->IsRed())
 	{
 		RbTreeNode* grandfather = parent->Parent;
-		if (grandfather 
+		if (grandfather
 			&& parent == grandfather->LeftSubtree)
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
@@ -446,4 +447,126 @@ void RbTree::SetNil(RbTreeNode* newNil)
 {
 	_nil = newNil;
 	_nil->SetBlack();
+}
+
+RbTreeNode* RbTree::GetLeftChild(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(sourceNode->LeftSubtree))
+	{
+		return sourceNode->LeftSubtree;
+	}
+	else
+	{
+		return GetNil();
+	}
+}
+
+RbTreeNode* RbTree::GetRightChild(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(sourceNode->RightSubtree))
+	{
+		return sourceNode->RightSubtree;
+	}
+	else
+	{
+		return GetNil();
+	}
+}
+
+RbTreeNode* RbTree::GetBrother(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(GetParent(sourceNode)))
+	{
+		if (IsLeftChild(sourceNode))
+		{
+			return GetRightChild(GetParent(sourceNode));
+		}
+		else if (IsRightChild(sourceNode))
+		{
+			return GetLeftChild(GetParent(sourceNode));
+		}
+	}
+	else
+	{
+		return GetNil();
+	}
+}
+
+RbTreeNode* RbTree::GetParent(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(sourceNode->Parent))
+	{
+		return sourceNode->Parent;
+	}
+	else
+	{
+		return GetNil();
+	}
+}
+
+RbTreeNode* RbTree::GetGrandparent(RbTreeNode* sourceNode)
+{
+	return GetParent(GetParent(sourceNode));
+}
+
+RbTreeNode* RbTree::GetUncle(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(GetGrandparent(sourceNode)))
+	{
+		if (IsLeftChild(GetParent(sourceNode)))
+		{
+			return IsNil(GetRightChild(GetGrandparent(sourceNode))) ?
+				GetNil()
+				: GetRightChild(GetGrandparent(sourceNode));
+		}
+		else if (IsRightChild(GetParent(sourceNode)))
+		{
+
+			return IsNil(GetLeftChild(GetGrandparent(sourceNode))) ?
+				GetNil()
+				: GetLeftChild(GetGrandparent(sourceNode));
+		}
+	}
+	else
+	{
+		return GetNil();
+	}
+}
+
+bool RbTree::IsNil(RbTreeNode* sourceNode)
+{
+	return sourceNode == GetNil();
+}
+
+bool RbTree::IsLeftChild(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(GetParent(sourceNode))
+		&& GetLeftChild(GetParent(sourceNode)) == sourceNode)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool RbTree::IsRightChild(RbTreeNode* sourceNode)
+{
+	if (!IsNil(sourceNode)
+		&& !IsNil(GetParent(sourceNode))
+		&& GetRightChild(GetParent(sourceNode)) == sourceNode)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

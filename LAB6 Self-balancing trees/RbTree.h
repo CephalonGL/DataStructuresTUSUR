@@ -2,6 +2,7 @@
 #include "RbTreeNode.h"
 
 using namespace std;
+
 /// <summary>
 /// Red black tree the data structure
 /// </summary>
@@ -15,7 +16,6 @@ public:
 	
 	void Insert(int keyToInsert,
 				string valueToInsert);
-
 
 	/// <summary>
 	/// Delete node by inserted key
@@ -85,6 +85,24 @@ private:
 	RbTreeNode* GetNil();
 
 	void SetNil(RbTreeNode* newNil);
+
+	RbTreeNode* GetLeftChild(RbTreeNode* sourceNode);
+
+	RbTreeNode* GetRightChild(RbTreeNode* sourceNode);
+
+	RbTreeNode* GetBrother(RbTreeNode* sourceNode);
+
+	RbTreeNode* GetParent(RbTreeNode* sourceNode);
+
+	RbTreeNode* GetGrandparent(RbTreeNode* sourceNode);
+
+	RbTreeNode* GetUncle(RbTreeNode* sourceNode);
+
+	bool IsNil(RbTreeNode* sourceNode);
+
+	bool IsLeftChild(RbTreeNode* sourceNode);
+
+	bool IsRightChild(RbTreeNode* sourceNode);
 
 	/// <summary>
 	/// Pointer to root node
