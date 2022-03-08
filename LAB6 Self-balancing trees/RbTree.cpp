@@ -2,20 +2,19 @@
 
 RbTree::RbTree()
 {
-	_nil = new RbTreeNode(0, "nil", nullptr);
-	_nil->SetBlack();
+	SetNil(new RbTreeNode(0, "nil", nullptr));
 }
 
 RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 						   int keyToInsert,
 						   string valueToInsert)
 {
-	RbTreeNode* newNode = new RbTreeNode(keyToInsert,
-										 valueToInsert, _nil);
-	if (!_root)
+	RbTreeNode* newNode = new RbTreeNode(keyToInsert, valueToInsert, 
+										 GetNil());
+	if (!GetRoot())
 	{
-		_root = newNode;
-		_root->Parent = _nil;
+		SetRoot(newNode);
+		GetRoot()->Parent = GetNil();
 	}
 	else
 	{
@@ -136,7 +135,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 		}
 		if (nodeWithNextKey == GetRoot())
 		{
-			GetRoot() = nodeWithNextKey->RightSubtree;
+			SetRoot(nodeWithNextKey->RightSubtree);
 		}
 		else
 		{
@@ -201,7 +200,8 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 	while (parent->IsRed())
 	{
 		RbTreeNode* grandfather = parent->Parent;
-		if (grandfather && parent == grandfather->LeftSubtree)
+		if (grandfather 
+			&& parent == grandfather->LeftSubtree)
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
 			if (uncle != GetNil()
@@ -230,7 +230,7 @@ void RbTree::GoBalanceAfterInsertion(RbTreeNode* insertedNode)
 					RotateRight(grandfather);
 			}
 		}
-		else
+		else if (grandfather)
 		{
 			RbTreeNode* uncle = grandfather->RightSubtree;
 			if (uncle
@@ -284,7 +284,6 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 					RotateLeft(parent);
 			}
 			if (brother->LeftSubtree
-				&& brother->LeftSubtree
 				&& !brother->LeftSubtree->IsRed()
 				&& !brother->RightSubtree->IsRed())
 			{
@@ -322,7 +321,7 @@ void RbTree::GoBalanceAfterDeletion(RbTreeNode* nodeToBalance)
 
 RbTreeNode* RbTree::RotateLeft(RbTreeNode* rotateNode)
 {
-	//TODO: Fix reassignmensts of pointers for parents as is in AVL 
+	//TODO: Fix reassignmensts of pointers for parents as it is in AVL 
 	//Fix root
 	if (rotateNode == GetRoot())
 	{
@@ -428,10 +427,16 @@ void RbTree::SetRoot(RbTreeNode* newRoot)
 {
 	_root = newRoot;
 	_root->SetBlack();
-	_root->Parent = nullptr;
+	_root->Parent = GetNil();
 }
 
 RbTreeNode* RbTree::GetNil()
 {
 	return _nil;
+}
+
+void RbTree::SetNil(RbTreeNode* newNil)
+{
+	_nil = newNil;
+	_nil->SetBlack();
 }

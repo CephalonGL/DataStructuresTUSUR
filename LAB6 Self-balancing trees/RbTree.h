@@ -79,6 +79,8 @@ public:
 	RbTreeNode* GetNil();
 
 private:
+	void SetNil(RbTreeNode* newNil);
+
 	/// <summary>
 	/// Pointer to root node
 	/// </summary>
