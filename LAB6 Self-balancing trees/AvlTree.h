@@ -92,5 +92,9 @@ private:
 	/// <returns></returns>
 	AvlTreeNode* FindNodeWithMinKey(AvlTreeNode* sourceNode);
 
+	/// <summary>
+	/// Balancing subtree until come to root
+	/// </summary>
+	/// <param name="sourceNode">Node to balance from</param>
 	void GoBalanceUpToRoot(AvlTreeNode* sourceNode);
 };

@@ -6,6 +6,7 @@ void AvlTree::Insert(AvlTreeNode* currentNode,
 					 string valueToInsert,
 					 AvlTreeNode* parentNode)
 {
+
 	try
 	{
 		FindNodeByKey(keyToInsert);
@@ -109,45 +110,47 @@ void AvlTree::DeleteByKey(int keyToDelete)
 	}
 	AvlTreeNode* nodeWithMinKey =
 		FindNodeWithMinKey(nodeToDelete->RightSubtree);
+
+	if (nodeToDelete == GetRoot())
+	{
+		SetRoot(nodeWithMinKey);
+	}
 	if (nodeWithMinKey->RightSubtree)
 	{
 		nodeWithMinKey->Parent->LeftSubtree =
 			nodeWithMinKey->RightSubtree;
 		nodeWithMinKey->RightSubtree->Parent =
 			nodeWithMinKey->Parent->LeftSubtree;
+		GoBalanceUpToRoot(nodeWithMinKey->RightSubtree);
 	}
-	GoBalanceUpToRoot(nodeWithMinKey->RightSubtree);
-
-	nodeWithMinKey->LeftSubtree = nodeToDelete->LeftSubtree;
-	nodeWithMinKey->LeftSubtree->Parent = nodeWithMinKey;
-	nodeWithMinKey->RightSubtree = nodeToDelete->RightSubtree;
-	nodeWithMinKey->RightSubtree->Parent = nodeWithMinKey;
-	nodeWithMinKey->Parent = nodeToDelete->Parent;
-	if (nodeToDelete == nodeToDelete->Parent->LeftSubtree)
+	if (nodeToDelete->LeftSubtree
+		&& nodeWithMinKey != nodeToDelete->RightSubtree)
 	{
-		nodeToDelete->Parent->LeftSubtree = nodeWithMinKey;
+		nodeWithMinKey->LeftSubtree = nodeToDelete->LeftSubtree;
+		nodeWithMinKey->LeftSubtree->Parent = nodeWithMinKey;
 	}
-	else
+	if (nodeToDelete->RightSubtree
+		&& nodeToDelete->RightSubtree != nodeWithMinKey)
 	{
-		nodeToDelete->Parent->RightSubtree = nodeWithMinKey;
+		nodeWithMinKey->RightSubtree = nodeToDelete->RightSubtree;
+		nodeWithMinKey->RightSubtree->Parent = nodeWithMinKey;
 	}
-
+	if (nodeToDelete->Parent
+		&& nodeWithMinKey != nodeToDelete->RightSubtree)
+	{
+		nodeWithMinKey->Parent = nodeToDelete->Parent;
+		if (nodeToDelete == nodeToDelete->Parent->LeftSubtree)
+		{
+			nodeToDelete->Parent->LeftSubtree = nodeWithMinKey;
+		}
+		else
+		{
+			nodeToDelete->Parent->RightSubtree = nodeWithMinKey;
+		}
+	}
 	GoBalance(nodeWithMinKey);
-
 	delete nodeToDelete;
 	nodeToDelete = nullptr;
-
-	//AvlTreeNode* parentNode = nodeToDelete->Parent;
-	//if (nodeToDelete.)
-	//{
-
-	//}
-	//delete nodeToDelete;
-	//while (parentNode)
-	//{
-	//	GoBalance(parentNode);
-	//	parentNode = parentNode->Parent;
-	//}
 }
 
 AvlTreeNode* AvlTree::FindNodeByKey(int keyToFind)
@@ -179,6 +182,10 @@ void AvlTree::SetRoot(AvlTreeNode* newRoot)
 
 void AvlTree::GoBalance(AvlTreeNode* nodeToBalance)
 {
+	if (!nodeToBalance)
+	{
+		return;
+	}
 	nodeToBalance->FixHeight();
 	if (nodeToBalance->BalanceFactor() == 2)
 	{
@@ -290,11 +297,11 @@ AvlTreeNode* AvlTree::FindNodeWithMinKey(AvlTreeNode* sourceNode)
 
 void AvlTree::GoBalanceUpToRoot(AvlTreeNode* sourceNode)
 {
-	do
+	while (sourceNode)
 	{
 		GoBalance(sourceNode);
 		sourceNode = sourceNode->Parent;
-	} while (sourceNode);
+	}
 }
 
 AvlTree::AvlTree()
