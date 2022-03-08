@@ -46,6 +46,11 @@ public:
 	/// <param name="value">Value of node</param>
 	RbTreeNode(int key, string value, RbTreeNode* nil);
 
+	void SetParent(RbTreeNode* newParent);
+
+	void SetLeft(RbTreeNode* newLeftChild);
+
+	void SetRight(RbTreeNode* newRightChild);
 
 	/// <summary>
 	/// Fix counter of black nodes up to nil

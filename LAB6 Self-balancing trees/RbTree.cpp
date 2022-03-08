@@ -22,13 +22,13 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 	if (!GetRoot())
 	{
 		SetRoot(newNode);
-		GetRoot()->Parent = GetNil();
+		GetRoot()->SetParent(GetNil());
 	}
 	else
 	{
 		RbTreeNode* tmpNodeForSearch = GetRoot();
 		RbTreeNode* parentNode = nullptr;
-		while (tmpNodeForSearch != GetNil())
+		while (!IsNil(tmpNodeForSearch))
 		{
 			parentNode = tmpNodeForSearch;
 			if (tmpNodeForSearch->Key < keyToInsert)

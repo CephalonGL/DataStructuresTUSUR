@@ -11,6 +11,21 @@ RbTreeNode::RbTreeNode(int key, string value, RbTreeNode* nil)
 	SetRed();
 }
 
+void RbTreeNode::SetParent(RbTreeNode* newParent)
+{
+	Parent = newParent;
+}
+
+void RbTreeNode::SetLeft(RbTreeNode* newLeftChild)
+{
+	LeftSubtree = newLeftChild;
+}
+
+void RbTreeNode::SetRight(RbTreeNode* newRightChild)
+{
+	RightSubtree = newRightChild;
+}
+
 int RbTreeNode::FixHeightBlack(RbTreeNode* nodeToFixHeight)
 {
 	return 0;
