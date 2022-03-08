@@ -60,14 +60,6 @@ private:
 	/// </summary>
 	AvlTreeNode* _root;
 
-
-	AvlTreeNode* InsertWithRoot(int keyToInsert,
-								string valueToInsert);
-
-
-	AvlTreeNode* InsertWithoutRoot(int keyToInsert,
-									string valueToInsert);
-
 	/// <summary>
 	/// Find node by the key
 	/// </summary>
@@ -92,4 +84,13 @@ private:
 	/// </summary>
 	/// <returns>New root node</returns>
 	void RotateRight(AvlTreeNode* node);
+
+	/// <summary>
+	/// Recurcive algorithm of finding node with minimal key
+	/// </summary>
+	/// <param name="sourceNode">Node to start search</param>
+	/// <returns></returns>
+	AvlTreeNode* FindNodeWithMinKey(AvlTreeNode* sourceNode);
+
+	void GoBalanceUpToRoot(AvlTreeNode* sourceNode);
 };

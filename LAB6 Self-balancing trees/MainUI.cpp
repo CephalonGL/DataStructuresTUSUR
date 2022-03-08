@@ -28,8 +28,8 @@ void AvlTreeUI();
 /// <param name="tabCount">Counter of tabs to 
 /// print before tree</param>
 void PrintTree(RbTreeNode* currentNode,
-	RbTreeNode* nil,
-	int tabCount = 0);
+			   RbTreeNode* nil,
+			   int tabCount = 0);
 
 /// <summary>
 /// Print tree to console
@@ -143,7 +143,7 @@ void RedBlackTreeUI()
 					string value =
 						Console::ReadString("Insert value:");
 					tree->Insert(tree->GetRoot(),
-						key, value);
+								 key, value);
 					PrintTree(tree->GetRoot(), tree->GetNil());
 					break;
 				}
@@ -254,7 +254,7 @@ void AvlTreeUI()
 						string value =
 							Console::ReadString("Enter value: ");
 						tree->Insert(tree->GetRoot(),
-							key, value);
+									 key, value);
 						PrintTree(tree->GetRoot());
 						break;
 					}
@@ -336,8 +336,8 @@ void AvlTreeUI()
 }
 
 void PrintTree(RbTreeNode* currentNode,
-	RbTreeNode* nil,
-	int tabCount)
+			   RbTreeNode* nil,
+			   int tabCount)
 {
 	if (currentNode != nullptr)
 	{

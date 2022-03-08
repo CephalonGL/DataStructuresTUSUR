@@ -27,14 +27,17 @@ short int AvlTreeNode::BalanceFactor()
 
 void AvlTreeNode::FixHeight()
 {
-	short int leftSubtreeHeight = LeftSubtree->GetHeight();
-	short int rightSubtreeHeight = RightSubtree->GetHeight();
-	if (leftSubtreeHeight > rightSubtreeHeight)
+	if (this)
 	{
-		this->Height = leftSubtreeHeight + 1;
-	}
-	else
-	{
-		this->Height = rightSubtreeHeight + 1;
+		short int leftSubtreeHeight = LeftSubtree->GetHeight();
+		short int rightSubtreeHeight = RightSubtree->GetHeight();
+		if (leftSubtreeHeight > rightSubtreeHeight)
+		{
+			this->Height = leftSubtreeHeight + 1;
+		}
+		else
+		{
+			this->Height = rightSubtreeHeight + 1;
+		}
 	}
 }
