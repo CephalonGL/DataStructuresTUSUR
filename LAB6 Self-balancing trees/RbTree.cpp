@@ -18,9 +18,9 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 	}
 	else
 	{
-		RbTreeNode* tmpNodeForSearch = _root;
+		RbTreeNode* tmpNodeForSearch = GetRoot();
 		RbTreeNode* parentNode = nullptr;
-		while (tmpNodeForSearch != _nil)
+		while (tmpNodeForSearch != GetNil())
 		{
 			parentNode = tmpNodeForSearch;
 			if (tmpNodeForSearch->Key < keyToInsert)
@@ -52,7 +52,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 	{
 		throw exception("Error: root node is empty");
 	}
-	RbTreeNode* currentNode = _root;
+	RbTreeNode* currentNode = GetRoot();
 	while (currentNode != GetNil()
 		   && keyToDelete != currentNode->Key)
 	{
@@ -71,7 +71,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 	{
 		if (currentNode == GetRoot())
 		{
-			_root = GetNil();
+			SetRoot(GetNil());
 		}
 		else
 		{
