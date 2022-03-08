@@ -115,7 +115,7 @@ void RedBlackTreeUI()
 	{
 		Add = 1,
 		Delete = 2,
-		SearchByKey = 3,
+		GetValueByKey = 3,
 		Exit = 0,
 		Help = 100,
 	};
@@ -169,13 +169,13 @@ void RedBlackTreeUI()
 					}
 				}
 			}
-			case SearchByKey:
+			case GetValueByKey:
 			{
 				try
 				{
 					string foundValue;
 					foundValue =
-						tree->SearchByKey(Console::ReadInt());
+						tree->GetValueByKey(Console::ReadInt());
 					Console::Print(foundValue);
 					break;
 				}
@@ -223,7 +223,7 @@ void AvlTreeUI()
 	{
 		Add = 1,
 		Delete = 2,
-		SearchByKey = 3,
+		GetValueByKey = 3,
 		Exit = 0,
 		Help = 100,
 	};
@@ -285,7 +285,7 @@ void AvlTreeUI()
 				}
 				break;
 			}
-			case SearchByKey:
+			case GetValueByKey:
 			{
 				while (true)
 				{
@@ -293,7 +293,7 @@ void AvlTreeUI()
 					{
 						string foundValue;
 						foundValue =
-							tree->SearchByKey(Console::ReadInt());
+							tree->GetValueByKey(Console::ReadInt());
 						Console::Print(foundValue);
 						break;
 					}

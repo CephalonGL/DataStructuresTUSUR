@@ -13,7 +13,8 @@ public:
 	/// </summary>
 	RbTree();
 	
-	void Insert(int keyToInsert, string valueToInsert);
+	void Insert(int keyToInsert,
+				string valueToInsert);
 
 
 	/// <summary>
@@ -27,7 +28,7 @@ public:
 	/// </summary>
 	/// <param name="keyToSearch">Key to search</param>
 	/// <returns>Value</returns>
-	string SearchByKey(int keyToSearch);
+	string GetValueByKey(int keyToSearch);
 
 
 private:

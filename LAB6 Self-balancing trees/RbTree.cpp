@@ -5,8 +5,10 @@ RbTree::RbTree()
 	SetNil(new RbTreeNode(0, "nil", nullptr));
 }
 
-void RbTree::Insert(int keyToInsert, string valueToInsert)
+void RbTree::Insert(int keyToInsert, 
+					string valueToInsert)
 {
+	Insert(GetRoot(), keyToInsert, valueToInsert);
 }
 
 
@@ -172,7 +174,7 @@ void RbTree::DeleteByKey(int keyToDelete)
 	}
 }
 
-string RbTree::SearchByKey(int keyToSearch)
+string RbTree::GetValueByKey(int keyToSearch)
 {
 	RbTreeNode* currentNode = GetRoot();
 	while (currentNode != GetNil())
