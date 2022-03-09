@@ -14,6 +14,11 @@ public:
 	/// </summary>
 	RbTree();
 	
+	/// <summary>
+	/// Insert new node
+	/// </summary>
+	/// <param name="keyToInsert">Key of new node</param>
+	/// <param name="valueToInsert">Value of new node</param>
 	void Insert(int keyToInsert,
 				string valueToInsert);
 
@@ -30,6 +35,17 @@ public:
 	/// <returns>Value</returns>
 	string GetValueByKey(int keyToSearch);
 
+	/// <summary>
+	/// Getter for root node
+	/// </summary>
+	/// <returns>Root node of tree</returns>
+	RbTreeNode* GetRoot();
+
+	/// <summary>
+	/// Getter for nil node
+	/// </summary>
+	/// <returns>Nil of this tree</returns>
+	RbTreeNode* GetNil();
 
 private:
 	/// <summary>
@@ -67,11 +83,6 @@ private:
 	/// <returns>New root node</returns>
 	RbTreeNode* RotateRight(RbTreeNode* node);
 
-	/// <summary>
-	/// Getter for root node
-	/// </summary>
-	/// <returns>Root node of tree</returns>
-	RbTreeNode* GetRoot();
 
 	/// <summary>
 	/// Set new root
@@ -79,19 +90,37 @@ private:
 	void SetRoot(RbTreeNode* newRoot);
 
 	/// <summary>
-	/// Getter for nil node
+	/// Set new nil
 	/// </summary>
-	/// <returns>Nil of this tree</returns>
-	RbTreeNode* GetNil();
-
+	/// <param name="newNil">Pointer to new nil</param>
 	void SetNil(RbTreeNode* newNil);
 
+	/// <summary>
+	/// Getter for left subtree
+	/// </summary>
+	/// <param name="sourceNode">Node to get left node</param>
+	/// <returns>Left subtree</returns>
 	RbTreeNode* GetLeft(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Getter for right subtree
+	/// </summary>
+	/// <param name="sourceNode">Node to get right node</param>
+	/// <returns>Right subtree</returns>
 	RbTreeNode* GetRight(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Getter for brother of node
+	/// </summary>
+	/// <param name="sourceNode">Node to get brother</param>
+	/// <returns>Brother of node if has</returns>
 	RbTreeNode* GetBrother(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Getter for parent of node
+	/// </summary>
+	/// <param name="sourceNode">Node to get parent</param>
+	/// <returns>Parent of node if has</returns>
 	RbTreeNode* GetParent(RbTreeNode* sourceNode);
 
 	RbTreeNode* GetGrandparent(RbTreeNode* sourceNode);
