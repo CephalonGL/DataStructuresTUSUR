@@ -140,10 +140,8 @@ void RedBlackTreeUI()
 				try
 				{
 					int key = Console::ReadInt("Insert key:");
-					string value =
-						Console::ReadString("Insert value:");
-					tree->Insert(tree->GetRoot(),
-								 key, value);
+					string value = Console::ReadString("Insert value:");
+					tree->Insert(key, value);
 					PrintTree(tree->GetRoot(), tree->GetNil());
 					break;
 				}

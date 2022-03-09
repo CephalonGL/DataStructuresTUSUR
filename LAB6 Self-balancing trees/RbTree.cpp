@@ -3,6 +3,11 @@
 RbTree::RbTree()
 {
 	SetNil(new RbTreeNode(0, "nil", nullptr));
+	SetRoot(GetNil());
+	GetRoot()->SetParent(GetNil());
+	GetRoot()->SetLeft(GetNil());
+	GetRoot()->SetRight(GetNil());
+	GetRoot()->SetBlack();
 }
 
 void RbTree::Insert(int keyToInsert,
@@ -19,7 +24,7 @@ RbTreeNode* RbTree::Insert(RbTreeNode* currentNode,
 {
 	RbTreeNode* newNode = new RbTreeNode(keyToInsert, valueToInsert,
 										 GetNil());
-	if (!GetRoot())
+	if (IsNil(GetRoot()))
 	{
 		SetRoot(newNode);
 		GetRoot()->SetParent(GetNil());
