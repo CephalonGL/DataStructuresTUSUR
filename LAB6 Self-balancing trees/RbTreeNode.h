@@ -52,6 +52,16 @@ public:
 
 	void SetRight(RbTreeNode* newRightChild);
 
+	int GetKey();
+
+	void SetKey(int keyToSet);
+
+	string GetValue();
+
+	void SetValue(string valueToSet);
+
+	unsigned int GetHeightBlack();
+
 	/// <summary>
 	/// Fix counter of black nodes up to nil
 	/// </summary>
@@ -74,6 +84,8 @@ public:
 	/// </summary>
 	/// <returns>If node is red, return 1, else 0</returns>
 	bool IsRed();
+
+	bool IsBlack();
 
 private:
 	/// <summary>

@@ -86,9 +86,9 @@ private:
 
 	void SetNil(RbTreeNode* newNil);
 
-	RbTreeNode* GetLeftChild(RbTreeNode* sourceNode);
+	RbTreeNode* GetLeft(RbTreeNode* sourceNode);
 
-	RbTreeNode* GetRightChild(RbTreeNode* sourceNode);
+	RbTreeNode* GetRight(RbTreeNode* sourceNode);
 
 	RbTreeNode* GetBrother(RbTreeNode* sourceNode);
 
@@ -103,6 +103,8 @@ private:
 	bool IsLeftChild(RbTreeNode* sourceNode);
 
 	bool IsRightChild(RbTreeNode* sourceNode);
+
+	bool IsRoot(RbTreeNode* sourceNode);
 
 	/// <summary>
 	/// Pointer to root node
