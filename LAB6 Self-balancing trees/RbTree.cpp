@@ -453,8 +453,12 @@ RbTreeNode* RbTree::GetRoot()
 void RbTree::SetRoot(RbTreeNode* newRoot)
 {
 	_root = newRoot;
-	_root->SetBlack();
-	_root->Parent = GetNil();
+	if (newRoot
+		&& !IsNil(newRoot))
+	{
+		_root->SetBlack();
+			_root->Parent = GetNil();
+	}
 }
 
 RbTreeNode* RbTree::GetNil()
