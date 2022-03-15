@@ -6,7 +6,7 @@
 #include "..\Console\Console.cpp"
 using namespace std;
 
-string SPLITTER_STRING = 
+string SPLITTER_STRING =
 "------------------------"
 "------------------------"
 "------------------------";
@@ -53,19 +53,19 @@ int main()
 		Avl = 2,
 		Help = 100,
 	};
-	setlocale(LC_ALL, "ru");
-	cout << SPLITTER_STRING << endl;
-	cout << "Welcome to the program of working with"
-		" self-balancing trees." << endl;
-	cout << SPLITTER_STRING << endl;
-	cout << "To choose the data structure, enter its number:" << endl;
-	cout << "\t1\tRed-black tree." << endl;
-	cout << "\t2\tAVL tree;" << endl;
-	cout << "Use 0 to exit the program." << endl;
-	cout << SPLITTER_STRING << endl;
+	Console::Print(SPLITTER_STRING);
+	Console::Print("Welcome to the program of working with"
+		" self-balancing trees.");
+	Console::Print(SPLITTER_STRING);
+	Console::Print("To choose the data structure"
+				   ", enter its number:");
+	Console::Print("\t1\tRed-black tree.");
+	Console::Print("\t2\tAVL tree;");
+	Console::Print("Use 0 to exit the program.");
 	int operationCode = 1;
 	while (operationCode)
 	{
+		Console::Print(SPLITTER_STRING);
 		operationCode = Console::ReadInt("Enter operation code: ");
 		switch (operationCode)
 		{
@@ -81,10 +81,10 @@ int main()
 			}
 			case Help:
 			{
-				cout << "To choose the data structure, enter"
-					" its number:" << endl;
-				cout << "\t1\tRed black tree." << endl;
-				cout << "\t2\tAVL tree;" << endl;
+				Console::Print("To choose the data structure, enter"
+					" its number:");
+				Console::Print("\t1\tRed black tree.");
+				Console::Print("\t2\tAVL tree;");
 				break;
 			}
 			case Exit:
@@ -93,12 +93,12 @@ int main()
 			}
 			default:
 			{
-				cout << endl;
-				cout << SPLITTER_STRING << endl;
-				cout << endl;
-				cout << "Incorrect operation code. Enter 100 to"
-					" get help." << endl;
-				cout << "Repeat enter: ";
+				Console::Print("");
+				Console::Print(SPLITTER_STRING);
+				Console::Print("");
+				Console::Print("Incorrect operation code. "
+							   "Enter 100 to get help.");
+				Console::Print("Repeat enter: ");
 				break;
 			}
 		}
@@ -120,19 +120,17 @@ void RedBlackTreeUI()
 		Exit = 0,
 		Help = 100,
 	};
-	setlocale(LC_ALL, "ru");
-	cout << SPLITTER_STRING << endl;
-	cout << "To choose operation type, enter its code:" << endl;
-	cout << "\t1\tInsert the element" << endl;
-	cout << "\t2\tDelete the element" << endl;
-	cout << "\t3\tSearch element by the key" << endl;
-	cout << "Use 0 to exit the program." << endl;
-	cout << SPLITTER_STRING << endl;
+	Console::Print(SPLITTER_STRING);
+	Console::Print("To choose operation type, enter its code:");
+	Console::Print("\t1\tInsert the element");
+	Console::Print("\t2\tDelete the element");
+	Console::Print("\t3\tSearch element by the key");
+	Console::Print("Use 0 to exit the program.");
 	RbTree* tree = new RbTree;
 	int operationCode = 1;
 	while (operationCode)
 	{
-		cout << SPLITTER_STRING << endl;
+		Console::Print(SPLITTER_STRING);
 		operationCode = Console::ReadInt("Enter operation code: ");
 		switch (operationCode)
 		{
@@ -153,18 +151,16 @@ void RedBlackTreeUI()
 			}
 			case Delete:
 			{
-				while (true)
+				try
 				{
-					try
-					{
-						tree->DeleteByKey(Console::ReadInt());
-						Console::Print("The node successfuly deleted.");
-						PrintTree(tree->GetRoot(), tree->GetNil());
-					}
-					catch (const exception& error)
-					{
-						Console::Print(error.what());
-					}
+					Console::Print("Insert key of node to delete: ");
+					tree->DeleteByKey(Console::ReadInt());
+					Console::Print("The node successfuly deleted.");
+					PrintTree(tree->GetRoot(), tree->GetNil());
+				}
+				catch (const exception& error)
+				{
+					Console::Print(error.what());
 				}
 				break;
 			}
@@ -185,13 +181,13 @@ void RedBlackTreeUI()
 			}
 			case Help:
 			{
-				cout << SPLITTER_STRING << endl;
-				cout << "To choose operation type, enter its code:"
-					<< endl;
-				cout << "\t1\tInsert the element" << endl;
-				cout << "\t2\tDelete the element" << endl;
-				cout << "\t3\tSearch element by the key" << endl;
-				cout << "Use 0 to exit the program." << endl;
+				Console::Print(SPLITTER_STRING);
+				Console::Print("To choose operation type,"
+							   " enter its code:");
+				Console::Print("\t1\tInsert the element");
+				Console::Print("\t2\tDelete the element");
+				Console::Print("\t3\tSearch element by the key");
+				Console::Print("Use 0 to exit the program.");
 				break;
 			}
 			case Exit:
@@ -200,12 +196,12 @@ void RedBlackTreeUI()
 			}
 			default:
 			{
-				cout << endl;
-				cout << SPLITTER_STRING << endl;
-				cout << endl;
-				cout << "Incorrect operation code. Enter 100 to"
-					" get help." << endl;
-				cout << "Repeat enter: ";
+				Console::Print("");
+				Console::Print(SPLITTER_STRING);
+				Console::Print("");
+				Console::Print("Incorrect operation code. Enter 100 to"
+					" get help.");
+				Console::Print("Repeat enter: ");
 				break;
 			}
 		}
@@ -227,13 +223,13 @@ void AvlTreeUI()
 		Help = 100,
 	};
 	setlocale(LC_ALL, "ru");
-	cout << SPLITTER_STRING << endl;
-	cout << "To choose operation type, enter its code:" << endl;
-	cout << "\t1\tInsert the element" << endl;
-	cout << "\t2\tDelete the element" << endl;
-	cout << "\t3\tSearch element by the key" << endl;
-	cout << "Use 0 to exit the program." << endl;
-	cout << SPLITTER_STRING << endl;
+	Console::Print(SPLITTER_STRING);
+	Console::Print("To choose operation type, enter its code:");
+	Console::Print("\t1\tInsert the element");
+	Console::Print("\t2\tDelete the element");
+	Console::Print("\t3\tSearch element by the key");
+	Console::Print("Use 0 to exit the program.");
+	Console::Print(SPLITTER_STRING);
 	AvlTree* tree = new AvlTree;
 	int operationCode = 1;
 	while (operationCode)
@@ -305,14 +301,14 @@ void AvlTreeUI()
 			}
 			case Help:
 			{
-				cout << SPLITTER_STRING << endl;
-				cout << "To choose operation type, enter its code:"
-					<< endl;
-				cout << "\t1\tInsert the element" << endl;
-				cout << "\t2\tDelete the element" << endl;
-				cout << "\t3\tSearch element by the key" << endl;
-				cout << "Use 0 to exit the program." << endl;
-				cout << SPLITTER_STRING << endl;
+				Console::Print(SPLITTER_STRING);
+				Console::Print("To choose operation type,"
+							   " enter its code:");
+				Console::Print("\t1\tInsert the element");
+				Console::Print("\t2\tDelete the element");
+				Console::Print("\t3\tSearch element by the key");
+				Console::Print("Use 0 to exit the program.");
+				Console::Print(SPLITTER_STRING);
 				break;
 			}
 			case Exit:
@@ -321,12 +317,12 @@ void AvlTreeUI()
 			}
 			default:
 			{
-				cout << endl;
-				cout << SPLITTER_STRING << endl;
-				cout << endl;
-				cout << "Incorrect operation code. Enter 100 to"
-					" get help." << endl;
-				cout << "Repeat enter: ";
+				Console::Print("");
+				Console::Print(SPLITTER_STRING);
+				Console::Print("");
+				Console::Print("Incorrect operation code. Enter 100 to"
+					" get help.");
+				Console::Print("Repeat enter: ");
 				break;
 			}
 		}
