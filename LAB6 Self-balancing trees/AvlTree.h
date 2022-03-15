@@ -9,8 +9,6 @@ using namespace std;
 class AvlTree
 {
 public:
-
-
 	/// <summary>
 	/// Inserts new node using recursive algorithm
 	/// </summary>
