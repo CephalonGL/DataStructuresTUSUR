@@ -46,20 +46,52 @@ public:
 	/// <param name="value">Value of node</param>
 	RbTreeNode(int key, string value, RbTreeNode* nil);
 
+	/// <summary>
+	/// Set parent for node
+	/// </summary>
+	/// <param name="newParent">New parent</param>
 	void SetParent(RbTreeNode* newParent);
 
+	/// <summary>
+	/// Set left child for node
+	/// </summary>
+	/// <param name="newLeftChild">New left child</param>
 	void SetLeft(RbTreeNode* newLeftChild);
 
+	/// <summary>
+	/// Set right child for node
+	/// </summary>
+	/// <param name="newRightChild">New child</param>
 	void SetRight(RbTreeNode* newRightChild);
 
+	/// <summary>
+	/// Get key of node
+	/// </summary>
+	/// <returns>Key of this node</returns>
 	int GetKey();
 
+	/// <summary>
+	/// Set key to this node
+	/// </summary>
+	/// <param name="keyToSet">Key to set</param>
 	void SetKey(int keyToSet);
 
+	/// <summary>
+	/// Get gey of this node
+	/// </summary>
+	/// <returns>Value of this node</returns>
 	string GetValue();
 
+	/// <summary>
+	/// Set value to this node
+	/// </summary>
+	/// <param name="valueToSet">Value to set</param>
 	void SetValue(string valueToSet);
 
+	/// <summary>
+	/// Get black height for his node
+	/// </summary>
+	/// <returns>Black height of this node</returns>
 	unsigned int GetHeightBlack();
 
 	/// <summary>
@@ -80,11 +112,15 @@ public:
 	void SetBlack();
 
 	/// <summary>
-	/// Return _isRed flag
+	/// Return color flag
 	/// </summary>
-	/// <returns>If node is red, return 1, else 0</returns>
+	/// <returns>If node is red, returns true, else false</returns>
 	bool IsRed();
 
+	/// <summary>
+	/// Return color flag
+	/// </summary>
+	/// <returns>If node is black, returns true, else false</returns>
 	bool IsBlack();
 
 private:

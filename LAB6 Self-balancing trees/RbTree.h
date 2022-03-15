@@ -72,6 +72,23 @@ private:
 	void GoBalanceAfterDeletion(RbTreeNode* nodeToBalance);
 
 	/// <summary>
+	/// Find node with next minimal key from current
+	/// </summary>
+	/// <param name="sourceNode">Source node to find node with 
+	/// next minimal key</param>
+	/// <returns></returns>
+	RbTreeNode* FindNodeWithNextMinKey(RbTreeNode* sourceNode);
+
+	/// <summary>
+	/// Search for node with inserted key. 
+	/// If there is no node with such key, throw excepion.
+	/// </summary>
+	/// <param name="keyToFind"></param>
+	/// <returns>If there is node with inserted key, 
+	/// return this node.</returns>
+	RbTreeNode* AssertFindNodeByKey(int keyToFind);
+
+	/// <summary>
 	/// Do small left rotation
 	/// </summary>
 	/// <returns>New root node</returns>
@@ -82,7 +99,6 @@ private:
 	/// </summary>
 	/// <returns>New root node</returns>
 	RbTreeNode* RotateRight(RbTreeNode* node);
-
 
 	/// <summary>
 	/// Set new root
@@ -123,16 +139,46 @@ private:
 	/// <returns>Parent of node if has</returns>
 	RbTreeNode* GetParent(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Getter for parent of node
+	/// </summary>
+	/// <param name="sourceNode">Node to get parent</param>
+	/// <returns>Parent of node</returns>
 	RbTreeNode* GetGrandparent(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Getter for brother of parent of node
+	/// </summary>
+	/// <param name="sourceNode">Node to get uncle</param>
+	/// <returns>Uncle of node</returns>
 	RbTreeNode* GetUncle(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Check if this node is nil
+	/// </summary>
+	/// <param name="sourceNode">Node to check</param>
+	/// <returns>True if this node is nil, else false</returns>
 	bool IsNil(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Check if this node is a left child
+	/// </summary>
+	/// <param name="sourceNode">Node to check</param>
+	/// <returns>True if this node is left a child, else false</returns>
 	bool IsLeftChild(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Check if this node is a right child
+	/// </summary>
+	/// <param name="sourceNode">Node to check</param>
+	/// <returns>True if this node is a right child, else false</returns>
 	bool IsRightChild(RbTreeNode* sourceNode);
 
+	/// <summary>
+	/// Check if this node
+	/// </summary>
+	/// <param name="sourceNode">Node to check</param>
+	/// <returns>True if this node is root, else false</returns>
 	bool IsRoot(RbTreeNode* sourceNode);
 
 	/// <summary>
