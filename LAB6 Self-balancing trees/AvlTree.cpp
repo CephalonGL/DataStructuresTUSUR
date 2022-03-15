@@ -13,7 +13,7 @@ void AvlTree::Insert(AvlTreeNode* currentNode,
 		throw exception("Error: there is already"
 						" a node with such key.");
 	}
-	catch (const std::exception&)
+	catch (const exception&)
 	{
 	}
 	if (!currentNode)
@@ -268,8 +268,11 @@ void AvlTree::RotateRight(AvlTreeNode* rotateNode)
 		{
 			rotateNode->Parent->RightSubtree = rotateNode->LeftSubtree;
 		}
-		rotateNode->LeftSubtree->RightSubtree->Parent =
-			rotateNode->Parent;
+		if (rotateNode->LeftSubtree->RightSubtree)
+		{
+			rotateNode->LeftSubtree->RightSubtree->Parent =
+				rotateNode->Parent;
+		}
 	}
 
 	//Do rotation

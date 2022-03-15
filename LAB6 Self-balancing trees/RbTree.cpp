@@ -91,13 +91,13 @@ void RbTree::DeleteByKey(int keyToDelete)
 			if (currentNode == GetLeft(GetParent(currentNode)))
 			{
 				GetParent(currentNode)->SetLeft(GetNil());
-				delete currentNode;
 			}
 			else
 			{
 				GetParent(currentNode)->SetLeft(GetNil());
-				delete currentNode;
 			}
+			delete currentNode;
+			currentNode = nullptr;
 			return;
 		}
 	}
@@ -111,14 +111,13 @@ void RbTree::DeleteByKey(int keyToDelete)
 			//TODO: Something is wrong
 			GetParent(currentNode)->SetLeft(GetLeft(currentNode));
 			//parent->LeftSubtree = currentNode->LeftSubtree;
-			delete GetLeft(currentNode);
 		}
 		else
 		{
 			GetParent(currentNode)->SetRight(GetLeft(currentNode));
 			//parent->RightSubtree = currentNode->LeftSubtree;
-			delete GetLeft(currentNode);
 		}
+		delete GetLeft(currentNode);
 	}
 	else if (!IsNil(GetRight(currentNode))
 			 && IsNil(GetLeft(currentNode)))
@@ -127,13 +126,12 @@ void RbTree::DeleteByKey(int keyToDelete)
 		{
 			//TODO: something is wrong
 			GetParent(currentNode)->SetLeft(GetRight(currentNode));
-			delete GetRight(currentNode);
 		}
 		else
 		{
 			GetParent(currentNode)->SetRight(GetRight(currentNode));
-			delete GetRight(currentNode);
 		}
+		delete GetRight(currentNode);
 	}
 	else
 	{
@@ -566,30 +564,16 @@ bool RbTree::IsNil(RbTreeNode* sourceNode)
 
 bool RbTree::IsLeftChild(RbTreeNode* sourceNode)
 {
-	if (!IsNil(sourceNode)
+	return !IsNil(sourceNode)
 		&& !IsNil(GetParent(sourceNode))
-		&& GetLeft(GetParent(sourceNode)) == sourceNode)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+		&& GetLeft(GetParent(sourceNode)) == sourceNode;
 }
 
 bool RbTree::IsRightChild(RbTreeNode* sourceNode)
 {
-	if (!IsNil(sourceNode)
+	return !IsNil(sourceNode)
 		&& !IsNil(GetParent(sourceNode))
-		&& GetRight(GetParent(sourceNode)) == sourceNode)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+		&& GetRight(GetParent(sourceNode)) == sourceNode;
 }
 
 bool RbTree::IsRoot(RbTreeNode* sourceNode)
