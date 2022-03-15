@@ -57,8 +57,7 @@ int main()
 	Console::Print("Welcome to the program of working with"
 		" self-balancing trees.");
 	Console::Print(SPLITTER_STRING);
-	Console::Print("To choose the data structure"
-				   ", enter its number:");
+	Console::Print("To choose the data structure, enter its number:");
 	Console::Print("\t1\tRed-black tree.");
 	Console::Print("\t2\tAVL tree;");
 	Console::Print("Use 0 to exit the program.");
