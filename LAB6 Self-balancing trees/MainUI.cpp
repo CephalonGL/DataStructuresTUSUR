@@ -6,9 +6,10 @@
 #include "..\Console\Console.cpp"
 using namespace std;
 
-string SPLITTER_STRING = "--------------------------"
-"-----------------------"
-"-----------------------";
+string SPLITTER_STRING = 
+"------------------------"
+"------------------------"
+"------------------------";
 
 /// <summary>
 /// Console user interface for red-black tree 
@@ -143,12 +144,12 @@ void RedBlackTreeUI()
 					string value = Console::ReadString("Insert value:");
 					tree->Insert(key, value);
 					PrintTree(tree->GetRoot(), tree->GetNil());
-					break;
 				}
 				catch (const exception& error)
 				{
 					Console::Print(error.what());
 				}
+				break;
 			}
 			case Delete:
 			{
@@ -159,13 +160,13 @@ void RedBlackTreeUI()
 						tree->DeleteByKey(Console::ReadInt());
 						Console::Print("The node successfuly deleted.");
 						PrintTree(tree->GetRoot(), tree->GetNil());
-						break;
 					}
 					catch (const exception& error)
 					{
 						Console::Print(error.what());
 					}
 				}
+				break;
 			}
 			case GetValueByKey:
 			{
@@ -175,12 +176,12 @@ void RedBlackTreeUI()
 					foundValue =
 						tree->GetValueByKey(Console::ReadInt());
 					Console::Print(foundValue);
-					break;
 				}
 				catch (const exception& error)
 				{
 					Console::Print(error.what());
 				}
+				break;
 			}
 			case Help:
 			{
@@ -337,7 +338,7 @@ void PrintTree(RbTreeNode* currentNode,
 			   RbTreeNode* nil,
 			   int tabCount)
 {
-	if (currentNode != nullptr)
+	if (currentNode != nil)
 	{
 		PrintTree(currentNode->RightSubtree, nil, tabCount + 1);
 		for (int i = 0; i < tabCount; i++)
@@ -350,31 +351,32 @@ void PrintTree(RbTreeNode* currentNode,
 			&&
 			currentNode->RightSubtree != nil)
 		{
-			cout << "|\n";
+			cout << "|" << endl;
 		}
 		if (currentNode->LeftSubtree == nil
 			&&
 			currentNode->RightSubtree != nil)
 		{
-			cout << "/\n";
+			cout << "/" << endl;
 		}
 		if (currentNode->LeftSubtree != nil
 			&&
 			currentNode->RightSubtree == nil)
 		{
-			cout << "\\\n";
+			cout << "\\" << endl;
 		}
 		if (currentNode->LeftSubtree == nil
 			&&
 			currentNode->RightSubtree == nil)
 		{
-			cout << "\n";
+			cout << endl;
 		}
 		PrintTree(currentNode->LeftSubtree, nil, tabCount + 1);
 	}
 }
 
-void PrintTree(AvlTreeNode* currentNode, int tabCount)
+void PrintTree(AvlTreeNode* currentNode,
+			   int tabCount)
 {
 	if (currentNode)
 	{
@@ -389,25 +391,25 @@ void PrintTree(AvlTreeNode* currentNode, int tabCount)
 			&&
 			currentNode->RightSubtree != nullptr)
 		{
-			cout << "|\n";
+			cout << "|" << endl;
 		}
 		if (currentNode->LeftSubtree == nullptr
 			&&
 			currentNode->RightSubtree != nullptr)
 		{
-			cout << "/\n";
+			cout << "/" << endl;
 		}
 		if (currentNode->LeftSubtree != nullptr
 			&&
 			currentNode->RightSubtree == nullptr)
 		{
-			cout << "\\\n";
+			cout << "\\" << endl;
 		}
 		if (currentNode->LeftSubtree == nullptr
 			&&
 			currentNode->RightSubtree == nullptr)
 		{
-			cout << "\n";
+			cout << endl;
 		}
 		PrintTree(currentNode->LeftSubtree, tabCount + 1);
 	}
