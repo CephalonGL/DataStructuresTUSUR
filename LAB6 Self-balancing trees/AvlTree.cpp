@@ -310,9 +310,6 @@ void AvlTree::GoBalanceUpToRoot(AvlTreeNode* sourceNode)
 	}
 }
 
-AvlTree::AvlTree()
-{
-}
 
 AvlTreeNode* AvlTree::GetRoot()
 {

@@ -37,13 +37,6 @@ public:
 	void DeleteByKey(int keyToDelete);
 
 	/// <summary>
-	/// Initialize a tree
-	/// </summary>
-	/// <param name="rootKey">Key of root node</param>
-	/// <param name="rootValue">Value of root node</param>
-	AvlTree();
-
-	/// <summary>
 	/// Getter for root node
 	/// </summary>
 	/// <returns>Root node of tree</returns>
