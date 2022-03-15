@@ -177,7 +177,10 @@ AvlTreeNode* AvlTree::FindNodeByKey(int keyToFind)
 void AvlTree::SetRoot(AvlTreeNode* newRoot)
 {
 	_root = newRoot;
-	_root->Parent = nullptr;
+	if (newRoot)
+	{
+		_root->Parent = nullptr;
+	}
 }
 
 void AvlTree::GoBalance(AvlTreeNode* nodeToBalance)
