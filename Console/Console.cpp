@@ -3,7 +3,7 @@
 int Console::ReadInt(string message)
 {
 
-    Print(message);
+    WriteLine(message);
     int inputValue;
     cin >> inputValue;
     if (cin.fail())
@@ -18,13 +18,13 @@ int Console::ReadInt(string message)
 
 string Console::ReadString(string message)
 {
-    Print(message);
+    WriteLine(message);
     string inputValue;
     cin >> inputValue;
     return inputValue;
 }
 
-void Console::Print(string message)
+void Console::WriteLine(string message)
 {
 	if (message == "")
 	{

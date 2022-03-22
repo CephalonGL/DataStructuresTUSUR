@@ -31,6 +31,6 @@ public:
 	/// Print message to console
 	/// </summary>
 	/// <param name="message">Message to print</param>
-	static void Print(string message);
+	static void WriteLine(string message);
 };
 
