@@ -83,7 +83,7 @@ private:
 	/// Search for node with inserted key. 
 	/// If there is no node with such key, throw excepion.
 	/// </summary>
-	/// <param name="keyToFind"></param>
+	/// <param name="keyToFind">Key to find node by</param>
 	/// <returns>If there is node with inserted key, 
 	/// return this node.</returns>
 	RbTreeNode* AssertFindNodeByKey(int keyToFind);
@@ -190,6 +190,4 @@ private:
 	/// Fictional node for leafs
 	/// </summary>
 	RbTreeNode* _nil;
-
 };
-

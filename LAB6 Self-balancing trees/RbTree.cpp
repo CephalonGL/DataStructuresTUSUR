@@ -95,49 +95,89 @@ void RbTree::DeleteByKey(int keyToDelete)
 		delete nodeToDelete;
 		return;
 	}
+	RbTreeNode* nodeWithNextMinKey =
+		FindNodeWithNextMinKey(nodeToDelete);
 	if (!IsNil(GetLeft(nodeToDelete))
 		&& IsNil(GetRight(nodeToDelete)))
 	{
-		if (IsLeftChild(nodeToDelete))
+		if (IsRoot(nodeToDelete))
 		{
-			GetParent(nodeToDelete)->SetLeft(GetLeft(nodeToDelete));
+			SetRoot(GetLeft(nodeToDelete));
+			GetLeft(nodeToDelete)->SetParent(GetNil());
 		}
 		else
 		{
-			GetParent(nodeToDelete)->SetRight(GetLeft(nodeToDelete));
+			if (IsLeftChild(nodeToDelete))
+			{
+				GetParent(nodeToDelete)->SetLeft(GetLeft(nodeToDelete));
+			}
+			else
+			{
+				GetParent(nodeToDelete)->SetRight(GetLeft(nodeToDelete));
+			}
+			GetLeft(nodeToDelete)->SetParent(GetParent(nodeToDelete));
 		}
-		GetLeft(nodeToDelete)->SetParent(GetParent(nodeToDelete));
 		delete nodeToDelete;
+		return;
 	}
 	else if (IsNil(GetLeft(nodeToDelete))
 			 && !IsNil(GetRight(nodeToDelete)))
 	{
-		if (IsLeftChild(nodeToDelete))
+		if (IsRoot(nodeToDelete))
 		{
-			GetParent(nodeToDelete)->SetLeft(GetRight(nodeToDelete));
+			SetRoot(GetRight(nodeToDelete));
+			GetRight(nodeToDelete)->SetParent(GetNil());
 		}
 		else
 		{
-			GetParent(nodeToDelete)->SetRight(GetRight(nodeToDelete));
+			if (IsLeftChild(nodeToDelete))
+			{
+				GetParent(nodeToDelete)->SetLeft(GetRight(nodeToDelete));
+			}
+			else
+			{
+				GetParent(nodeToDelete)->SetRight(GetRight(nodeToDelete));
+			}
+			GetRight(nodeToDelete)->SetParent(GetParent(nodeToDelete));
 		}
-		GetRight(nodeToDelete)->SetParent(GetParent(nodeToDelete));
 		delete nodeToDelete;
+		return;
 	}
 	else
 	{
-		RbTreeNode* nodeWithNextMinKey = 
-			FindNodeWithNextMinKey(nodeToDelete);
 		if (!IsNil(GetRight(nodeWithNextMinKey)))
 		{
 			GetRight(nodeWithNextMinKey)->
 				SetParent(GetParent(nodeWithNextMinKey));
+			GetParent(nodeWithNextMinKey)->
+				SetLeft(GetRight(nodeWithNextMinKey));
 		}
 		if (IsRoot(nodeToDelete))
 		{
-			SetRoot(GetRight(nodeWithNextMinKey));
+			SetRoot(nodeWithNextMinKey);
+			nodeWithNextMinKey->SetParent(GetNil());
+			nodeWithNextMinKey->SetLeft(GetLeft(nodeToDelete));
+			GetLeft(nodeWithNextMinKey)->SetParent(nodeWithNextMinKey);
+			if (nodeWithNextMinKey != GetRight(nodeToDelete))
+			{
+				nodeWithNextMinKey->SetRight(GetRight(nodeToDelete));
+				GetRight(nodeWithNextMinKey)->
+					SetParent(nodeWithNextMinKey);
+			}
+			else
+			{
+				nodeWithNextMinKey->SetRight(GetNil());
+			}
 		}
 		else
 		{
+			if (!IsNil(GetRight(nodeWithNextMinKey)))
+			{
+				GetRight(nodeWithNextMinKey)->
+					SetParent(GetParent(nodeWithNextMinKey));
+				GetParent(nodeWithNextMinKey)->
+					SetLeft(GetRight(nodeWithNextMinKey));
+			}
 			if (IsLeftChild(nodeToDelete))
 			{
 				GetParent(nodeToDelete)->SetLeft(nodeWithNextMinKey);
@@ -146,22 +186,19 @@ void RbTree::DeleteByKey(int keyToDelete)
 			{
 				GetParent(nodeToDelete)->SetRight(nodeWithNextMinKey);
 			}
+			nodeWithNextMinKey->SetParent(GetParent(nodeToDelete));
+			if (nodeWithNextMinKey != GetRight(nodeToDelete))
+			{
+				nodeWithNextMinKey->SetRight(GetRight(nodeToDelete));
+			}
+			nodeWithNextMinKey->SetLeft(GetLeft(nodeToDelete));
+			GetLeft(nodeToDelete)->SetParent(nodeWithNextMinKey);
 		}
-	}
-	if (nodeWithNextMinKey != nodeToDelete)
-	{
-		if (nodeWithNextMinKey->IsRed())
-		{
-			nodeToDelete->SetRed();
-		}
-		else
-		{
-			nodeToDelete->SetBlack();
-		}
+		delete nodeToDelete;
 	}
 	if (nodeWithNextMinKey->IsBlack())
 	{
-		GoBalanceAfterDeletion(nodeToDelete);
+		GoBalanceAfterDeletion(nodeWithNextMinKey);
 	}
 }
 
