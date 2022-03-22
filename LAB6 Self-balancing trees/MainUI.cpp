@@ -4,7 +4,9 @@
 #include "RBTree.h"
 #include "..\Console\Console.h"
 #include "..\Console\Console.cpp"
+
 using namespace std;
+using namespace Console;
 
 string SPLITTER_STRING =
 "------------------------"
@@ -53,19 +55,19 @@ int main()
 		Avl = 2,
 		Help = 100,
 	};
-	Console::WriteLine(SPLITTER_STRING);
-	Console::WriteLine("Welcome to the program of working with"
-		" self-balancing trees.");
-	Console::WriteLine(SPLITTER_STRING);
-	Console::WriteLine("To choose the data structure, enter its number:");
-	Console::WriteLine("\t1\tRed-black tree.");
-	Console::WriteLine("\t2\tAVL tree;");
-	Console::WriteLine("Use 0 to exit the program.");
+	WriteLine(SPLITTER_STRING);
+	WriteLine("Welcome to the program of working with"
+			  " self-balancing trees.");
+	WriteLine(SPLITTER_STRING);
+	WriteLine("To choose the data structure, enter its number:");
+	WriteLine("\t1\tRed-black tree.");
+	WriteLine("\t2\tAVL tree;");
+	WriteLine("Use 0 to exit the program.");
 	int operationCode = 1;
 	while (operationCode)
 	{
-		Console::WriteLine(SPLITTER_STRING);
-		operationCode = Console::ReadInt("Enter operation code: ");
+		WriteLine(SPLITTER_STRING);
+		operationCode = ReadInt("Enter operation code: ");
 		switch (operationCode)
 		{
 			case RedBlack:
@@ -80,10 +82,10 @@ int main()
 			}
 			case Help:
 			{
-				Console::WriteLine("To choose the data structure, enter"
+				WriteLine("To choose the data structure, enter"
 					" its number:");
-				Console::WriteLine("\t1\tRed black tree.");
-				Console::WriteLine("\t2\tAVL tree;");
+				WriteLine("\t1\tRed black tree.");
+				WriteLine("\t2\tAVL tree;");
 				break;
 			}
 			case Exit:
@@ -92,12 +94,12 @@ int main()
 			}
 			default:
 			{
-				Console::WriteLine("");
-				Console::WriteLine(SPLITTER_STRING);
-				Console::WriteLine("");
-				Console::WriteLine("Incorrect operation code. "
+				WriteLine("");
+				WriteLine(SPLITTER_STRING);
+				WriteLine("");
+				WriteLine("Incorrect operation code. "
 							   "Enter 100 to get help.");
-				Console::WriteLine("Repeat enter: ");
+				WriteLine("Repeat enter: ");
 				break;
 			}
 		}
@@ -119,32 +121,32 @@ void RedBlackTreeUI()
 		Exit = 0,
 		Help = 100,
 	};
-	Console::WriteLine(SPLITTER_STRING);
-	Console::WriteLine("To choose operation type, enter its code:");
-	Console::WriteLine("\t1\tInsert the element");
-	Console::WriteLine("\t2\tDelete the element");
-	Console::WriteLine("\t3\tSearch element by the key");
-	Console::WriteLine("Use 0 to exit the program.");
+	WriteLine(SPLITTER_STRING);
+	WriteLine("To choose operation type, enter its code:");
+	WriteLine("\t1\tInsert the element");
+	WriteLine("\t2\tDelete the element");
+	WriteLine("\t3\tSearch element by the key");
+	WriteLine("Use 0 to exit the program.");
 	RbTree* tree = new RbTree;
 	int operationCode = 1;
 	while (operationCode)
 	{
-		Console::WriteLine(SPLITTER_STRING);
-		operationCode = Console::ReadInt("Enter operation code: ");
+		WriteLine(SPLITTER_STRING);
+		operationCode = ReadInt("Enter operation code: ");
 		switch (operationCode)
 		{
 			case Add:
 			{
 				try
 				{
-					int key = Console::ReadInt("Insert key:");
-					string value = Console::ReadString("Insert value:");
+					int key = ReadInt("Insert key:");
+					string value = ReadString("Insert value:");
 					tree->Insert(key, value);
 					PrintTree(tree->GetRoot(), tree->GetNil());
 				}
 				catch (const exception& error)
 				{
-					Console::WriteLine(error.what());
+					WriteLine(error.what());
 				}
 				break;
 			}
@@ -152,14 +154,14 @@ void RedBlackTreeUI()
 			{
 				try
 				{
-					Console::WriteLine("Insert key of node to delete: ");
-					tree->DeleteByKey(Console::ReadInt());
-					Console::WriteLine("The node successfuly deleted.");
+					WriteLine("Insert key of node to delete: ");
+					tree->DeleteByKey(ReadInt());
+					WriteLine("The node successfuly deleted.");
 					PrintTree(tree->GetRoot(), tree->GetNil());
 				}
 				catch (const exception& error)
 				{
-					Console::WriteLine(error.what());
+					WriteLine(error.what());
 				}
 				break;
 			}
@@ -169,24 +171,23 @@ void RedBlackTreeUI()
 				{
 					string foundValue;
 					foundValue =
-						tree->GetValueByKey(Console::ReadInt());
-					Console::WriteLine(foundValue);
+						tree->GetValueByKey(ReadInt());
+					WriteLine(foundValue);
 				}
 				catch (const exception& error)
 				{
-					Console::WriteLine(error.what());
+					WriteLine(error.what());
 				}
 				break;
 			}
 			case Help:
 			{
-				Console::WriteLine(SPLITTER_STRING);
-				Console::WriteLine("To choose operation type,"
-							   " enter its code:");
-				Console::WriteLine("\t1\tInsert the element");
-				Console::WriteLine("\t2\tDelete the element");
-				Console::WriteLine("\t3\tSearch element by the key");
-				Console::WriteLine("Use 0 to exit the program.");
+				WriteLine(SPLITTER_STRING);
+				WriteLine("To choose operation type, enter its code:");
+				WriteLine("\t1\tInsert the element");
+				WriteLine("\t2\tDelete the element");
+				WriteLine("\t3\tSearch element by the key");
+				WriteLine("Use 0 to exit the program.");
 				break;
 			}
 			case Exit:
@@ -195,12 +196,12 @@ void RedBlackTreeUI()
 			}
 			default:
 			{
-				Console::WriteLine("");
-				Console::WriteLine(SPLITTER_STRING);
-				Console::WriteLine("");
-				Console::WriteLine("Incorrect operation code. Enter 100 to"
+				WriteLine("");
+				WriteLine(SPLITTER_STRING);
+				WriteLine("");
+				WriteLine("Incorrect operation code. Enter 100 to"
 					" get help.");
-				Console::WriteLine("Repeat enter: ");
+				WriteLine("Repeat enter: ");
 				break;
 			}
 		}
@@ -222,19 +223,19 @@ void AvlTreeUI()
 		Help = 100,
 	};
 	setlocale(LC_ALL, "ru");
-	Console::WriteLine(SPLITTER_STRING);
-	Console::WriteLine("To choose operation type, enter its code:");
-	Console::WriteLine("\t1\tInsert the element");
-	Console::WriteLine("\t2\tDelete the element");
-	Console::WriteLine("\t3\tSearch element by the key");
-	Console::WriteLine("Use 0 to exit the program.");
-	Console::WriteLine(SPLITTER_STRING);
+	WriteLine(SPLITTER_STRING);
+	WriteLine("To choose operation type, enter its code:");
+	WriteLine("\t1\tInsert the element");
+	WriteLine("\t2\tDelete the element");
+	WriteLine("\t3\tSearch element by the key");
+	WriteLine("Use 0 to exit the program.");
+	WriteLine(SPLITTER_STRING);
 	AvlTree* tree = new AvlTree;
 	int operationCode = 1;
 	while (operationCode)
 	{
-		Console::WriteLine(SPLITTER_STRING);
-		operationCode = Console::ReadInt("Enter operation code: ");
+		WriteLine(SPLITTER_STRING);
+		operationCode = ReadInt("Enter operation code: ");
 		switch (operationCode)
 		{
 			case Add:
@@ -243,10 +244,8 @@ void AvlTreeUI()
 				{
 					try
 					{
-						int key =
-							Console::ReadInt("Enter key: ");
-						string value =
-							Console::ReadString("Enter value: ");
+						int key = ReadInt("Enter key: ");
+						string value = ReadString("Enter value: ");
 						tree->Insert(tree->GetRoot(),
 									 key, value);
 						PrintTree(tree->GetRoot());
@@ -254,7 +253,7 @@ void AvlTreeUI()
 					}
 					catch (const exception& error)
 					{
-						Console::WriteLine(error.what());
+						WriteLine(error.what());
 						break;
 					}
 				}
@@ -266,15 +265,14 @@ void AvlTreeUI()
 				{
 					try
 					{
-						tree->DeleteByKey(
-							Console::ReadInt("Enter key:"));
-						Console::WriteLine("The node successfully deleted.");
+						tree->DeleteByKey(ReadInt("Enter key:"));
+						WriteLine("The node successfully deleted.");
 						PrintTree(tree->GetRoot());
 						break;
 					}
 					catch (const exception& error)
 					{
-						Console::WriteLine(error.what());
+						WriteLine(error.what());
 					}
 				}
 				break;
@@ -287,27 +285,27 @@ void AvlTreeUI()
 					{
 						string foundValue;
 						foundValue =
-							tree->GetValueByKey(Console::ReadInt());
-						Console::WriteLine(foundValue);
+							tree->GetValueByKey(ReadInt());
+						WriteLine(foundValue);
 						break;
 					}
 					catch (const exception& error)
 					{
-						Console::WriteLine(error.what());
+						WriteLine(error.what());
 					}
 				}
 				break;
 			}
 			case Help:
 			{
-				Console::WriteLine(SPLITTER_STRING);
-				Console::WriteLine("To choose operation type,"
+				WriteLine(SPLITTER_STRING);
+				WriteLine("To choose operation type,"
 							   " enter its code:");
-				Console::WriteLine("\t1\tInsert the element");
-				Console::WriteLine("\t2\tDelete the element");
-				Console::WriteLine("\t3\tSearch element by the key");
-				Console::WriteLine("Use 0 to exit the program.");
-				Console::WriteLine(SPLITTER_STRING);
+				WriteLine("\t1\tInsert the element");
+				WriteLine("\t2\tDelete the element");
+				WriteLine("\t3\tSearch element by the key");
+				WriteLine("Use 0 to exit the program.");
+				WriteLine(SPLITTER_STRING);
 				break;
 			}
 			case Exit:
@@ -316,12 +314,12 @@ void AvlTreeUI()
 			}
 			default:
 			{
-				Console::WriteLine("");
-				Console::WriteLine(SPLITTER_STRING);
-				Console::WriteLine("");
-				Console::WriteLine("Incorrect operation code. Enter 100 to"
+				WriteLine("");
+				WriteLine(SPLITTER_STRING);
+				WriteLine("");
+				WriteLine("Incorrect operation code. Enter 100 to"
 					" get help.");
-				Console::WriteLine("Repeat enter: ");
+				WriteLine("Repeat enter: ");
 				break;
 			}
 		}
