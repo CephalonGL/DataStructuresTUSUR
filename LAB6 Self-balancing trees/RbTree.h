@@ -98,17 +98,24 @@ private:
 	/// Do small right rotation
 	/// </summary>
 	/// <returns>New root node</returns>
+	 
+	/// <summary>
+	/// Do small right rotation
+	/// </summary>
+	/// <param name="node">Source node to rotate</param>
+	/// <returns>New root node</returns>
 	RbTreeNode* RotateRight(RbTreeNode* node);
 
 	/// <summary>
 	/// Set new root
 	/// </summary>
+	/// <param name="newRoot">New root</param>
 	void SetRoot(RbTreeNode* newRoot);
 
 	/// <summary>
 	/// Set new nil
 	/// </summary>
-	/// <param name="newNil">Pointer to new nil</param>
+	/// <param name="newNil">New nil</param>
 	void SetNil(RbTreeNode* newNil);
 
 	/// <summary>
@@ -164,14 +171,16 @@ private:
 	/// Check if this node is a left child
 	/// </summary>
 	/// <param name="sourceNode">Node to check</param>
-	/// <returns>True if this node is left a child, else false</returns>
+	/// <returns>True if this node is a left child,
+	///  else false</returns>
 	bool IsLeftChild(RbTreeNode* sourceNode);
 
 	/// <summary>
 	/// Check if this node is a right child
 	/// </summary>
 	/// <param name="sourceNode">Node to check</param>
-	/// <returns>True if this node is a right child, else false</returns>
+	/// <returns>True if this node is a right child,
+	///  else false</returns>
 	bool IsRightChild(RbTreeNode* sourceNode);
 
 	/// <summary>
