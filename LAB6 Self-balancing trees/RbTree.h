@@ -76,7 +76,7 @@ private:
 	/// </summary>
 	/// <param name="sourceNode">Source node to find node with 
 	/// next minimal key</param>
-	/// <returns></returns>
+	/// <returns>Returns node with next min key</returns>
 	RbTreeNode* FindNodeWithNextMinKey(RbTreeNode* sourceNode);
 
 	/// <summary>
